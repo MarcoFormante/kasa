@@ -1,0 +1,19 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    background-color: $light_orange;
+}
+
+body{
+    max-width: 1440px;
+    margin: auto;
+}
+
+a{
+    color: $black;
+    text-decoration: none;
+}

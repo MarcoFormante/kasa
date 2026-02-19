@@ -1,0 +1,36 @@
+.header-nav{
+    display: flex;
+    justify-content: center;
+    max-width: 782px;
+    gap: 49.86px;
+    align-items: center;
+    height: 56.05px;
+    margin: auto;
+    margin-top: 40px;
+    font-size: 14px;
+    border-radius: 10px;
+    background-color: $white;
+
+    &-links-container{
+        display: flex;
+        gap: 28px;
+        align-items: center;
+    }
+
+    &-links-icons-container, &-links-icons-container a{
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .separator{
+       border: 1px solid $main_red;
+       height: 5px;
+       border-radius: 50px;
+    }
+
+    a.active{
+        text-decoration: underline;
+    }
+    
+}
