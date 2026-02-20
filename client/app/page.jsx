@@ -1,3 +1,4 @@
+import { Apartment } from "./components/Apartment/Apartment";
 import { Heading } from "./components/Heading/Heading";
 import { Hero } from "./components/Hero/Hero";
 import { Paragraph } from "./components/Paragraph/Paragraph";
@@ -5,7 +6,7 @@ import { Paragraph } from "./components/Paragraph/Paragraph";
 export default function Home() {
   return (
       <main>
-        <section>
+        <section className="page-section">
            <Heading 
               text={"Chez vous, partout et ailleurs"} 
               styles={"home-heading"}
@@ -18,6 +19,17 @@ export default function Home() {
           <Hero/>
         </section>
 
+        <section className="apts-list page-section" aria-label="Liste d'appartements disponibles">
+
+          <Apartment/>
+          <Apartment/>
+          <Apartment/>
+          <Apartment/>
+          <Apartment/>
+          <Apartment/>
+          <Apartment/>
+          <Apartment/>
+        </section>
         
       </main>
   );

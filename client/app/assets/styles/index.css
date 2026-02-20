@@ -19,6 +19,11 @@ body {
   }
 }
 
+.page-section {
+  max-width: 1115px;
+  margin: 0 auto 40px auto;
+}
+
 a {
   color: #0D0D0D;
   text-decoration: none;
@@ -34,6 +39,10 @@ button {
 
 .main-red {
   color: #99331A;
+}
+
+.dark-grey {
+  color: #565656;
 }
 
 .header-nav {
@@ -241,6 +250,62 @@ button {
 }
 .paragraph.mt-8 {
   margin-top: 8px;
+}
+
+.apt-card {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 355px;
+  height: 552px;
+  max-height: 552px;
+  position: relative;
+}
+.apt-card img {
+  width: 355px;
+  height: 376px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.apt-card-details-section {
+  margin-top: 16px;
+  padding-inline: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 62px;
+}
+.apt-card-details-section h3 {
+  font-weight: 500;
+  font-size: 18px;
+  color: #0D0D0D;
+}
+.apt-card-details-section .address {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #565656;
+}
+.apt-card-details-section .price {
+  font-weight: 500;
+  font-size: 14px;
+  color: #0D0D0D;
+  margin-right: 6px;
+}
+.apt-card .fav-btn {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  width: 32px;
+  height: 32px;
+  background-color: #F5F5F5;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.apts-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  gap: 24px;
 }
 
 .hero {
