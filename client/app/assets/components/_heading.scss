@@ -2,4 +2,9 @@
     font-weight: 700;
     color: $main_red;
     font-size: 32px;
+    text-align: center;
+
+    &.home-heading{
+        margin-top: 40px;
+    }
 }

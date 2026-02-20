@@ -200,4 +200,20 @@ button {
   font-weight: 700;
   color: #99331A;
   font-size: 32px;
+  text-align: center;
+}
+.heading-h1.home-heading {
+  margin-top: 40px;
+}
+
+.paragraph {
+  line-height: 143%;
+  color: #000000;
+  font-size: 14px;
+}
+.paragraph.text-center {
+  text-align: center;
+}
+.paragraph.mt-8 {
+  margin-top: 8px;
 }/*# sourceMappingURL=index.css.map */
