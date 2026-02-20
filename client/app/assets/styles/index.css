@@ -194,4 +194,10 @@ button {
   .header-nav.active .separator {
     display: none;
   }
+}
+
+.heading-h1 {
+  font-weight: 700;
+  color: #99331A;
+  font-size: 32px;
 }/*# sourceMappingURL=index.css.map */
