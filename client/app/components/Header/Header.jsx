@@ -4,20 +4,38 @@ import { FavoritesIcon } from "./FavoritesIcon";
 import { MessagingIcon } from "./MessagingIcon";
 import { Logo } from "./Logo";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { MenuMobile } from "./MenuMobile";
 
 export function Header(){
     const pathname = usePathname()
+    const [menuIsOpen,setMenuIsOpen] = useState(false)
+
+    useEffect(()=>{
+        window.addEventListener("resize",(e)=>{
+            if (window.innerWidth > 1024) {
+                setMenuIsOpen(false)
+            }
+        })
+        return ()=> window.removeEventListener("resize",()=>{
+            if (window.innerWidth > 1024) {
+                setMenuIsOpen(false)
+            }
+        })
+    },[menuIsOpen])
+
+
     return (
         <header>
-            <nav className="header-nav">
-                <div className="header-nav-links-container">
+            <nav className={`header-nav ${menuIsOpen ? "active" : ""}`}>
+                <div className="header-nav-links-container header-nav-links-container-first">
                     <Link href={"/"} className={`${pathname === "/" ? "active" : ""}`}>Accueil</Link>
                     <Link href={"/a-propos"} className={`${pathname === "/a-propos" ? "active" : ""}`}>À propos</Link>                
                 </div>
-                <Link href={"/"}>
+                <Link href={"/"} className="header-logo-link">
                     <Logo/>
                 </Link>
-                <div className="header-nav-links-container">
+                <div className="header-nav-links-container header-nav-links-container-last">
                     <Link href={"/ajouter-un-logement"} className={`main-red ${pathname === "/ajouter-un-logement" ? "active" : ""}`}>+Ajouter un logement</Link>
                     <div className="header-nav-links-icons-container">
                         <Link href={"/favoris"} className={`${pathname === "/favoris" ? "active" : ""}`}>
@@ -29,6 +47,10 @@ export function Header(){
                         </Link>
                     </div>
                 </div>
+                <MenuMobile 
+                    menuIsOpen={menuIsOpen} 
+                    onClick={()=>setMenuIsOpen(!menuIsOpen)}
+                />
             </nav>
         </header>
     )
