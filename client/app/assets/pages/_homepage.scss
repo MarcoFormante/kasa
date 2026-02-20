@@ -4,4 +4,8 @@
     display: block;    
     margin: auto;
     margin-top: 40px;
+
+    @media screen and (max-width:1140px) {
+        width: 100%;
+    }
 }

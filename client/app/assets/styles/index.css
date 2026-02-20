@@ -224,6 +224,12 @@ button {
 .heading-h1.home-heading {
   margin-top: 40px;
 }
+@media screen and (max-width: 768px) {
+  .heading-h1 {
+    max-width: clamp(280px, 80%, 700px);
+    margin: auto;
+  }
+}
 
 .paragraph {
   line-height: 143%;
@@ -244,4 +250,9 @@ button {
   display: block;
   margin: auto;
   margin-top: 40px;
+}
+@media screen and (max-width: 1140px) {
+  .hero {
+    width: 100%;
+  }
 }/*# sourceMappingURL=index.css.map */
