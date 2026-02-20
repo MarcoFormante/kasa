@@ -1,6 +1,6 @@
 import Image from "next/image";
-import heroHome from "@/app/assets/images/hero-home.webp"
-import heroAbout from "@/app/assets/images/hero-about.webp"
+import heroHome from "../../assets/images/hero-home.webp"
+import heroAbout from "../../assets/images/hero-about.webp"
 
 export function Hero({isHomePage}){
     return (

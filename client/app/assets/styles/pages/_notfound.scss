@@ -1,9 +1,11 @@
 
 .notFound-container{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 90vh;
+    gap: 40px;
 
     .notfound-h1{
         font-weight: 900;
@@ -16,6 +18,22 @@
         text-align: center;
         width: 60%;
         margin: auto;
+
+        @media screen and (max-width:650px) {
+            width: 80%;
+        }
+
+        @media screen and (max-width:430px) {
+            width: 100%;
+        }
+    }
+
+    .notFound-links-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
     }
 }
 

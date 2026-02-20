@@ -201,6 +201,7 @@ button {
     justify-content: center;
     gap: 15px;
     transition: height 0.2s ease;
+    z-index: 10;
   }
   .header-nav.active .menu-container, .header-nav.active .header-logo {
     position: absolute;
@@ -347,6 +348,23 @@ button {
   .apts-list {
     justify-content: center;
   }
+}
+
+.btn-container {
+  height: 36px;
+}
+.btn-container.w-200 {
+  width: 200px;
+}
+.btn-container a, .btn-container button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #99331A;
+  color: #FFFFFF;
+  height: 100%;
 }
 
 .hero {
@@ -510,9 +528,11 @@ button {
 
 .notFound-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 90vh;
+  gap: 40px;
 }
 .notFound-container .notfound-h1 {
   font-weight: 900;
@@ -524,4 +544,21 @@ button {
   text-align: center;
   width: 60%;
   margin: auto;
+}
+@media screen and (max-width: 650px) {
+  .notFound-container p {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 430px) {
+  .notFound-container p {
+    width: 100%;
+  }
+}
+.notFound-container .notFound-links-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
 }/*# sourceMappingURL=index.css.map */
