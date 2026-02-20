@@ -1,0 +1,103 @@
+.about-mission{
+
+    &-section{
+        max-width: 1115px;
+        margin: auto;
+        position: relative;
+
+        
+
+        h2{
+            color: $main_red;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        ol{
+            padding-block: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            font-size: 14px;
+            color: #000000;
+            line-height: 143%;
+            transform: translateX(15px);
+        }
+
+        p{
+            color: $main_red;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 143%;
+
+            @media screen  and (max-width:910px){
+                position: absolute;
+                bottom: -100px;
+                left: 0;
+            }
+
+            @media screen  and (max-width:650px){
+                bottom: -120px;
+            }
+
+            @media screen  and (max-width:500px){
+                bottom: -140px;
+            }
+
+            @media screen  and (max-width:400px){
+                bottom: -180px;
+            }
+
+            @media screen  and (max-width:353px){
+                bottom: -210px;
+            }
+        }
+    }
+
+    &-flex-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+
+        @media screen and (max-width:910px) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+
+    &-img-container{
+        width: 494px;
+        height: 458px;
+
+        @media screen and (max-width:910px) {
+            width: 100%;
+        }
+
+        img{
+            width: 494px;
+            height: 458px;
+            border-radius: 20px;
+            object-fit: cover;
+
+            @media screen and (max-width:910px) {
+                 width: 100%;
+            }
+        }
+    }
+}
+
+
+.sec-paragraph{
+    width: 65%;
+    margin: auto;
+
+    @media screen  and (max-width:1024px){
+        width: 80%;
+    }
+
+    @media screen  and (max-width:768px){
+        width: 100%;
+    }
+}

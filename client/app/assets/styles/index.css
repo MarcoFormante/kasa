@@ -13,7 +13,7 @@ body {
   margin: auto;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1150px) {
   main {
     padding-inline: 16px;
   }
@@ -246,7 +246,7 @@ button {
   font-size: 32px;
   text-align: center;
 }
-.heading-h1.home-heading {
+.heading-h1.mt-40 {
   margin-top: 40px;
 }
 @media screen and (max-width: 768px) {
@@ -269,6 +269,9 @@ button {
 }
 .paragraph.mt-16 {
   margin-top: 16px;
+}
+.paragraph.mt-30 {
+  margin-top: 30px;
 }
 .paragraph.w-65x {
   width: 65%;
@@ -401,4 +404,106 @@ button {
   font-size: 12px;
   line-height: 143%;
   color: #FFFFFF;
+}
+
+.about-mission-section {
+  max-width: 1115px;
+  margin: auto;
+  position: relative;
+}
+.about-mission-section h2 {
+  color: #99331A;
+  font-weight: 700;
+  font-size: 18px;
+}
+.about-mission-section ol {
+  padding-block: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 14px;
+  color: #000000;
+  line-height: 143%;
+  transform: translateX(15px);
+}
+.about-mission-section p {
+  color: #99331A;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 143%;
+}
+@media screen and (max-width: 910px) {
+  .about-mission-section p {
+    position: absolute;
+    bottom: -100px;
+    left: 0;
+  }
+}
+@media screen and (max-width: 650px) {
+  .about-mission-section p {
+    bottom: -120px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .about-mission-section p {
+    bottom: -140px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .about-mission-section p {
+    bottom: -180px;
+  }
+}
+@media screen and (max-width: 353px) {
+  .about-mission-section p {
+    bottom: -210px;
+  }
+}
+.about-mission-flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+@media screen and (max-width: 910px) {
+  .about-mission-flex-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.about-mission-img-container {
+  width: 494px;
+  height: 458px;
+}
+@media screen and (max-width: 910px) {
+  .about-mission-img-container {
+    width: 100%;
+  }
+}
+.about-mission-img-container img {
+  width: 494px;
+  height: 458px;
+  border-radius: 20px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media screen and (max-width: 910px) {
+  .about-mission-img-container img {
+    width: 100%;
+  }
+}
+
+.sec-paragraph {
+  width: 65%;
+  margin: auto;
+}
+@media screen and (max-width: 1024px) {
+  .sec-paragraph {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .sec-paragraph {
+    width: 100%;
+  }
 }/*# sourceMappingURL=index.css.map */

@@ -10,14 +10,15 @@ export default function Home() {
         <section className="page-section">
            <Heading 
               text={"Chez vous, partout et ailleurs"} 
-              styles={"home-heading"}
+              styles={"mt-40"}
             />
 
           <Paragraph 
             text={"Avec Kasa, vivez des séjours uniques dans des hébergements chaleureux, sélectionnés avec soin par nos hôtes."}
             styles={"mt-8 text-center"}
           />
-          <Hero/>
+          
+          <Hero isHomePage={true}/>
         </section>
 
         <section className="apts-list page-section" aria-label="Liste d'appartements disponibles">
