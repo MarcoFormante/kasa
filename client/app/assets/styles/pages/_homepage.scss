@@ -9,3 +9,48 @@
         width: 100%;
     }
 }
+
+.steps-section {
+    padding: 40px;
+    border-radius: 10px;
+
+    @media screen and (max-width:400px) {
+        padding: 16px;
+    }
+}
+
+.steps-list-container{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.step-card{
+    width: 270px;
+    height: 199px;
+    background-color: $dark_orange;
+    border-radius: 10px;
+    padding-inline: 22px;
+    padding-top: 44px;
+
+    & .flex-container{
+        display: flex;
+        flex-direction: column;
+        gap: 17px;
+    }
+
+    span{
+        color: $white;
+        font-weight: 500;
+        font-size: 18px;
+    }
+
+    p{
+        font-size: 12px;
+        line-height: 143%;
+        color: $white;
+    }
+}

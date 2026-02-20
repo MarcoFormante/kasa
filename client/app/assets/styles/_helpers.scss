@@ -2,6 +2,22 @@
     color: $main_red;
 }
 
+.black{
+    color: $black;
+}
+
 .dark-grey{
     color: $dark_grey;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.semibold{
+    font-weight: 600;
+}
+
+.section-white{
+    background-color: $white;
 }

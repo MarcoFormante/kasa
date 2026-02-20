@@ -41,8 +41,24 @@ button {
   color: #99331A;
 }
 
+.black {
+  color: #0D0D0D;
+}
+
 .dark-grey {
   color: #565656;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.semibold {
+  font-weight: 600;
+}
+
+.section-white {
+  background-color: #FFFFFF;
 }
 
 .header-nav {
@@ -251,6 +267,23 @@ button {
 .paragraph.mt-8 {
   margin-top: 8px;
 }
+.paragraph.mt-16 {
+  margin-top: 16px;
+}
+.paragraph.w-65x {
+  width: 65%;
+  margin-inline: auto;
+}
+@media screen and (max-width: 768px) {
+  .paragraph.steps-paragraph {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .paragraph.steps-paragraph {
+    width: 100%;
+  }
+}
 
 .apt-card {
   background-color: #FFFFFF;
@@ -307,6 +340,11 @@ button {
   justify-content: left;
   gap: 24px;
 }
+@media screen and (max-width: 1112px) {
+  .apts-list {
+    justify-content: center;
+  }
+}
 
 .hero {
   -o-object-fit: cover;
@@ -320,4 +358,47 @@ button {
   .hero {
     width: 100%;
   }
+}
+
+.steps-section {
+  padding: 40px;
+  border-radius: 10px;
+}
+@media screen and (max-width: 400px) {
+  .steps-section {
+    padding: 16px;
+  }
+}
+
+.steps-list-container {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.step-card {
+  width: 270px;
+  height: 199px;
+  background-color: #842C16;
+  border-radius: 10px;
+  padding-inline: 22px;
+  padding-top: 44px;
+}
+.step-card .flex-container {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+.step-card span {
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 18px;
+}
+.step-card p {
+  font-size: 12px;
+  line-height: 143%;
+  color: #FFFFFF;
 }/*# sourceMappingURL=index.css.map */
