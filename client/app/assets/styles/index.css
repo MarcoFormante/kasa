@@ -506,4 +506,22 @@ button {
   .sec-paragraph {
     width: 100%;
   }
+}
+
+.notFound-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+.notFound-container .notfound-h1 {
+  font-weight: 900;
+  color: #99331A;
+  font-size: 100px;
+  text-align: center;
+}
+.notFound-container p {
+  text-align: center;
+  width: 60%;
+  margin: auto;
 }/*# sourceMappingURL=index.css.map */
