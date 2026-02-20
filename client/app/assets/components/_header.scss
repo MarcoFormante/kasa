@@ -47,7 +47,31 @@
         
 
         a.active{
-            text-decoration: underline;
+            border-bottom: 1px solid $black;
+        }
+
+        a{
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        a:not(.no-border):hover{
+            border-bottom: 1px solid $black;
+        }
+
+        a.header-logo-link:hover{
+            background: rgb(255, 237, 226);
+            border-radius: 10px;
+        }
+
+        a.hover__fill-red:hover{
+            svg{
+                path{
+                    transition: 0.3s ease;
+                    fill: $main_red;
+                }
+            }
+           
         }
 
 
@@ -136,6 +160,7 @@
         @media screen and (max-width:1024px) {
             position: fixed;
             height: 100vh;
+            top: 0;
             flex-direction: column;
             justify-content: center;
             gap: 15px;
@@ -160,6 +185,10 @@
                 display: flex;
                 flex-direction: column;
                 font-size: 18px;
+
+                a:hover{
+                    border-bottom: 1px solid $black;
+                }
             }
 
             .header-nav-links-icons-container{

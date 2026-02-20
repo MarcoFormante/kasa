@@ -80,7 +80,22 @@ button {
   border-radius: 50px;
 }
 .header-nav a.active {
-  text-decoration: underline;
+  border-bottom: 1px solid #0D0D0D;
+}
+.header-nav a {
+  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+.header-nav a:not(.no-border):hover {
+  border-bottom: 1px solid #0D0D0D;
+}
+.header-nav a.header-logo-link:hover {
+  background: rgb(255, 237, 226);
+  border-radius: 10px;
+}
+.header-nav a.hover__fill-red:hover svg path {
+  transition: 0.3s ease;
+  fill: #99331A;
 }
 .header-nav .header-logo {
   background: url("../icons/logo.svg");
@@ -156,6 +171,7 @@ button {
   .header-nav.active {
     position: fixed;
     height: 100vh;
+    top: 0;
     flex-direction: column;
     justify-content: center;
     gap: 15px;
@@ -176,6 +192,9 @@ button {
     display: flex;
     flex-direction: column;
     font-size: 18px;
+  }
+  .header-nav.active .header-nav-links-container a:hover {
+    border-bottom: 1px solid #0D0D0D;
   }
   .header-nav.active .header-nav-links-icons-container {
     display: flex;

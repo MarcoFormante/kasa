@@ -32,17 +32,17 @@ export function Header(){
                     <Link href={"/"} className={`${pathname === "/" ? "active" : ""}`}>Accueil</Link>
                     <Link href={"/a-propos"} className={`${pathname === "/a-propos" ? "active" : ""}`}>À propos</Link>                
                 </div>
-                <Link href={"/"} className="header-logo-link">
+                <Link href={"/"} className="header-logo-link no-border">
                     <Logo/>
                 </Link>
                 <div className="header-nav-links-container header-nav-links-container-last">
                     <Link href={"/ajouter-un-logement"} className={`main-red ${pathname === "/ajouter-un-logement" ? "active" : ""}`}>+Ajouter un logement</Link>
                     <div className="header-nav-links-icons-container">
-                        <Link href={"/favoris"} className={`${pathname === "/favoris" ? "active" : ""}`}>
+                        <Link href={"/favoris"} className={`no-border hover__fill-red ${pathname === "/favoris" ? "active" : ""}`}>
                             <FavoritesIcon/>
                         </Link>
                         <span className="separator"></span>
-                        <Link href={"/messagerie"} className={`${pathname === "/messagerie" ? "active" : ""}`}>
+                        <Link href={"/messagerie"} className={`no-border hover__fill-red ${pathname === "/messagerie" ? "active" : ""}`}>
                             <MessagingIcon/>
                         </Link>
                     </div>
