@@ -1,0 +1,60 @@
+.apt-card{
+    background-color: $white;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 355px;
+    height: 552px;
+    max-height: 552px;
+    position: relative;
+
+    img{
+        width: 355px;
+        height: 376px;
+        object-fit: cover;
+    }
+
+    &-details-section{
+        margin-top: 16px;
+        padding-inline: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 62px;
+
+        h3{
+            font-weight: 500;
+            font-size: 18px;
+            color: $black;
+        }
+
+        .address{
+            margin-top: 8px;
+            font-size: 14px;
+            color: $dark_grey;
+        }
+        
+        .price{
+            font-weight: 500;
+            font-size: 14px;
+            color: $black;
+            margin-right: 6px;
+        }
+    }
+
+    .fav-btn{
+        position: absolute;
+        right: 16px;
+        top: 16px;
+        width: 32px;
+        height: 32px;
+        background-color: $light_grey;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}
+
+.apts-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 24px;
+}
