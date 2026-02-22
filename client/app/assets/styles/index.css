@@ -61,6 +61,16 @@ button {
   background-color: #FFFFFF;
 }
 
+.flex-row-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mt-40 {
+  margin-top: 40px;
+}
+
 .header-nav {
   display: flex;
   justify-content: center;
@@ -356,15 +366,72 @@ button {
 .btn-container.w-200 {
   width: 200px;
 }
+.btn-container.w-96 {
+  width: 96px;
+}
 .btn-container a, .btn-container button {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   border-radius: 10px;
+  height: 100%;
+  cursor: pointer;
+}
+
+.retour-btn-container {
+  height: 36px;
+}
+.retour-btn-container-w-93 {
+  width: 93px;
+}
+
+.btn-main-red {
   background-color: #99331A;
   color: #FFFFFF;
-  height: 100%;
+  font-weight: 500;
+}
+
+.btn-light-grey {
+  background-color: #F5F5F5;
+  color: #565656;
+  font-weight: 500;
+}
+
+.flex-input-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.flex-input-container input[type=text] {
+  width: 371px;
+}
+
+.file-input-btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.file-input-btn span {
+  position: absolute;
+  color: #FFFFFF;
+  font-size: 20px;
+  pointer-events: none;
+}
+
+.plusBtn {
+  width: 37px;
+  height: 37px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: #99331A;
+  color: #FFFFFF;
+  font-size: 20px;
+  border-radius: 5.78px;
+  cursor: pointer;
 }
 
 .hero {
@@ -561,4 +628,126 @@ button {
   justify-content: center;
   align-items: center;
   gap: 14px;
+}
+
+.ajout-page {
+  padding-top: 40px;
+  padding-inline: 136px;
+}
+.ajout-page .flex-row-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ajout-page h1 {
+  font-size: 24px;
+  font-weight: 500;
+  color: #000000;
+}
+.ajout-page .ajout-form-flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+.ajout-page .white-container {
+  background-color: #FFFFFF;
+  width: 576px;
+  padding-inline: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.ajout-page .white-container-py-80 {
+  padding-block: 80px;
+}
+.ajout-page .white-container-py-48 {
+  padding-block: 48px;
+}
+.ajout-page .white-container-h-444 {
+  height: 444px;
+}
+.ajout-page .flex-col-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 416px;
+}
+.ajout-page .flex-col-input-container label {
+  font-weight: 500;
+  font-size: 14px;
+}
+.ajout-page .flex-col-input-container input:not(input[type=file]), .ajout-page .flex-col-input-container textarea, .ajout-page .flex-col-input-container .file-text-container {
+  height: 40px;
+  padding-left: 10px;
+  font-size: 12px;
+  border: 1px solid #F5F5F5;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  width: 100%;
+}
+.ajout-page .flex-col-input-container textarea {
+  padding-top: 10px;
+  height: 120px;
+}
+.ajout-page .flex-col-input-container input[type=file] {
+  width: 37px;
+  height: 37px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: #99331A;
+  text-indent: -999em;
+  cursor: pointer;
+  border-radius: 5.78px;
+}
+.ajout-page .flex-col-input-container p {
+  font-size: 14px;
+  color: #99331A;
+}
+.ajout-page .right-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.ajout-page .grid-2-col-200 {
+  display: grid;
+  width: 416px;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 16px;
+}
+.ajout-page .grid-2-col-200 .checkbox-container {
+  max-width: 170px;
+  padding-left: 16px;
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+}
+.ajout-page .grid-2-col-200 .checkbox-container label, .ajout-page .grid-2-col-200 .checkbox-container input {
+  cursor: pointer;
+}
+.ajout-page .categories-container {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.ajout-page .categories-container .category-Btn {
+  border-radius: 5px;
+  background-color: #F5F5F5;
+  height: 33px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+.ajout-page .categories-container .category-Btn input {
+  display: none;
+}
+.ajout-page .categories-container .category-Btn label {
+  color: #565656;
+  text-align: center;
+  font-size: 12px;
+  pointer-events: none;
 }/*# sourceMappingURL=index.css.map */

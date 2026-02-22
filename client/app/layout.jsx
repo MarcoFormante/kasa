@@ -6,6 +6,7 @@ import { Header } from "./components/Header/Header";
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
+  variable:"--inter"
 })
 
 export const metadata = {

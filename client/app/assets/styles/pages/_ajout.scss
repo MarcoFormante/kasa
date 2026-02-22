@@ -1,0 +1,145 @@
+.ajout-page{
+    padding-top: 40px;
+    padding-inline: 136px;
+
+    .flex-row-between-center{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    h1{
+        font-size: 24px;
+        font-weight: 500;
+        color: #000000;
+    }
+
+    .ajout-form-flex-container{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .white-container{
+        background-color: $white;
+        width: 576px;
+        padding-inline: 80px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        &-py-80{
+            padding-block: 80px;
+        }
+
+        &-py-48{
+           padding-block: 48px;
+        }
+
+        &-h-444{
+            height: 444px;
+        }
+    }
+
+    .flex-col-input-container{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 416px;
+
+        label{
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        input:not(input[type="file"]),textarea,.file-text-container{
+            height: 40px;
+            padding-left: 10px;
+            font-size: 12px;
+            border: 1px solid $light_grey;
+            border-radius: 4px;
+            background-color: $white;
+            width: 100%;
+        }
+
+        textarea{
+            padding-top: 10px;
+            height: 120px;
+        }
+
+        input[type="file"]{
+            width: 37px;
+            height: 37px;
+            appearance: none;
+            background-color: $main_red;
+            text-indent: -999em;
+            cursor: pointer;
+            border-radius: 5.78px;
+        }
+
+        p{
+            font-size: 14px;
+            color:$main_red;
+        }
+
+    }
+
+    .right-container{
+        display: flex; 
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .grid-2-col-200{
+        display: grid;
+        width: 416px;
+        grid-template-columns: 1fr 1fr;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 16px;
+
+
+        .checkbox-container{
+            max-width: 170px;
+            padding-left: 16px;
+            display: flex;
+            gap: 10px;
+            cursor: pointer;
+           
+            label,input{
+                cursor: pointer;
+            }
+        }
+    }
+
+
+    .categories-container{
+        display: flex;
+        gap: 4px;
+        flex-wrap: wrap;
+        margin-top: 16px;
+
+        .category-Btn{
+            border-radius: 5px;
+            background-color: $light_grey;
+            height: 33px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8px 16px;
+            cursor: pointer;
+            
+            input{
+                display: none;
+            }
+
+            label{
+                color: $dark_grey;
+                text-align: center;
+                font-size: 12px;
+                pointer-events: none;
+            }
+        }
+
+    }
+    
+}

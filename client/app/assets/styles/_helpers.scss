@@ -21,3 +21,13 @@
 .section-white{
     background-color: $white;
 }
+
+.flex-row-between-center{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mt-40{
+    margin-top: 40px;
+}

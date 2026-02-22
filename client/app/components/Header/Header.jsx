@@ -36,7 +36,7 @@ export function Header(){
                     <Logo/>
                 </Link>
                 <div className="header-nav-links-container header-nav-links-container-last">
-                    <Link href={"/ajouter-un-logement"} className={`main-red ${pathname === "/ajouter-un-logement" ? "active" : ""}`}>+Ajouter un logement</Link>
+                    <Link href={"/ajout"} className={`main-red ${pathname === "/ajout" ? "active" : ""}`}>+Ajouter un logement</Link>
                     <div className="header-nav-links-icons-container">
                         <Link href={"/favoris"} className={`no-border hover__fill-red ${pathname === "/favoris" ? "active" : ""}`}>
                             <FavoritesIcon/>

@@ -5,14 +5,76 @@
         width: 200px;
     }
 
+    &.w-96{
+        width: 96px;
+    }
+
     a,button{
         display: flex;
         justify-content: center;
         align-items: center;
         width: 100%;
         border-radius: 10px;
-        background-color: $main_red;
-        color: $white;
         height: 100%;
+        cursor: pointer;
     }
+}
+
+
+.retour-btn-container{
+    height: 36px;
+
+    &-w-93{
+        width: 93px;
+    }
+  
+}
+
+.btn-main-red{
+    background-color: $main_red;
+    color: $white;
+    font-weight: 500;
+}
+
+.btn-light-grey{
+     background-color: $light_grey;
+     color: $dark_grey;
+     font-weight: 500;
+}
+
+.flex-input-container{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    input[type="text"]{
+        width: 371px;
+    }
+}
+
+.file-input-btn{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    span{
+        position: absolute;
+        color: $white;
+        font-size: 20px;
+        pointer-events: none;
+    }
+}
+
+
+.plusBtn{
+    width: 37px;
+    height: 37px;
+    appearance: none;
+    background-color: $main_red;
+    color: $white;
+    font-size: 20px;
+    border-radius: 5.78px;
+    cursor: pointer;
 }
