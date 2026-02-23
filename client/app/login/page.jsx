@@ -4,8 +4,8 @@ import { Heading } from "../components/Heading/Heading";
 
 export default function Login(){
     return (
-        <main className="login-page">
-            <div className="login-page-container">
+        <main className="auth-page">
+            <div className="auth-page-container">
                 <Heading 
                     text={"Heureux de vous revoir"} 
                 />
@@ -16,11 +16,11 @@ export default function Login(){
                 <form>
                     <div className="input-container">
                         <label htmlFor="email">Adresse email</label>
-                        <input type="email" name="email" id="email" />
+                        <input required type="email" name="email" id="email" />
                     </div>
                     <div className="input-container input-container-last">
                         <label htmlFor="password">Mot de passe</label>
-                        <input type="password" name="password" id="password" />
+                        <input required type="password" name="password" id="password" />
                     </div>
                     <Button styles="w-230 m-auto" type={"btn-main-red"} label={"Se connecter"}/>
                 </form>
