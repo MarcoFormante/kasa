@@ -71,6 +71,10 @@ button {
   margin-top: 40px;
 }
 
+.m-auto {
+  margin: auto;
+}
+
 .header-nav {
   display: flex;
   justify-content: center;
@@ -155,7 +159,7 @@ button {
   align-items: center;
   cursor: pointer;
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1025px) {
   .header-nav .menu-container {
     display: none;
   }
@@ -371,6 +375,9 @@ button {
   height: 36px;
 }
 .btn-container.w-200 {
+  width: 200px;
+}
+.btn-container.w-230 {
   width: 200px;
 }
 .btn-container.w-96 {
@@ -910,4 +917,73 @@ button {
   .favoris-page p {
     display: block;
   }
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-page-container {
+  width: 742px;
+  height: 590px;
+  background-color: #FFFFFF;
+  border: 1px solid #F5F5F5;
+  margin-top: 134.29px;
+  padding: 80px;
+}
+@media screen and (max-width: 1024px) {
+  .login-page-container {
+    margin-top: 93.64px;
+    padding: 32px 16px;
+  }
+}
+.login-page p {
+  color: #000;
+  font-size: 14px;
+  line-height: 143%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+}
+@media screen and (max-width: 420px) {
+  .login-page p {
+    display: block;
+  }
+}
+.login-page form {
+  margin-top: 38px;
+  margin-bottom: 22px;
+}
+.login-page form .input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 360px;
+  margin: auto;
+}
+.login-page form .input-container-last {
+  margin-top: 22px;
+}
+.login-page form .input-container input {
+  height: 40px;
+  border-radius: 4px;
+  padding-left: 8px;
+  border: 1px solid #F5F5F5;
+  background-color: #FFFFFF;
+}
+.login-page form button {
+  margin-top: 38px;
+  height: 36px;
+}
+.login-page .actions-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+  font-size: 14px;
+  color: #99331A;
+}
+.login-page .actions-container a {
+  color: #99331A;
 }/*# sourceMappingURL=index.css.map */
