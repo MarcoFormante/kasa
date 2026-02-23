@@ -49,6 +49,15 @@
         background-color: $light_grey;
         border-radius: 5px;
         cursor: pointer;
+
+        &-main-red{
+            background-color: $main_red;
+        }
+    }
+
+    .price-container{
+        position: absolute;
+        bottom: 24px;
     }
 }
 
