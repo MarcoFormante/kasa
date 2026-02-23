@@ -65,7 +65,7 @@ export default function Logement(){
                         </div>
 
                         <div className="logement-desc-container">
-                            <p className="logement-desc">Votre maison loin de chez vous. Que vous veniez de l'autre bout du monde, ou juste de quelques stations de RER, vous vous sentirez chez vous dans notre appartement.</p>
+                            <p className="logement-desc">{"Votre maison loin de chez vous. Que vous veniez de l'autre bout du monde, ou juste de quelques stations de RER, vous vous sentirez chez vous dans notre appartement."}</p>
                         </div>
                         
                         <div>
