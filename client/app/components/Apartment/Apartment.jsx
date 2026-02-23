@@ -4,7 +4,7 @@ import Link from "next/link";
 export function Apartment(){
     return (
         <article className="apt-card">
-            <Link href={"/locations/3"}>
+            <Link href={"/logement/3"}>
                 <figure>
                     <Image
                     itemProp="image"

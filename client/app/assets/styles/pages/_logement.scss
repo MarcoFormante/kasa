@@ -1,0 +1,152 @@
+.logement-page{
+    margin-top: 86px;
+    max-width: 971px;
+    margin-inline:auto;
+
+    img{
+        border-radius: 10px;
+        object-fit: cover;
+    }
+
+    .flex-row-container{
+        display: flex;
+        gap: 10px;
+        margin-top: 24px;
+    }
+
+    .carousel{
+        display: flex;
+        gap: 10px;
+
+        .big-pic{
+            width: 303px;
+            height: 357px;
+            cursor: pointer;
+        }
+
+        .little-pics-container{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+
+            img{
+                width: 147px;
+                height: 174px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .profile-info-container{
+        background-color: $white;
+        border: 1px solid $light_grey;
+        width: 345px;
+        height: 281px;
+        padding: 24px;
+        border-radius: 10px;
+
+        .profile-flex-col{
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .profile-title{
+            font-weight: 500;
+            color: #000000;
+            font-size: 16px;
+        }
+
+        .profile-flex-row{
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding-block: 16px;
+        }
+
+        .reviews{
+            background-color: $light_grey;
+            width: 50px;
+            height: 39px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        a,button{
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .profile-btns{
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+    }
+
+
+    .logement-info-container{
+        background-color: $white;
+        border: 1px solid $light_grey;
+        width: 616px;
+        padding: 24px;
+        margin-top: 24px;
+
+        .logement-title{
+            font-size: 24px;
+            font-weight: 500;
+            color: #000000;
+        }
+
+        address{
+            color: $dark_grey;
+            font-size: 14px;
+            font-style: normal;
+            margin-top: 16px;
+        }
+
+        .logement-desc-container{
+            margin: 32px 0 40px 0;
+        }
+
+        .logement-desc{
+            color: #000000;
+            font-size: 14px;
+        }
+
+        .equip-title,.category-title{
+            font-weight: 500;
+            font-size: 14px;
+            color: #000000;
+        }
+
+        .logement-items-list-container{
+            margin-top: 16px;
+
+            .list-grid{
+                display: grid;
+                grid-template-columns: 100px 100px 100px;
+                gap: 8px;
+                list-style: none;
+            }
+
+            .list-item{
+                border-radius: 5px;
+                background-color: $light_grey;
+                width: 100px;
+                height: 33px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 12px;
+                color: $dark_grey;
+            }
+        }
+
+      
+        
+    }
+}
