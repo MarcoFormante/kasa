@@ -4,7 +4,12 @@ import { Hero } from "./components/Hero/Hero";
 import { StepsCard } from "./components/Homepage/StepsCard";
 import { Paragraph } from "./components/Paragraph/Paragraph";
 
-export default function Home() {
+export default async function Home() {
+
+  const response = await fetch("http://localhost:3000/api/properties");
+  const apts = await response.json()
+  
+  
   return (
       <main>
         <section className="page-section">
@@ -22,15 +27,23 @@ export default function Home() {
         </section>
 
         <section className="apts-list page-section" aria-label="Liste d'appartements disponibles">
-
-          <Apartment/>
-          <Apartment/>
-          <Apartment/>
-          <Apartment/>
-          <Apartment/>
-          <Apartment/>
-          <Apartment/>
-          <Apartment/>
+        
+        {apts && apts.length > 0 && 
+        
+        apts.map((apt) => (
+           <Apartment 
+           key={apt.id} 
+           id={apt.id}
+           cover={apt.cover}
+           title={apt.title}
+           price={apt.price_per_night}
+           slug={apt.slug}
+           location={apt.location}
+           />
+        ))
+        
+        }
+         
         </section>
 
         <section className="page-section steps-section section-white">
