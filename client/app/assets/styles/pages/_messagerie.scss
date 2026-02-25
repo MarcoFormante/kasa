@@ -1,0 +1,201 @@
+.messagerie-page{
+    width: 1059px;
+    margin: auto;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    background-color: $white;
+    z-index: 10;
+    height: 100vh;
+    display: flex;
+
+    &-left-container{
+        min-width: 376px;
+        padding: 27px 8px;
+    }
+
+    .messages-section{
+        margin-top: 23px;
+    }
+
+
+    h1{
+        font-size: 32px;
+        font-weight: 500;
+        color: #000000;
+    }
+
+
+    .message-list{
+        margin-top: 16px;
+        list-style: none;
+        max-width: 360px;
+
+        .message-item{
+
+            button{
+                width: 100%;
+                cursor: pointer;
+            }
+        }
+
+        .message-item-container{
+            padding: 8px 10px;
+            border-bottom: 1px solid $light_grey;
+
+            &-selected{
+                background-color: $light_orange;
+            }   
+
+           
+
+            .message-item-left-container{
+                display: flex;
+                align-items: center;
+            }
+
+            .message-info-right-container{
+                display: flex;
+                justify-content: space-between;
+                text-align: start;
+                margin-left: 20px;
+                gap: 43.5px;
+                width: 100%;
+            }
+
+            .user-name{
+                font-size: 14px;
+                color: $black;
+                font-weight: 500;
+                
+            }
+
+            .user-message-short{
+                margin-top: 4px;
+                font-size: 10px;
+                color: $dark_grey;
+            }
+
+            .sent-time{
+                font-size: 10px;
+                color: $dark_grey;
+            }
+
+            .message-checked{
+                width: 6px;
+                height: 6px;
+                background-color: $main_red;
+                display: block;
+                border-radius: 50%;
+            }
+
+            .message-time-info-container{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                gap:13px;
+            }
+        }
+    }
+
+    .conversation-section{
+        background-color: $light_orange;
+        width: 100%;
+        padding: 40px 42px;
+        height: calc(100% - 137px);
+    }
+
+
+    .conversation-messages-list{
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        li{
+            display: flex;
+            gap: 6px;
+        }
+
+        .user-message-row-reverse{
+            flex-direction: row-reverse;
+
+            .conversation-message-flex-col-container{
+                    align-items: flex-end;
+            }
+        }
+    }
+
+    .message-user-image{
+        width: 44.5px;
+        height: 45.05px;
+        border-radius: 5.49px;
+    }
+
+    .conversation-user-image{
+        width: 28px;
+        height: 28px;
+        border-radius: 6px;
+    }
+
+    .conversation-message-flex-col-container{
+        display: flex;    
+        flex-direction: column;    
+        gap: 8px;
+
+        .circle-space{
+            width: 4px;
+            height: 4px;
+            background-color: $dark_grey;
+            display: block;
+            border-radius: 100%;
+        }
+
+        .conversation-message-info{
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 8px;
+            color: $dark_grey;
+        }
+    }
+
+    .message-white-container{
+        background-color: $white;
+        border-radius: 0 20px 20px 20px ;
+        padding: 12px;
+        border: 1px solid $light_grey;
+        max-width: 273px;
+
+        p{
+            font-size: 10px;
+            color: $black;
+        }
+    }
+
+    .conversation-form{
+        padding: 30px 21px;
+        position: relative;
+        
+        form,textarea{
+            width: 100%;
+        }
+
+        textarea{
+            border: 1px solid $light_grey;
+            height: 95px;
+            padding: 16px;
+        }
+
+        button{
+            width: 32px;
+            height: 32px;
+            background-color: $main_red;
+            position: absolute;
+            right: 40px;
+            bottom: 40px;
+            border-radius: 5px;
+        }
+    }
+
+}
