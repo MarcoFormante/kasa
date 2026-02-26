@@ -1,8 +1,26 @@
-import { Apartment } from "../components/Apartment/Apartment";
+import { cookies } from "next/headers";
 import { Heading } from "../components/Heading/Heading";
-import { Paragraph } from "../components/Paragraph/Paragraph";
+import Login from "../login/page";
 
-export default function Favoris(){
+export default async function Favoris(){
+    const token = (await cookies()).get("token")?.value
+    const user = (await cookies())?.get("user")?.value
+
+    const userId = user ? JSON.parse(user)?.id : "-1"
+
+    const response = await fetch(`http://localhost:3000/api/users/${userId}/favorites`,{
+       
+        headers:{
+            "authorization":"Bearer " + token 
+        }
+    })
+    const favoritesApts = await response.json()
+
+    if (favoritesApts?.error == "authentication required") {
+        return <Login redirectPath={"/"}/>
+    }
+    
+
     return (
         <main className="favoris-page">
             <section className="favoris-page-heading-section">
@@ -17,15 +35,17 @@ export default function Favoris(){
 
             <section>
                 <section className="apts-list page-section" aria-label="Liste favoris">
+                    {/* <Apartment isFavorisPage/>
                     <Apartment isFavorisPage/>
                     <Apartment isFavorisPage/>
                     <Apartment isFavorisPage/>
-                    <Apartment isFavorisPage/>
-                    <Apartment isFavorisPage/>
+                    <Apartment isFavorisPage/> */}
                     
                 </section>
                 
             </section>
+
+            
         </main>
     )
 }

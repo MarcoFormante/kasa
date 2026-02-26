@@ -1,8 +1,10 @@
 import Link from "next/link";
-import { Button } from "../components/Button/Button";
 import { Heading } from "../components/Heading/Heading";
+import { LoginForm } from "./LoginForm";
 
-export default function Login(){
+export default function Login({redirectPath}){
+    
+
     return (
         <main className="auth-page">
             <div className="auth-page-container">
@@ -13,20 +15,11 @@ export default function Login(){
                     <span> annonces et tout ce qui rend vos séjours uniques.</span>
                 </p>
 
-                <form>
-                    <div className="input-container">
-                        <label htmlFor="email">Adresse email</label>
-                        <input required type="email" name="email" id="email" />
-                    </div>
-                    <div className="input-container input-container-last">
-                        <label htmlFor="password">Mot de passe</label>
-                        <input required type="password" name="password" id="password" />
-                    </div>
-                    <Button styles="w-230 m-auto" type={"btn-main-red"} label={"Se connecter"}/>
-                </form>
+               <LoginForm redirectPath={redirectPath}/>
+
                 <div className="actions-container">
                     <span role="button">Mot de passe oublié</span>
-                    <Link href={"/inscription"}>Pas encore de compte ? Inscrivez-vous</Link>
+                    <Link href={`/inscription${redirectPath ? "?redirectPath=" + redirectPath : ""}   `}>Pas encore de compte ? Inscrivez-vous</Link>
                 </div>
                 
             </div>
