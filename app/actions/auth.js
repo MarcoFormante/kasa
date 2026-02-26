@@ -1,6 +1,7 @@
 'use server'
 
 import { cookies } from "next/headers"
+const API_URL = process.env.API_URL 
 
 export async function register(formData){
     
@@ -11,14 +12,13 @@ export async function register(formData){
     }
     
 try {
-     const response = await fetch("http://localhost:8000/auth/register",{
+     const response = await fetch(`${APi_URL}/auth/register}`,{
         method:"POST",
         body:JSON.stringify(data),
         headers:{
             "Content-Type":"application/json"
         }
     })
-    console.log(response);
     
     const registerData = await response.json()
     
@@ -58,7 +58,7 @@ export async function doLogin(formData){
     const password = formData.get("password")
 
   try {
-     const response = await fetch("http://localhost:8000/auth/login",{
+     const response = await fetch(`${API_URL}/auth/login`,{
             method:"POST",
             headers:{
                 "Content-Type":"application/json",

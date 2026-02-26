@@ -464,6 +464,32 @@ ul {
   cursor: pointer;
 }
 
+.loading-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(236, 236, 236, 0.795);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loading-container .loading-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  border: 2px solid black;
+  border-top: none;
+  animation: spin 0.4s infinite linear;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .hero {
   -o-object-fit: cover;
      object-fit: cover;

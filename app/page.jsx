@@ -1,15 +1,14 @@
-import { Apartment } from "./components/Apartment/Apartment";
+import { Suspense } from "react";
+import { getApartments } from "./actions/properties";
 import { Heading } from "./components/Heading/Heading";
 import { Hero } from "./components/Hero/Hero";
+import { AptsList } from "./components/Homepage/AptsList";
 import { StepsCard } from "./components/Homepage/StepsCard";
 import { Paragraph } from "./components/Paragraph/Paragraph";
+import { Loading } from "./components/Loading/Loading";
 
 export default async function Home() {
 
-  const response = await fetch("http://localhost:8000/api/properties");
-  const apts = await response.json()
-  
-  
   return (
       <main>
         <section className="page-section">
@@ -27,23 +26,9 @@ export default async function Home() {
         </section>
 
         <section className="apts-list page-section" aria-label="Liste d'appartements disponibles">
-        
-        {apts && apts.length > 0 && 
-        
-        apts.map((apt) => (
-           <Apartment 
-           key={apt.id} 
-           id={apt.id}
-           cover={apt.cover}
-           title={apt.title}
-           price={apt.price_per_night}
-           slug={apt.slug}
-           location={apt.location}
-           />
-        ))
-        
-        }
-         
+          <Suspense fallback={<Loading/>}>
+            <AptsList/>
+          </Suspense>
         </section>
 
         <section className="page-section steps-section section-white">
