@@ -8,6 +8,7 @@ export default function Ajout(){
             <div>
                 <div className="retour-btn-container retour-btn-container-w-93">
                     <LinkButton
+                        isBackBtn={true}
                         href={"/"} 
                         label={"Retour"}
                         type="btn-light-grey"

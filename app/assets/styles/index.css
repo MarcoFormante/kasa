@@ -424,6 +424,11 @@ ul {
 .retour-btn-container-w-189 {
   width: 189px;
 }
+.retour-btn-container .back-arrow {
+  margin-right: 4px;
+  position: relative;
+  top: -2px;
+}
 
 .btn-main-red {
   background-color: #99331A;

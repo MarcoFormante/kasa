@@ -13,6 +13,7 @@ export default async function Logement({searchParams}){
             <div>
                 <div className="retour-btn-container retour-btn-container-w-189">
                     <LinkButton
+                        isBackBtn={true}
                         href={"/"} 
                         label={"Retour aux annonces"}
                         type="btn-light-grey"
