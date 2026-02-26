@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { Heading } from "../components/Heading/Heading";
 import Login from "../login/page";
+import { FavoritesList } from "./FavoritesList";
 
 export default async function Favoris(){
     const token = (await cookies()).get("token")?.value
@@ -33,18 +34,9 @@ export default async function Favoris(){
                 </p>
             </section>
 
-            <section>
-                <section className="apts-list page-section" aria-label="Liste favoris">
-                    {/* <Apartment isFavorisPage/>
-                    <Apartment isFavorisPage/>
-                    <Apartment isFavorisPage/>
-                    <Apartment isFavorisPage/>
-                    <Apartment isFavorisPage/> */}
-                    
-                </section>
-                
+            <section className="apts-list page-section" aria-label="Liste favoris">
+                <FavoritesList/>
             </section>
-
             
         </main>
     )

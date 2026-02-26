@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./assets/styles/index.css"
 import { Header } from "./components/Header/Header";
+import { FavoritesContext } from "./contexts/FavoritesContext";
 
 
 const inter = Inter({
@@ -18,8 +19,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className}`}>
+      <FavoritesContext>
         <Header/>
         {children}
+      </FavoritesContext>
       </body>
     </html>
   );
