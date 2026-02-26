@@ -87,6 +87,15 @@ ul {
   width: 100%;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
+.out-of-screen {
+  position: absolute;
+  top: -5000px;
+}
+
 .header-nav {
   display: flex;
   justify-content: center;
@@ -337,7 +346,7 @@ ul {
   flex-direction: column;
   gap: 62px;
 }
-.apt-card-details-section h3 {
+.apt-card-details-section h2 {
   font-weight: 500;
   font-size: 18px;
   color: #0D0D0D;

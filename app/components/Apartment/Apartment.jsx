@@ -14,21 +14,25 @@ export function Apartment(
     }){
 
     return (
-        <article className="apt-card">
+        <article 
+        className="apt-card"
+        itemScope
+        itemType="https://schema.org/Accommodation"
+        >
             <Link href={`/logement/${slug}?id=${id}`}>
                 <figure>
                     <Image
                     itemProp="image"
                     src={cover}
                     loading="lazy"
-                    alt={"title"}
+                    alt={`Appartement à louer: ${title}`}
                     width={355}
                     height={376}
                     />
                 </figure>
                 <div className="apt-card-details-section">
                     <div>
-                        <h3 itemProp="name">{title}</h3>
+                        <h2 itemProp="name">{title}</h2>
                         <p className="address" itemProp="address">{location}</p>
                     </div>
 

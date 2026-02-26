@@ -34,7 +34,11 @@ export function AjoutForm(){
                              <div className="file-text-container"></div>
                                 <div className="file-input-btn">
                                     <input type="file" name="coverImage" id="coverImage" accept="image/jpg,image/png,image/webp" />
-                                    <span>+</span>
+                                    <span>
+                                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6.35938 0C6.67866 1.39566e-08 6.9375 0.258835 6.9375 0.578125V5.78125H12.1406C12.4599 5.78125 12.7188 6.04009 12.7188 6.35938C12.7188 6.67866 12.4599 6.9375 12.1406 6.9375H6.9375V12.1406C6.9375 12.4599 6.67866 12.7188 6.35938 12.7188C6.04009 12.7188 5.78125 12.4599 5.78125 12.1406V6.9375H0.578125C0.258835 6.9375 0 6.67866 0 6.35938C0 6.04009 0.258835 5.78125 0.578125 5.78125H5.78125V0.578125C5.78125 0.258835 6.04009 -1.39566e-08 6.35938 0Z" fill="white"/>
+                                        </svg>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -45,7 +49,11 @@ export function AjoutForm(){
                                <div className="file-text-container"></div>
                                 <div className="file-input-btn">
                                     <input type="file" name="aptImage" id="aptImage" accept="image/jpg, image/png, image/webp" />
-                                    <span>+</span>
+                                    <span>
+                                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6.35938 0C6.67866 1.39566e-08 6.9375 0.258835 6.9375 0.578125V5.78125H12.1406C12.4599 5.78125 12.7188 6.04009 12.7188 6.35938C12.7188 6.67866 12.4599 6.9375 12.1406 6.9375H6.9375V12.1406C6.9375 12.4599 6.67866 12.7188 6.35938 12.7188C6.04009 12.7188 5.78125 12.4599 5.78125 12.1406V6.9375H0.578125C0.258835 6.9375 0 6.67866 0 6.35938C0 6.04009 0.258835 5.78125 0.578125 5.78125H5.78125V0.578125C5.78125 0.258835 6.04009 -1.39566e-08 6.35938 0Z" fill="white"/>
+                                        </svg>
+                                    </span>
                                 </div>
                                 
                             </div>
@@ -66,7 +74,11 @@ export function AjoutForm(){
                                 <div className="file-text-container"></div>
                                 <div className="file-input-btn">
                                     <input type="file" name="profileImage" id="profileImage" accept="image/jpg, image/png, image/webp" />
-                                    <span>+</span>
+                                    <span>
+                                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6.35938 0C6.67866 1.39566e-08 6.9375 0.258835 6.9375 0.578125V5.78125H12.1406C12.4599 5.78125 12.7188 6.04009 12.7188 6.35938C12.7188 6.67866 12.4599 6.9375 12.1406 6.9375H6.9375V12.1406C6.9375 12.4599 6.67866 12.7188 6.35938 12.7188C6.04009 12.7188 5.78125 12.4599 5.78125 12.1406V6.9375H0.578125C0.258835 6.9375 0 6.67866 0 6.35938C0 6.04009 0.258835 5.78125 0.578125 5.78125H5.78125V0.578125C5.78125 0.258835 6.04009 -1.39566e-08 6.35938 0Z" fill="white"/>
+                                        </svg>
+                                    </span>
                                 </div>
                             </div>
                             <p>+Ajouter une image</p>

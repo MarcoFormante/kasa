@@ -2,6 +2,7 @@
 import { redirect } from "next/navigation";
 import { register } from "../actions/auth";
 import { Button } from "../components/Button/Button";
+import Link from "next/link";
 
 export function RegisterForm(){
 
@@ -39,7 +40,7 @@ export function RegisterForm(){
                 </div>
                 <div className="auth-page-conditions-checkbox-container">
                     <input type="checkbox" name="acceptConditions" id="acceptConditions" />
-                    <label htmlFor="acceptConditions">J’accepte les <span role="button" className="underline">conditions générales d’utilisation</span></label>
+                    <label htmlFor="acceptConditions">J’accepte les <Link href={"#"} className="underline">conditions générales d’utilisation</Link></label>
                 </div>
                 <div className="btn-container-inscription">
                     <Button styles="w-230 m-auto" type={"btn-main-red"} label={"Se connecter"}/>

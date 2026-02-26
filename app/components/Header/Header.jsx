@@ -35,17 +35,17 @@ export function Header(){
                     <Link onClick={closeMenu} href={"/"} className={`${pathname === "/" ? "active" : ""}`}>Accueil</Link>
                     <Link onClick={closeMenu} href={"/a-propos"} className={`${pathname === "/a-propos" ? "active" : ""}`}>À propos</Link>                
                 </div>
-                <Link onClick={closeMenu} href={"/"} className="header-logo-link no-border">
+                <Link onClick={closeMenu} aria-label="Page d'accueil" href={"/"} className="header-logo-link no-border">
                     <Logo/>
                 </Link>
                 <div className="header-nav-links-container header-nav-links-container-last">
                     <Link onClick={closeMenu} href={"/ajout"} className={`main-red ${pathname === "/ajout" ? "active" : ""}`}>+Ajouter un logement</Link>
                     <div className="header-nav-links-icons-container">
-                        <Link onClick={closeMenu} href={"/favoris"} className={`no-border hover__fill-red ${pathname === "/favoris" ? "active" : ""}`}>
+                        <Link onClick={closeMenu} href={"/favoris"} aria-label="Favoris" className={`no-border hover__fill-red ${pathname === "/favoris" ? "active" : ""}`}>
                             <FavoritesIcon/>
                         </Link>
                         <span className="separator"></span>
-                        <Link onClick={closeMenu} href={"/messagerie"} className={`no-border hover__fill-red ${pathname === "/messagerie" ? "active" : ""}`}>
+                        <Link onClick={closeMenu} href={"/messagerie"} aria-label="Messagerie" className={`no-border hover__fill-red ${pathname === "/messagerie" ? "active" : ""}`}>
                             <MessagingIcon/>
                         </Link>
                     </div>

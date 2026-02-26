@@ -51,7 +51,7 @@ export default async function Logement({searchParams}){
 
                     <div className="logement-info-container">
                         <div>
-                            <h2 className="logement-title">{data?.apt.title}</h2>
+                            <h1 className="logement-title">{data?.apt.title}</h1>
                             <address>{data?.apt.location}</address>
                         </div>
 
@@ -60,7 +60,7 @@ export default async function Logement({searchParams}){
                         </div>
                         
                         <div>
-                            <h3 className="equip-title">Équipements</h3>
+                            <h2 className="equip-title">Équipements</h2>
                             <div className="logement-items-list-container">
                                 <ul className="list-grid">
                                     {data?.apt?.equipments.length > 0 && 
