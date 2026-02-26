@@ -10,10 +10,11 @@ export function RegisterForm(){
         const formData = new FormData(e.target)
 
         const data = await register(formData)
+        console.log(data);
         
         if (data?.status === 201) {
             localStorage.setItem("user",JSON.stringify(data.user))
-            redirect(localStorage.getItem("redirectPath"))
+            redirect(localStorage.getItem("redirectPath") ?? "/")
         }
         
     }

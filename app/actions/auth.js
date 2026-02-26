@@ -11,13 +11,15 @@ export async function register(formData){
     }
     
 try {
-     const response = await fetch("http://localhost:3000/auth/register",{
+     const response = await fetch("http://localhost:8000/auth/register",{
         method:"POST",
         body:JSON.stringify(data),
         headers:{
             "Content-Type":"application/json"
         }
     })
+    console.log(response);
+    
     const registerData = await response.json()
     
     if (response.status === 201) {
@@ -48,4 +50,46 @@ try {
     }
     
 
+}
+
+
+export async function doLogin(formData){
+    const email = formData.get("email")
+    const password = formData.get("password")
+
+  try {
+     const response = await fetch("http://localhost:8000/auth/login",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json",
+            },
+            body:JSON.stringify({email,password})
+        })
+        
+       
+        const data = await response.json()
+            const tokenCookie =  (await cookies()).set("token",data.token,{
+            httpOnly:true,
+            secure:false,
+            sameSite:"lax",
+            maxAge:3600
+        })
+
+        const userCookie =  (await cookies()).set("user",JSON.stringify(data.user),{
+            httpOnly:true,
+            secure:false,
+            sameSite:"lax",
+            maxAge:3600
+        })
+        
+        return {
+            error:data?.error,
+            token:data?.token,
+            user:data.user
+        }
+  } catch (error) {
+     return {
+        error
+     }
+  }
 }

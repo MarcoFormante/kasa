@@ -2,8 +2,9 @@
 import { useEffect } from "react"
 import { Button } from "../components/Button/Button"
 import { useRouter } from "next/navigation"
+import { doLogin } from "../actions/auth"
 
-export function LoginForm({redirectPath}){
+export function LoginForm({redirectPath = "/"}){
     const router = useRouter()
 
     useEffect(()=>{
@@ -16,16 +17,11 @@ export function LoginForm({redirectPath}){
     const login = async (e)=>{
         e.preventDefault()
         const formData = new FormData(e.target)
-        const response = await fetch("http://localhost:8000/auth/login",{
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json",
-            },
-            body:formData
-        })
-        console.log(await response.json());
-        
-        // router.push(redirectPath)
+        const response = await doLogin(formData)
+       
+        if (response.token) {
+            router.push(redirectPath)
+        }
     }
     
 
