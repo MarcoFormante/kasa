@@ -42,7 +42,7 @@ export function Carousel({images,closeCarousel}){
     return () => clearTimeout(timeoutRef.current);
   }, [currentIndex, slides.length]);
 
-  
+
 
   useEffect(()=>{
     window.addEventListener("keydown",(e)=>{
@@ -79,7 +79,6 @@ export function Carousel({images,closeCarousel}){
                         })
                     } 
                 </div>
-               
             </div>
                 <ArrowButton aria={"Slide precedente"} onClick={prevSlide} style={"carousel-arrow-left"}/>
                 <ArrowButton aria={"Slide suivante"} onClick={nextSlide} style={"carousel-arrow-right"}/>
