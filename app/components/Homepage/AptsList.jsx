@@ -1,16 +1,14 @@
 import { getApartments } from "@/app/actions/properties";
 import { Apartment } from "../Apartment/Apartment";
+import { Alert } from "../Alert/Alert";
 
 export async function AptsList(){
 
-const data = await getApartments();
+    const data = await getApartments();
  
-    if (!data.success) {
-        return <p className="text-center">ERROR</p>
-    }
-
     return (
         <>
+       
         {data.apts && data.apts.length > 0 && 
             data.apts.map((apt) => (
             <Apartment 

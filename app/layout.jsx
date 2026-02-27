@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./assets/styles/index.css"
 import { Header } from "./components/Header/Header";
 import { FavoritesContext } from "./contexts/FavoritesContext";
+import { AlertHandlerContext } from "./contexts/AlertContext";
 
 
 const inter = Inter({
@@ -20,8 +21,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.className}`}>
       <FavoritesContext>
-        <Header/>
-        {children}
+        <AlertHandlerContext>
+          <Header/>
+            {children}
+        </AlertHandlerContext>
       </FavoritesContext>
       </body>
     </html>

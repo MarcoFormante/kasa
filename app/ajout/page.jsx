@@ -1,8 +1,22 @@
+import { cookies } from "next/headers";
 import { AjoutForm } from "../components/AjoutForm/AjoutForm";
 import { Button } from "../components/Button/Button";
 import { LinkButton } from "../components/Button/LinkButton";
+import Login from "../login/page";
+import { Alert } from "../components/Alert/Alert";
 
-export default function Ajout(){
+export default async function Ajout(){
+    const token = (await cookies()).get("token")?.value
+    
+    if (!token) {
+        return (
+            <div>
+                <Alert color="red" text={"Connectez vous pour ajouter un logement"}/>
+                <Login redirectPath={"/ajout"}/>            
+            </div>
+        ) 
+    }
+
     return (
         <main className="ajout-page">
             <div>

@@ -2,31 +2,41 @@
 
 import { add, remove } from "@/app/actions/favorites";
 import { FavoritesAptsContext } from "@/app/contexts/FavoritesContext";
-import { useContext, useEffect } from "react";
+import { useContext, useState } from "react";
+import { useAlert } from "@/app/contexts/AlertContext";
 
 
 export function FavoriteBtn({apt}){
     const {favoriteApts,setFavoriteApts} = useContext(FavoritesAptsContext)
-
+    const {setAlert} = useAlert()
+    
     const isInFavorite = favoriteApts.find((apart) => apart.id === apt.id)
     
     
     const addInFavorites = async ()=>{
+        setAlert(null)
         const response = await add(apt.id)
-        if (response.error) {
-            return console.error(response.error);
-        }
         
-        setFavoriteApts(prev => [...prev,{...apt}])
+        if (response.error) {
+            setAlert({color:"red",text:response.error.message,isLoginError:response?.error?.isLoginError})
+            return 
+        }else{
+            setFavoriteApts(prev => [...prev,{...apt}])
+        }
     }
 
-        const removeFromFavorites = async ()=>{
-            const response = await remove(apt.id)
-            if (response.error) {
-                return console.error(response.error);
-            }
+
+    const removeFromFavorites = async ()=>{
+        setAlert(null)
+        const response = await remove(apt.id)
+        if (response.error) {
+            setAlert({color:"red",text:response.error.message,isLoginError:response?.error?.isLoginError})
+            return 
+        }else{
             setFavoriteApts(favoriteApts.filter((apart)=> apart.id !== apt.id))
         }
+    }
+
 
     return (
         <button aria-label={!isInFavorite ? "Ajouter aux favoris" : "Supprimer de la liste des favoris"} onClick={!isInFavorite ? addInFavorites : removeFromFavorites} className={!isInFavorite ? "fav-btn" : "fav-btn fav-btn-main-red"}>

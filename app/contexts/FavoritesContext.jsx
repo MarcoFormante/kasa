@@ -2,7 +2,9 @@
 import { createContext, useEffect, useState } from "react";
 import { getFavorites } from "../actions/favorites";
 
-export const FavoritesAptsContext = createContext(JSON.parse(localStorage.getItem("favorites")) ?? [])
+const localFavorites = localStorage.getItem("favorites")
+
+export const FavoritesAptsContext = createContext(localFavorites ? JSON.parse(localFavorites) : [])
 
 export function FavoritesContext({children}){
     const [favoriteApts,setFavoriteApts] = useState([])
@@ -10,12 +12,16 @@ export function FavoritesContext({children}){
     useEffect(()=>{
         const getFavoriteApts = async ()=>{
             const res = await getFavorites()
-            setFavoriteApts(res.favorites)
-            localStorage.setItem("favorites",JSON.stringify(res.favorites))
+            if (res) {
+                setFavoriteApts(res.favorites)
+            }
         }
-
         getFavoriteApts()
     },[])
+
+    useEffect(()=>{
+        localStorage.setItem("favorites",JSON.stringify(favoriteApts))
+    },[favoriteApts])
 
     return (
         <FavoritesAptsContext.Provider value={{favoriteApts,setFavoriteApts}}>

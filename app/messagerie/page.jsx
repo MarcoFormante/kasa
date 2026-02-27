@@ -1,11 +1,24 @@
 import Image from "next/image";
 import { LinkButton } from "../components/Button/LinkButton";
 import fakeImage from "../assets/images/about-mission.webp"
+import { Alert } from "../components/Alert/Alert";
+import Login from "../login/page";
+import { cookies } from "next/headers";
 
 
 
-export default function Messagerie(){
+export default async function Messagerie(){
+    const token = (await cookies()).get("token")?.value
+    const user = (await cookies())?.get("user")?.value
 
+    if (!token || !user) {
+        return (
+            <div>
+                <Alert color="red" text={"Connectez vous pour acceder à la messagerie"}/>
+                <Login redirectPath={"/messagerie"}/>            
+            </div>
+        ) 
+    }
    
     return (
         <main className="messagerie-page">

@@ -3,10 +3,13 @@ import { redirect } from "next/navigation";
 import { register } from "../actions/auth";
 import { Button } from "../components/Button/Button";
 import Link from "next/link";
+import { useAlert } from "../contexts/AlertContext";
 
 export function RegisterForm(){
+    const {setAlert} = useAlert()
 
     const onSubmit = async (e)=>{
+        setAlert(null)
         e.preventDefault()
         const formData = new FormData(e.target)
 
@@ -15,7 +18,18 @@ export function RegisterForm(){
         
         if (data?.status === 201) {
             localStorage.setItem("user",JSON.stringify(data.user))
+            setAlert({color:"green",text:"Utilisater enregistré et connecté"})
             redirect(localStorage.getItem("redirectPath") ?? "/")
+        }else{
+            let message = data?.error ?? ""
+            
+            if (message.startsWith("password")) {
+                message = "Le mot de passe doit avoir au moins 6 caracters"
+            }else if(data.status === 409){
+                 message = "L'email existe deja"
+            }
+
+            setAlert({color:"red",text:message})
         }
         
     }

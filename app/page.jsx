@@ -6,6 +6,7 @@ import { AptsList } from "./components/Homepage/AptsList";
 import { StepsCard } from "./components/Homepage/StepsCard";
 import { Paragraph } from "./components/Paragraph/Paragraph";
 import { Loading } from "./components/Loading/Loading";
+import { Alert } from "./components/Alert/Alert";
 
 export default async function Home() {
 
