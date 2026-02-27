@@ -11,7 +11,7 @@ export default function NotFound(){
             </div>
             <div className="notFound-links-container">
                 <LinkButton styles={"w-200"} label={"accueil"} href={"/"}/>
-                <LinkButton styles={"w-200"} label={"Logements"} href={"/logements"}/>
+                <LinkButton styles={"w-200"} label={"Logements"} href={"/"}/>
             </div>
         </main>
     )
