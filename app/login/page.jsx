@@ -2,9 +2,12 @@ import Link from "next/link";
 import { Heading } from "../components/Heading/Heading";
 import { LoginForm } from "./LoginForm";
 
+export const metadata = {
+  title: "Login",
+};
+
 export default function Login({redirectPath}){
     
-
     return (
         <main className="auth-page">
             <div className="auth-page-container">

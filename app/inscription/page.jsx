@@ -3,6 +3,13 @@ import { Heading } from "../components/Heading/Heading";
 import { Paragraph } from "../components/Paragraph/Paragraph";
 import { RegisterForm } from "./RegisterForm";
 
+
+export const metadata = {
+  title: "Inscription",
+};
+
+
+
 export default function Inscription(){
 
 

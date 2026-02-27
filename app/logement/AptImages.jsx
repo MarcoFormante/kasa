@@ -4,6 +4,8 @@ import Image from "next/image"
 import { Carousel } from "../components/Carousel/Carousel"
 import { useState } from "react"
 
+
+
 export function AptImages({data}){
     const [showCarousel,setShowCarousel] = useState(false)
     

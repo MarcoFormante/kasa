@@ -5,6 +5,11 @@ import { LinkButton } from "../components/Button/LinkButton";
 import Login from "../login/page";
 import { Alert } from "../components/Alert/Alert";
 
+export const metadata = {
+  title: "Ajout d'un logement",
+};
+
+
 export default async function Ajout(){
     const token = (await cookies()).get("token")?.value
     

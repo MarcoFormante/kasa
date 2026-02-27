@@ -1,14 +1,17 @@
 import { Suspense } from "react";
-import { getApartments } from "./actions/properties";
 import { Heading } from "./components/Heading/Heading";
 import { Hero } from "./components/Hero/Hero";
 import { AptsList } from "./components/Homepage/AptsList";
 import { StepsCard } from "./components/Homepage/StepsCard";
 import { Paragraph } from "./components/Paragraph/Paragraph";
 import { Loading } from "./components/Loading/Loading";
-import { Alert } from "./components/Alert/Alert";
+
+export const metadata = {
+  title: "Accueil",
+};
 
 export default async function Home() {
+  
 
   return (
       <main>

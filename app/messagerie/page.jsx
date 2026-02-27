@@ -5,7 +5,9 @@ import { Alert } from "../components/Alert/Alert";
 import Login from "../login/page";
 import { cookies } from "next/headers";
 
-
+export const metadata = {
+  title: "Messagerie",
+};
 
 export default async function Messagerie(){
     const token = (await cookies()).get("token")?.value

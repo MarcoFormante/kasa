@@ -4,6 +4,11 @@ import Login from "../login/page";
 import { FavoritesList } from "./FavoritesList";
 import { Alert } from "../components/Alert/Alert";
 
+export const metadata = {
+  title: "Favoris",
+};
+
+
 export default async function Favoris(){
     const token = (await cookies()).get("token")?.value
     const user = (await cookies())?.get("user")?.value

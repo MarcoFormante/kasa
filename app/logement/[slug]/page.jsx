@@ -3,12 +3,21 @@ import Image from "next/image";
 import { Button } from "@/app/components/Button/Button";
 import { getSingleApartment } from "@/app/actions/properties";
 import { notFound } from "next/navigation";
-import { Carousel } from "@/app/components/Carousel/Carousel";
 import { AptImages } from "../AptImages";
 
+
+export async function generateMetadata({ params }) {
+  const param = await params;
+  
+  return {
+    title: `Logement: ${param.slug}`, 
+  };
+}
+
 export default async function Logement({searchParams}){
+    
     const {id} = await searchParams
-   
+    
     const data = await getSingleApartment(id)
     
     if (data.apt.error === "Property not found") {

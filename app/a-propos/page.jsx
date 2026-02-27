@@ -4,6 +4,12 @@ import { Hero } from "../components/Hero/Hero";
 import { Paragraph } from "../components/Paragraph/Paragraph";
 import aboutMissionImage from "@/app/assets/images/about-mission.webp"
 
+
+export const metadata = {
+  title: "À propos",
+};
+
+
 export default function About(){
     return(
             <main>
