@@ -3,6 +3,8 @@ import Image from "next/image";
 import { Button } from "@/app/components/Button/Button";
 import { getSingleApartment } from "@/app/actions/properties";
 import { notFound } from "next/navigation";
+import { Carousel } from "@/app/components/Carousel/Carousel";
+import { AptImages } from "../AptImages";
 
 export default async function Logement({searchParams}){
     const {id} = await searchParams
@@ -28,33 +30,7 @@ export default async function Logement({searchParams}){
 
             <div className="flex-row-container">
                 <div>
-                    <div className="carousel">
-                        {data?.apt?.pictures && data?.apt.pictures[0] && 
-                        <Image 
-                         className="big-pic"
-                         src={data?.apt.pictures[0]}
-                         alt={data?.apt.title}
-                         width={358}
-                         height={421}
-                         />}
-
-                       {  data?.apt.pictures.length > 1 && 
-                       <div className="little-pics-container">
-                           { data?.apt.pictures.map((photo,i)=> (
-                            i >= 1 && i < 5 &&
-                            <Image 
-                            key={photo}
-                            src={photo}
-                            alt={data?.apt.title}
-                            width={146}
-                            height={176}
-                            loading="eager"
-                            />
-                           )) 
-                           }
-                        </div>}
-                    </div>
-
+                    <AptImages data={data}/>
                     <div className="logement-info-container">
                         <div>
                             <h1 className="logement-title">{data?.apt.title}</h1>
