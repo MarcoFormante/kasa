@@ -21,6 +21,8 @@ export function FavoriteBtn({apt}){
             return 
         }else{
             setFavoriteApts(prev => [...prev,{...apt}])
+            setAlert({color:"green",text:"Logement ajouté aux favoris"})
+
         }
     }
 
@@ -33,6 +35,8 @@ export function FavoriteBtn({apt}){
             return 
         }else{
             setFavoriteApts(favoriteApts.filter((apart)=> apart.id !== apt.id))
+            setAlert({color:"green",text:"Logement supprimé depuis la liste des favoris"})
+
         }
     }
 
