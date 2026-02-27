@@ -23,9 +23,36 @@ export default async function Logement({searchParams}){
     if (data.apt.error === "Property not found") {
         notFound()
     }
+
+    const jsonSchema = {
+        "@context": "https://schema.org",
+        "@type": "Accommodation",
+        "name": data.apt.title,
+        "description": data.apt.description,
+        "image": data.apt.pictures,
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": data.apt.location
+        },
+        "amenityFeature": data.apt.equipments.map(eq => ({
+            "@type": "LocationFeatureSpecification",
+            "name": eq,
+            "value": true
+        })),
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": data.apt.rating_avg || 0,
+            "reviewCount": data.apt.reviews_count || 1 
+        }
+    };
+
     
     return  (
         <main className="logement-page">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonSchema) }}
+            />
             <div>
                 <div className="retour-btn-container retour-btn-container-w-189">
                     <LinkButton
