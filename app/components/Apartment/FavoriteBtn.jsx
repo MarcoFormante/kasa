@@ -10,13 +10,12 @@ export function FavoriteBtn({apt}){
     const {favoriteApts,setFavoriteApts} = useContext(FavoritesAptsContext)
     const {setAlert} = useAlert()
     
-    const isInFavorite = favoriteApts.find((apart) => apart.id === apt.id)
+    const isInFavorite = favoriteApts.length && favoriteApts.find((apart) => apart.id === apt.id)
     
     
     const addInFavorites = async ()=>{
         setAlert(null)
         const response = await add(apt.id)
-        
         if (response.error) {
             setAlert({color:"red",text:response.error.message,isLoginError:response?.error?.isLoginError})
             return 

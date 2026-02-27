@@ -17,7 +17,7 @@ export function FavoritesList(){
                     id={apt.id}
                     cover={apt.cover}
                     title={apt.title}
-                    price={apt.price_per_night}
+                    price={apt.price}
                     slug={apt.slug}
                     location={apt.location}
                 />
