@@ -12,11 +12,10 @@ export function RegisterForm(){
         setAlert(null)
         e.preventDefault()
         const formData = new FormData(e.target)
-
         const data = await register(formData)
-        console.log(data);
         
         if (data?.status === 201) {
+            localStorage.clear()
             localStorage.setItem("user",JSON.stringify(data.user))
             setAlert({color:"green",text:"Utilisater enregistré et connecté"})
             redirect(localStorage.getItem("redirectPath") ?? "/")
@@ -28,10 +27,8 @@ export function RegisterForm(){
             }else if(data.status === 409){
                  message = "L'email existe deja"
             }
-
             setAlert({color:"red",text:message})
         }
-        
     }
 
     return (

@@ -40,19 +40,14 @@ export default async function Favoris(){
     return (
         <main className="favoris-page">
             <section className="favoris-page-heading-section">
-                <Heading 
-                    text={"Vos favoris"} 
-                />
-    
+                <Heading text={"Vos favoris"} />
                 <p className="mt-8 text-center">Retrouvez ici tous les logements que vous avez aimés. 
                     <span> Prêts à réserver ? Un simple clic et votre prochain séjour est en route.</span>
                 </p>
             </section>
-
             <section className="apts-list page-section" aria-label="Liste favoris">
                 <FavoritesList/>
             </section>
-            
         </main>
     )
 }
