@@ -33,13 +33,16 @@ export function Apartment(
                 <div className="apt-card-details-section">
                     <div>
                         <h2 itemProp="name">{title}</h2>
-                        <p className="address" itemProp="address">{location}</p>
+                        <p className="address" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+                            <span itemProp="addressLocality">{location}</span>
+                        </p>
                     </div>
 
                     <div itemProp="offers" className="price-container" itemScope itemType="https://schema.org/Offer">
-                        <span className="price" itemProp="price" content="100">{price}€</span>
+                        <span className="price" itemProp="price" content={price}>{price}€</span>
                         <meta itemProp="priceCurrency" content="EUR" />
                         <span className="dark-grey">par nuit</span>
+                        <link itemProp="availability" href="https://schema.org/InStock" />
                     </div>
                 </div>
             </Link>

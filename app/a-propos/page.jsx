@@ -11,8 +11,23 @@ export const metadata = {
 
 
 export default function About(){
+
+    const jsonSchema = {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "Kasa",
+        "description": "Plateforme de location d'hébergements en France.",
+      }
+    };
+
     return(
             <main>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonSchema) }}
+                />
                 <section className="page-section">
                     <Heading 
                         text={"À propos"} 

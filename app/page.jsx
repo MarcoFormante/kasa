@@ -12,9 +12,19 @@ export const metadata = {
 
 export default async function Home() {
   
+  const jsonSchema = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Liste d'hébergements Kasa",
+      "description": "Découvrez nos appartements partout en France",
+  };
 
   return (
       <main>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonSchema) }}
+        />
         <section className="page-section">
            <Heading 
               text={"Chez vous, partout et ailleurs"} 
