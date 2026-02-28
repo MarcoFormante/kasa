@@ -21,6 +21,7 @@ let mockFavorites = [{
     id:'1'
 }]; 
 
+
 vi.mock('react', async () => {
   const actual = await vi.importActual('react')
   return {
@@ -33,7 +34,6 @@ vi.mock('react', async () => {
 })
 
 
-
 const mockApt = {
   id: "1",
   title: "Appartement Test",
@@ -43,16 +43,14 @@ const mockApt = {
   location: "Paris"
 }
 
-describe('Apartment Component', () => {
-    beforeEach(() => {
-    vi.clearAllMocks();
-    mockFavorites = [{ id: '1' }];
-  });
+describe('Apartment Component + add/remove favorites', () => {
+
   it('should render the title correctly', () => {
     render(<Apartment {...mockApt} />)
     const title = screen.getByText("Appartement Test")
     expect(title).toBeInTheDocument()
   })
+  
 
   it('should have the correct schema.org attributes', () => {
     const { container } = render(<Apartment {...mockApt} />)

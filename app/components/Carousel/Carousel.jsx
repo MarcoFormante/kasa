@@ -6,8 +6,8 @@ import { ArrowButton } from "./ArrowButton";
 
 export function Carousel({images,closeCarousel}){
 
-    const slides = [images[images.length - 1], ...images, images[0]];
-    const [currentIndex, setCurrentIndex] = useState(1);
+    const slides = images.length > 1 ? [images[images.length - 1], ...images, images[0]] : images;
+    const [currentIndex, setCurrentIndex] = useState(images.length > 1 ? 1 : 0);
     const [isTransitioning, setIsTransitioning] = useState(true);
     const timeoutRef = useRef(null);
 
@@ -58,13 +58,15 @@ export function Carousel({images,closeCarousel}){
     })
   },[closeCarousel])
 
+  
+
     return (
         <div className="carousel-container" >
             <button aria-label="Fermer le carousel" className="carousel-exit pointer" onClick={closeCarousel}>X</button>
             <div className="carousel-center-container">
                 <div 
                     className={`carousel-images ${isTransitioning ? "carousel-images-transitioning" : ""}`}
-                    style={{transform: `translateX(-${currentIndex * 100}%)`,}}
+                    style={{transform: `translateX(-${currentIndex * 100}%)` }}
                 >
                    { slides?.map((img,index)=>{
                         return (
@@ -80,8 +82,12 @@ export function Carousel({images,closeCarousel}){
                     } 
                 </div>
             </div>
+            { slides.length > 1 && 
+            <>
                 <ArrowButton aria={"Slide precedente"} onClick={prevSlide} style={"carousel-arrow-left"}/>
                 <ArrowButton aria={"Slide suivante"} onClick={nextSlide} style={"carousel-arrow-right"}/>
+            </>
+            }
         </div>
     )
 }
