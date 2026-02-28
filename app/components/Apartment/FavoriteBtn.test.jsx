@@ -12,7 +12,7 @@ const mockSetAlert = vi.fn();
 
 vi.mock('@/app/contexts/AlertContext', () => ({
   useAlert: () => ({
-    setAlert: mockSetAlert, // Usa la variabile creata sopra
+    setAlert: mockSetAlert
   }),
 }));
 
@@ -46,7 +46,7 @@ const mockApt = {
 describe('Apartment Component', () => {
     beforeEach(() => {
     vi.clearAllMocks();
-    mockFavorites = [{ id: '1' }]; // ID 1 è nei favoriti di default
+    mockFavorites = [{ id: '1' }];
   });
   it('should render the title correctly', () => {
     render(<Apartment {...mockApt} />)
