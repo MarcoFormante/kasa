@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event'
 import { Apartment } from './Apartment'
 
 vi.mock('@/app/actions/favorites', () => ({
-  add: vi.fn().mockResolvedValue({ success: true, error: null }),
+  add: vi.fn(),
   remove: vi.fn(),
 }))
 
