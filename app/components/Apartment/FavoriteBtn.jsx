@@ -2,7 +2,7 @@
 
 import { add, remove } from "@/app/actions/favorites";
 import { FavoritesAptsContext } from "@/app/contexts/FavoritesContext";
-import { useContext, useState } from "react";
+import { useContext} from "react";
 import { useAlert } from "@/app/contexts/AlertContext";
 
 
@@ -36,7 +36,6 @@ export function FavoriteBtn({apt}){
         }else{
             setFavoriteApts(favoriteApts.filter((apart)=> apart.id !== apt.id))
             setAlert({color:"green",text:"Logement supprimé depuis la liste des favoris"})
-
         }
     }
 
