@@ -1499,6 +1499,9 @@ ul {
     width: 100%;
     display: block;
     height: 80vh;
+    position: relative;
+    transform: none;
+    left: 0;
   }
   .messagerie-page .message-list, .messagerie-page .messages-section {
     width: 100%;

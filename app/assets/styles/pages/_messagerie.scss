@@ -226,6 +226,9 @@
         width: 100%;
         display: block;
         height: 80vh;
+        position: relative;
+        transform: none;
+        left: 0;
 
         .message-list,.messages-section{
             width: 100%;
