@@ -9,8 +9,23 @@ export const metadata = {
   title: "À propos",
 };
 
-
-export default function About(){
+/**
+ * About Page Component.
+ * @component About
+ * @memberof module:Pages
+ * @description
+ * <section style="padding: 10px; border-left: 3px solid #FF6060;">
+ * <h3>About Page (Server Component)</h3>
+ * <p>Renders the company information and mission statement. This page focuses on brand values and reliability through interactive content.</p>
+ * <p><strong>Key Sections:</strong></p>
+ * <ul>
+ * <li><b>Hero Banner:</b> Displays an atmospheric landscape image consistent with the brand identity.</li>
+ * </ul>
+ * <p><strong>Technical Note:</strong> Data for the values section is typically static but organized to ensure high readability and SEO performance.</p>
+ * </section>
+ * @returns {JSX.Element} The rendered About page.
+ */
+function About(){
 
     const jsonSchema = {
       "@context": "https://schema.org",
@@ -73,3 +88,5 @@ export default function About(){
         
     )
 }
+
+export default About

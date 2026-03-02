@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: actions/favorites.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: actions/favorites.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @module FavoritesAction
+ * @description 
+ * &lt;section style="padding: 10px; border-left: 3px solid #4fb336;">
+ * &lt;h3>Favorites Server Actions&lt;/h3>
+ * &lt;p>A collection of secure server-side functions for managing property favorites. These actions interact directly with the backend API using the user's authentication token.&lt;/p>
+ * &lt;/section>
+ */
+"use server"
+import { cookies } from "next/headers";
+const API_URL = process.env.API_URL 
+
+/**
+ * Adds a property to the user's favorite list.
+ * @async
+ * @function add
+ * @memberof module:FavoritesAction
+ * @description
+ * &lt;section style="padding: 10px; border-left: 3px solid #4fb336;">
+ * &lt;h3>Add to Favorites&lt;/h3>
+ * &lt;p>Authenticates the user via cookies and sends a POST request to link a property to their account.&lt;/p>
+ * &lt;ul>
+ * &lt;li>&lt;b>Security:&lt;/b> Validates the presence of a JWT token before attempting the API call.&lt;/li>
+ * &lt;li>&lt;b>Error Handling:&lt;/b> Returns a specific login error if the user is unauthenticated.&lt;/li>
+ * &lt;/ul>
+ * &lt;/section>
+ * @param {string} aptId - The unique identifier of the apartment.
+ * @returns {Promise&lt;{success: boolean, error: Object}>} Success status or error details.
+ */
+export async function add(aptId){
+    try {
+        const token = (await cookies()).get("token")?.value
+        if (!token) {
+            return {
+                success:false,
+                error:{
+                    isLoginError:true,
+                    message:"Vous devez vous connecter pour pouvoir ajouter dans les favorit"
+                }
+            }
+        }
+        const response = await fetch(`${API_URL}/api/properties/${aptId}/favorite`,{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json",
+                "authorization": "Bearer " + token
+            },
+        })
+        const data = await response.json()
+        
+
+        if (data.ok) {
+            return {success:true}
+        }else{
+            throw new Error("Une Erreur est survenue,ré-essayez")
+        }
+
+    } catch (error) {
+        
+        return {
+            success:false,
+            error
+        }
+    }   
+}
+
+
+/**
+ * Removes a property from the user's favorite list.
+ * @async
+ * @function remove
+ * @memberof module:FavoritesAction
+ * @description
+ * &lt;section style="padding: 10px; border-left: 3px solid #4fb336;">
+ * &lt;h3>Remove from Favorites&lt;/h3>
+ * &lt;p>Sends a DELETE request to the API to unlink a specific property from the authenticated user's profile.&lt;/p>
+ * &lt;ul>
+ * &lt;li>&lt;b>Authorization:&lt;/b> Requires a valid Bearer token stored in the session cookies.&lt;/li>
+ * &lt;li>&lt;b>Persistence:&lt;/b> Updates the server-side state to ensure consistency across devices.&lt;/li>
+ * &lt;/ul>
+ * &lt;/section>
+ * @param {string} aptId - The unique identifier of the apartment.
+ * @returns {Promise&lt;{success: boolean, error: Object}>} Success status or error details.
+ */
+export async function remove(aptId){
+    try {
+        const token = (await cookies()).get("token")?.value
+        if (!token) {
+            return {
+                success:false,
+                error:{
+                    isLoginError:true,
+                    message:"Vous devez vous connecter pour pouvoir ajouter dans les favorit"
+                }
+            }
+        }
+
+        const response = await fetch(`${API_URL}/api/properties/${aptId}/favorite`,{
+            method:"DELETE",
+            headers:{
+                "Content-Type":"application/json",
+                "authorization": "Bearer " + token
+            },
+        })
+
+        const data = await response.json()
+
+        if (data.ok) {
+
+            return {success:true}
+
+        }else{
+            throw new Error("Une Erreur est survenue,ré-essayez")
+        }
+
+    } catch (error) {
+        return {
+            success:false,
+            error
+        }
+    }   
+}
+
+
+/**
+ * Fetches the complete list of favorite properties for the current user.
+ * @async
+ * @function getFavorites
+ * @memberof module:FavoritesAction
+ * @description
+ * &lt;section style="padding: 10px; border-left: 3px solid #4fb336;">
+ * &lt;h3>Fetch Favorites&lt;/h3>
+ * &lt;p>Retrieves all property IDs marked as favorites by the user. It parses user data from cookies to target the correct API endpoint.&lt;/p>
+ * &lt;ul>
+ * &lt;li>&lt;b>Identity:&lt;/b> Extracts the userId from the user cookie object.&lt;/li>
+ * &lt;li>&lt;b>Server-to-Server:&lt;/b> Communicates directly with the API_URL backend.&lt;/li>
+ * &lt;li>&lt;b>Silent Exit:&lt;/b> Returns undefined if session credentials are missing.&lt;/li>
+ * &lt;/ul>
+ * &lt;/section>
+ * @returns {Promise&lt;{favorites: Array}|void>} An object containing the favorites list or void if unauthenticated.
+ */
+export async function getFavorites(){
+    const token = (await cookies()).get("token")?.value
+    const user = (await cookies()).get("user")?.value
+
+    if (!token || !user) {
+        return
+    }
+    const userId = JSON.parse(user).id
+   
+    const response = await fetch(`${API_URL}/api/users/${userId}/favorites`,{
+        headers:{
+            "authorization":"Bearer " + token
+        }
+    })
+    const data = await response.json()
+    return {
+        favorites:data
+    }
+    
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-AuthActions.html">AuthActions</a></li><li><a href="module-Components.html">Components</a></li><li><a href="module-Contexts.html">Contexts</a></li><li><a href="module-FavoritesAction.html">FavoritesAction</a></li><li><a href="module-Pages.html">Pages</a></li><li><a href="module-PropertyActions.html">PropertyActions</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Loading">Loading</a></li><li><a href="global.html#RootLayout">RootLayout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Mon Mar 02 2026 00:44:26 GMT+0000 (Ora del meridiano di Greenwich)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

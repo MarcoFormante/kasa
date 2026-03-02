@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Carousel/Carousel.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Carousel/Carousel.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+'use client'
+import Image from "next/image"
+import { useEffect, useRef, useState } from "react"
+import { ArrowButton } from "./ArrowButton";
+
+
+/** An infinite-loop Image Carousel component.
+ * @function
+ * @name Carousel
+ * @memberof module:Components
+ * @description
+ * An infinite-loop Image Carousel component.
+ * * Key features:
+ * - **Infinite Loop**: Clones the first and last slides to allow continuous scrolling without a visual "jump".
+ * - **Keyboard Support**: Automatically listens for the "Escape" key to trigger the close callback.
+ * - **Responsive Transition**: Uses CSS transforms and a state-controlled transition class for smooth movement.
+ * - **Conditional UI**: Only renders navigation arrows if there is more than one image.
+ * * 
+ * @param {Object} props - Component props.
+ * @param {string[]} props.images - An array of image URLs to display.
+ * @param {function} props.closeCarousel - Callback function to close the carousel overlay.
+ * @returns {JSX.Element} The rendered carousel component.
+ */
+export function Carousel({images,closeCarousel}){
+
+    const slides = images.length > 1 ? [images[images.length - 1], ...images, images[0]] : images;
+    const [currentIndex, setCurrentIndex] = useState(images.length > 1 ? 1 : 0);
+    const [isTransitioning, setIsTransitioning] = useState(true);
+    const timeoutRef = useRef(null);
+
+
+    const nextSlide = () => {
+        if (currentIndex >= slides.length - 1) return;
+        setIsTransitioning(true);
+        setCurrentIndex((prev) => prev + 1);
+    };
+
+    const prevSlide = () => {
+        if (currentIndex &lt;= 0) return;
+        setIsTransitioning(true);
+        setCurrentIndex((prev) => prev - 1);
+    };
+
+
+    useEffect(() => {
+        if (currentIndex === slides.length - 1) {
+            timeoutRef.current = setTimeout(() => {
+                setIsTransitioning(false);
+                setCurrentIndex(1);
+            }, 500); 
+        }
+
+        if (currentIndex === 0) {
+            timeoutRef.current = setTimeout(() => {
+                setIsTransitioning(false);
+                setCurrentIndex(slides.length - 2);
+            }, 500);
+        }
+    return () => clearTimeout(timeoutRef.current);
+  }, [currentIndex, slides.length]);
+
+
+
+  useEffect(()=>{
+    window.addEventListener("keydown",(e)=>{
+        if (e.key === "Escape" ) {
+            closeCarousel()
+        }
+    })
+
+    return ()=> window.removeEventListener("keydown",(e)=>{
+        if (e.key === "Escape" ) {
+            closeCarousel()
+        }
+    })
+  },[closeCarousel])
+
+  
+
+    return (
+        &lt;div className="carousel-container" >
+            &lt;button aria-label="Fermer le carousel" className="carousel-exit pointer" onClick={closeCarousel}>X&lt;/button>
+            &lt;div className="carousel-center-container">
+                &lt;div 
+                    className={`carousel-images ${isTransitioning ? "carousel-images-transitioning" : ""}`}
+                    style={{transform: `translateX(-${currentIndex * 100}%)` }}
+                >
+                   { slides?.map((img,index)=>{
+                        return (
+                            &lt;Image
+                                key={"carousel-" + img + index}
+                                src={img}
+                                alt={"Slide-" + index}
+                                width={1400}
+                                height={800}
+                            />
+                        )
+                        })
+                    } 
+                &lt;/div>
+            &lt;/div>
+            { slides.length > 1 &amp;&amp; 
+            &lt;>
+                &lt;ArrowButton aria={"Slide precedente"} onClick={prevSlide} style={"carousel-arrow-left"}/>
+                &lt;ArrowButton aria={"Slide suivante"} onClick={nextSlide} style={"carousel-arrow-right"}/>
+            &lt;/>
+            }
+        &lt;/div>
+    )
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-AuthActions.html">AuthActions</a></li><li><a href="module-Components.html">Components</a></li><li><a href="module-Contexts.html">Contexts</a></li><li><a href="module-FavoritesAction.html">FavoritesAction</a></li><li><a href="module-Pages.html">Pages</a></li><li><a href="module-PropertyActions.html">PropertyActions</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Loading">Loading</a></li><li><a href="global.html#RootLayout">RootLayout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Mon Mar 02 2026 00:44:26 GMT+0000 (Ora del meridiano di Greenwich)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

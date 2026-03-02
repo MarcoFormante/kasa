@@ -6,7 +6,28 @@ export const metadata = {
   title: "Login",
 };
 
-export default function Login({redirectPath}){
+
+/**
+ * Login Page Component.
+ * @component Login
+ * @memberof module:Pages
+ * @description
+ * <section style="padding: 10px; border-left: 3px solid #FF6060;">
+ * <h3>User Authentication Page</h3>
+ * <p>The gateway for existing users to access protected features. It provides a secure interface for entering credentials and manages post-login navigation flow.</p>
+ * <p><strong>Key Features:</strong></p>
+ * <ul>
+ * <li><b>Credential Entry:</b> Integrates the {@link LoginForm} to handle user input and server-side authentication requests.</li>
+ * <li><b>Dynamic Redirection:</b> Utilizes the redirectPath prop to ensure users are sent back to their intended destination (like Favorites or Add Property) after logging in.</li>
+ * <li><b>Navigation Persistence:</b> Maintains the redirect context when providing links to the registration page, ensuring a seamless user journey.</li>
+ * </ul>
+ * <p><strong>Technical Note:</strong> This component works in tandem with the AlertHandlerContext to display feedback regarding login errors or session expiration.</p>
+ * </section>
+ * @param {Object} props - Component props.
+ * @param {string} [props.redirectPath] - The URL path to redirect the user to after a successful login.
+ * @returns {JSX.Element} The rendered login page.
+ */
+function Login({redirectPath}){
     
     return (
         <main className="auth-page">
@@ -29,3 +50,5 @@ export default function Login({redirectPath}){
         </main>
     )
 }
+
+export default Login

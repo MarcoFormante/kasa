@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Module: AuthActions</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Module: AuthActions</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        
+            
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><section style="padding: 10px; border-left: 3px solid #4fb336;"><h3>Authentication Server Actions</h3><p>Provides server-side logic for user registration and login. These actions manage the secure exchange of credentials and the lifecycle of authentication cookies.</p></section></div>
+        
+
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="actions_auth.js.html">actions/auth.js</a>, <a href="actions_auth.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".doLogin"><span class="type-signature">(async, static) </span>doLogin<span class="signature">(formData)</span><span class="type-signature"> &rarr; {Promise.&lt;{error, token, user}>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <section style="padding: 10px; border-left: 3px solid #4fb336;"><h3>User Login</h3><p>Verifies user credentials against the backend API and persists the session via cookies.</p><ul><li><b>Secure Storage:</b> Stores the authentication token in an httpOnly cookie to prevent XSS access.</li><li><b>Session Persistence:</b> Configures cookie attributes like sameSite and maxAge for a balanced user experience and security.</li><li><b>Feedback Loop:</b> Returns the token and user object or captures API errors for client-side display.</li></ul></section>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>formData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">FormData</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The form data containing email and password.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="actions_auth.js.html">actions/auth.js</a>, <a href="actions_auth.js.html#line83">line 83</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Results containing the session token or error details.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;{error, token, user}></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".register"><span class="type-signature">(async, static) </span>register<span class="signature">(formData)</span><span class="type-signature"> &rarr; {Promise.&lt;{error, status, user}>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <section style="padding: 10px; border-left: 3px solid #4fb336;"><h3>User Registration</h3><p>Processes the registration form data to create a new user account and automatically establishes a session upon success.</p><ul><li><b>Data Formatting:</b> Combines name and surname into a single user profile field.</li><li><b>Cookie Management:</b> Sets secure, httpOnly cookies for both the JWT token and user profile data.</li><li><b>Status Handling:</b> Monitors for a 201 status code to confirm account creation before granting access.</li></ul></section>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>formData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">FormData</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The form data containing name, surname, email, and password.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="actions_auth.js.html">actions/auth.js</a>, <a href="actions_auth.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Results containing potential errors and user information.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;{error, status, user}></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-AuthActions.html">AuthActions</a></li><li><a href="module-Components.html">Components</a></li><li><a href="module-Contexts.html">Contexts</a></li><li><a href="module-FavoritesAction.html">FavoritesAction</a></li><li><a href="module-Pages.html">Pages</a></li><li><a href="module-PropertyActions.html">PropertyActions</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Loading">Loading</a></li><li><a href="global.html#RootLayout">RootLayout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Mon Mar 02 2026 00:44:26 GMT+0000 (Ora del meridiano di Greenwich)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

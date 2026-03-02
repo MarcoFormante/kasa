@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: actions/auth.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: actions/auth.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @module AuthActions
+ * @description
+ * &lt;section style="padding: 10px; border-left: 3px solid #4fb336;">
+ * &lt;h3>Authentication Server Actions&lt;/h3>
+ * &lt;p>Provides server-side logic for user registration and login. These actions manage the secure exchange of credentials and the lifecycle of authentication cookies.&lt;/p>
+ * &lt;/section>
+ */
+
+'use server'
+import { cookies } from "next/headers"
+const API_URL = process.env.API_URL 
+
+
+/**
+ * Registers a new user and sets session cookies.
+ * @async
+ * @function register
+ * @memberof module:AuthActions
+ * @description
+ * &lt;section style="padding: 10px; border-left: 3px solid #4fb336;">
+ * &lt;h3>User Registration&lt;/h3>
+ * &lt;p>Processes the registration form data to create a new user account and automatically establishes a session upon success.&lt;/p>
+ * &lt;ul>
+ * &lt;li>&lt;b>Data Formatting:&lt;/b> Combines name and surname into a single user profile field.&lt;/li>
+ * &lt;li>&lt;b>Cookie Management:&lt;/b> Sets secure, httpOnly cookies for both the JWT token and user profile data.&lt;/li>
+ * &lt;li>&lt;b>Status Handling:&lt;/b> Monitors for a 201 status code to confirm account creation before granting access.&lt;/li>
+ * &lt;/ul>
+ * &lt;/section>
+ * @param {FormData} formData - The form data containing name, surname, email, and password.
+ * @returns {Promise&lt;{error, status, user}>} Results containing potential errors and user information.
+ */
+
+export async function register(formData){
+    
+    const data = {
+        name:formData.get("name") + " " + formData.get("surname"),
+        email:formData.get("email"),
+        password:formData.get("password")
+    }
+    
+try {
+     const response = await fetch(`${API_URL}/auth/register`,{
+        method:"POST",
+        body:JSON.stringify(data),
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+    
+    const registerData = await response.json()
+    
+    if (response.status === 201) {
+        
+        const tokenCookie =  (await cookies()).set("token",registerData.token,{
+            httpOnly:true,
+            secure:false,
+            sameSite:"lax",
+            maxAge:3600
+        })
+
+        const userCookie =  (await cookies()).set("user",JSON.stringify(registerData.user),{
+            httpOnly:true,
+            secure:false,
+            sameSite:"lax",
+            maxAge:3600
+        })
+    }
+    
+    return {
+        error:registerData?.error,
+        status:response.status,
+        user:registerData?.user
+    }
+
+    } catch (error) {
+        return {error}
+    }
+}
+
+
+
+/**
+ * Authenticates a user and establishes session cookies.
+ * @async
+ * @function doLogin
+ * @memberof module:AuthActions
+ * @description
+ * &lt;section style="padding: 10px; border-left: 3px solid #4fb336;">
+ * &lt;h3>User Login&lt;/h3>
+ * &lt;p>Verifies user credentials against the backend API and persists the session via cookies.&lt;/p>
+ * &lt;ul>
+ * &lt;li>&lt;b>Secure Storage:&lt;/b> Stores the authentication token in an httpOnly cookie to prevent XSS access.&lt;/li>
+ * &lt;li>&lt;b>Session Persistence:&lt;/b> Configures cookie attributes like sameSite and maxAge for a balanced user experience and security.&lt;/li>
+ * &lt;li>&lt;b>Feedback Loop:&lt;/b> Returns the token and user object or captures API errors for client-side display.&lt;/li>
+ * &lt;/ul>
+ * &lt;/section>
+ * @param {FormData} formData - The form data containing email and password.
+ * @returns {Promise&lt;{error, token, user}>} Results containing the session token or error details.
+ */
+export async function doLogin(formData){
+    const email = formData.get("email")
+    const password = formData.get("password")
+
+  try {
+     const response = await fetch(`${API_URL}/auth/login`,{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json",
+            },
+            body:JSON.stringify({email,password})
+        })
+        
+       
+        const data = await response.json()
+            const tokenCookie =  (await cookies()).set("token",data.token,{
+            httpOnly:true,
+            secure:false,
+            sameSite:"lax",
+            maxAge:3600
+        })
+
+        const userCookie =  (await cookies()).set("user",JSON.stringify(data.user),{
+            httpOnly:true,
+            secure:false,
+            sameSite:"lax",
+            maxAge:3600
+        })
+        
+        return {
+            error:data?.error,
+            token:data?.token,
+            user:data.user
+        }
+  } catch (error) {
+     return {
+        error
+     }
+  }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-AuthActions.html">AuthActions</a></li><li><a href="module-Components.html">Components</a></li><li><a href="module-Contexts.html">Contexts</a></li><li><a href="module-FavoritesAction.html">FavoritesAction</a></li><li><a href="module-Pages.html">Pages</a></li><li><a href="module-PropertyActions.html">PropertyActions</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Loading">Loading</a></li><li><a href="global.html#RootLayout">RootLayout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Mon Mar 02 2026 00:44:26 GMT+0000 (Ora del meridiano di Greenwich)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

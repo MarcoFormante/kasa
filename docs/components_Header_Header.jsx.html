@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Header/Header.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Header/Header.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>'use client'
+import Link from "next/link";
+import { FavoritesIcon } from "./FavoritesIcon";
+import { MessagingIcon } from "./MessagingIcon";
+import { Logo } from "./Logo";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { MenuMobile } from "./MenuMobile";
+
+
+
+/**
+ * 
+ * Main Navigation Header component.
+ * @function
+ * @name Header
+ * @memberof module:Components
+ * @description
+ * The primary navigation bar of the application. 
+ * &lt;div>&lt;strong>Key Functionalities:&lt;/strong>&lt;/div>
+ * &lt;ul>
+ *   &lt;li>Dynamic Active States**: Uses `usePathname` to highlight the current route.&lt;/li> 
+ *   &lt;li>Responsive Logic: Monitors window resize to automatically close the mobile menu on desktop breakpoints&lt;/li> 
+ *   &lt;li>State Management: Manages the open/closed state of the MenuMobile.&lt;/li> 
+ *   &lt;li>State Management: Manages the open/closed state of the MenuMobile&lt;/li> 
+ *   &lt;li>SEO &amp; Accessibility: Uses semantic nav and header tags with descriptive aria-label on icon links&lt;/li> 
+ * &lt;/ul>
+ * @returns {JSX.Element} The rendered header with navigation links, logo, and icons. 
+ */
+
+
+export function Header(){
+    const pathname = usePathname()
+    const [menuIsOpen,setMenuIsOpen] = useState(false)
+
+    useEffect(()=>{
+        window.addEventListener("resize",(e)=>{
+            if (window.innerWidth > 1024) {
+                setMenuIsOpen(false)
+            }
+        })
+        return ()=> window.removeEventListener("resize",()=>{
+            if (window.innerWidth > 1024) {
+                setMenuIsOpen(false)
+            }
+        })
+    },[menuIsOpen])
+
+    const closeMenu = ()=>{
+        setMenuIsOpen(false)
+    }
+
+    return (
+        &lt;header>
+            &lt;nav className={`header-nav ${menuIsOpen ? "active" : ""}`}>
+                &lt;div className="header-nav-links-container header-nav-links-container-first">
+                    &lt;Link onClick={closeMenu} href={"/"} className={`${pathname === "/" ? "active" : ""}`}>Accueil&lt;/Link>
+                    &lt;Link onClick={closeMenu} href={"/a-propos"} className={`${pathname === "/a-propos" ? "active" : ""}`}>À propos&lt;/Link>                
+                &lt;/div>
+                &lt;Link onClick={closeMenu} aria-label="Page d'accueil" href={"/"} className="header-logo-link no-border">
+                    &lt;Logo/>
+                &lt;/Link>
+                &lt;div className="header-nav-links-container header-nav-links-container-last">
+                    &lt;Link onClick={closeMenu} href={"/ajout"} className={`main-red ${pathname === "/ajout" ? "active" : ""}`}>+Ajouter un logement&lt;/Link>
+                    &lt;div className="header-nav-links-icons-container">
+                        &lt;Link onClick={closeMenu} href={"/favoris"} aria-label="Favoris" className={`no-border hover__fill-red ${pathname === "/favoris" ? "active" : ""}`}>
+                            &lt;FavoritesIcon/>
+                        &lt;/Link>
+                        &lt;span className="separator">&lt;/span>
+                        &lt;Link onClick={closeMenu} href={"/messagerie"} aria-label="Messagerie" className={`no-border hover__fill-red ${pathname === "/messagerie" ? "active" : ""}`}>
+                            &lt;MessagingIcon/>
+                        &lt;/Link>
+                    &lt;/div>
+                &lt;/div>
+                &lt;MenuMobile 
+                    menuIsOpen={menuIsOpen} 
+                    onClick={()=>setMenuIsOpen(!menuIsOpen)}
+                />
+            &lt;/nav>
+        &lt;/header>
+    )
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-AuthActions.html">AuthActions</a></li><li><a href="module-Components.html">Components</a></li><li><a href="module-Contexts.html">Contexts</a></li><li><a href="module-FavoritesAction.html">FavoritesAction</a></li><li><a href="module-Pages.html">Pages</a></li><li><a href="module-PropertyActions.html">PropertyActions</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Loading">Loading</a></li><li><a href="global.html#RootLayout">RootLayout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Mon Mar 02 2026 00:44:26 GMT+0000 (Ora del meridiano di Greenwich)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

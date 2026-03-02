@@ -7,6 +7,28 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { MenuMobile } from "./MenuMobile";
 
+
+
+/**
+ * 
+ * Main Navigation Header component.
+ * @function
+ * @name Header
+ * @memberof module:Components
+ * @description
+ * The primary navigation bar of the application. 
+ * <div><strong>Key Functionalities:</strong></div>
+ * <ul>
+ *   <li>Dynamic Active States**: Uses `usePathname` to highlight the current route.</li> 
+ *   <li>Responsive Logic: Monitors window resize to automatically close the mobile menu on desktop breakpoints</li> 
+ *   <li>State Management: Manages the open/closed state of the MenuMobile.</li> 
+ *   <li>State Management: Manages the open/closed state of the MenuMobile</li> 
+ *   <li>SEO & Accessibility: Uses semantic nav and header tags with descriptive aria-label on icon links</li> 
+ * </ul>
+ * @returns {JSX.Element} The rendered header with navigation links, logo, and icons. 
+ */
+
+
 export function Header(){
     const pathname = usePathname()
     const [menuIsOpen,setMenuIsOpen] = useState(false)

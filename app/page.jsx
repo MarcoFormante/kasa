@@ -1,3 +1,7 @@
+
+/**
+ * @module Pages
+ */
 import { Suspense } from "react";
 import { Heading } from "./components/Heading/Heading";
 import { Hero } from "./components/Hero/Hero";
@@ -10,8 +14,27 @@ export const metadata = {
   title: "Accueil",
 };
 
-export default async function Home() {
-  
+/**
+ * Home Page Component.
+ * @component Home
+ * @memberof module:Pages
+ * @description
+ * <section style="padding: 10px; border-left: 3px solid #FF6060;">
+ * <h3>Home Page (Server Component)</h3>
+ * <p>The main entry point of the Kasa application. This component is rendered on the server to ensure optimal performance and SEO.</p>
+ * <p><strong>Page Structure:</strong></p>
+ * <ul>
+ * <li><b>SEO Layer:</b> Injects Structured Data (JSON-LD) for Accommodation and ItemList schemas.</li>
+ * <li><b>Hero Section:</b> Displays the main brand heading and atmospheric background.</li>
+ * <li><b>Apartment Feed:</b> An async list of properties fetched directly on the server.</li>
+ * <li><b>Instructional Section:</b> Cards explaining the booking process.</li>
+ * </ul>
+ * <p><strong>Technical Note:</strong> The apartment list is wrapped in a Suspense boundary to provide a smooth loading state while the server fetches data.</p>
+ * </section>
+ * @returns {Promise<JSX.Element>} The rendered Home page structure.
+ */
+  function Home() {
+
   const jsonSchema = {
       "@context": "https://schema.org",
       "@type": "ItemList",
@@ -71,3 +94,5 @@ export default async function Home() {
       </main>
   );
 }
+
+export default Home

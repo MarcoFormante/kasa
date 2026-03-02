@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: logement/[slug]/page.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: logement/[slug]/page.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { LinkButton } from "@/app/components/Button/LinkButton";
+import Image from "next/image";
+import { Button } from "@/app/components/Button/Button";
+import { getSingleApartment } from "@/app/actions/properties";
+import { notFound } from "next/navigation";
+import { AptImages } from "../AptImages";
+
+
+export async function generateMetadata({ params }) {
+  const param = await params;
+  
+  return {
+    title: `Logement: ${param.slug}`, 
+  };
+}
+
+
+
+/**
+ * Property Detail Page Component.
+ * @component Logement
+ * @memberof module:Pages
+ * @description
+ * &lt;section style="padding: 10px; border-left: 3px solid #FF6060;">
+ * &lt;h3>Single Property View (Server Component)&lt;/h3>
+ * &lt;p>A dynamic server-side component responsible for fetching and rendering the comprehensive details of a specific property listing based on its unique identifier.&lt;/p>
+ * &lt;p>&lt;strong>Key Operations:&lt;/strong>&lt;/p>
+ * &lt;ul>
+ * &lt;li>&lt;b>Dynamic Fetching:&lt;/b> Retrieves property data on the server using the ID provided in the search parameters.&lt;/li>
+ * &lt;li>&lt;b>Error Handling:&lt;/b> Automatically triggers the {@link NotFound} page if the requested property ID does not exist in the database.&lt;/li>
+ * &lt;li>&lt;b>SEO Optimization:&lt;/b> Generates and injects JSON-LD Structured Data to enhance search engine visibility for the accommodation.&lt;/li>
+ * &lt;li>&lt;b>UI Composition:&lt;/b> Orchestrates complex child components including image galleries, host profiles, rating systems, and collapsible amenity lists.&lt;/li>
+ * &lt;/ul>
+ * &lt;p>&lt;strong>Technical Note:&lt;/strong> By fetching data on the server, this page ensures that the full content is available for search engine indexers while reducing client-side JavaScript execution.&lt;/p>
+ * &lt;/section>
+ * @param {Object} props - Component props.
+ * @param {Promise&lt;Object>} props.searchParams - Query parameters containing the property ID.
+ * @returns {JSX.Element} The rendered property detail page.
+ */
+ 
+async function Logement({searchParams}){
+    
+    const {id} = await searchParams
+    
+    const data = await getSingleApartment(id)
+    
+    if (data.apt.error === "Property not found") {
+        notFound()
+    }
+
+    const jsonSchema = {
+        "@context": "https://schema.org",
+        "@type": "Accommodation",
+        "name": data.apt.title,
+        "description": data.apt.description,
+        "image": data.apt.pictures,
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": data.apt.location
+        },
+        "amenityFeature": data.apt.equipments.map(eq => ({
+            "@type": "LocationFeatureSpecification",
+            "name": eq,
+            "value": true
+        })),
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": data.apt.rating_avg || 0,
+            "reviewCount": data.apt.reviews_count || 1 
+        }
+    };
+
+    
+    return  (
+        &lt;main className="logement-page">
+            &lt;script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonSchema) }}
+            />
+            &lt;div>
+                &lt;div className="retour-btn-container retour-btn-container-w-189">
+                    &lt;LinkButton
+                        isBackBtn={true}
+                        href={"/"} 
+                        label={"Retour aux annonces"}
+                        type="btn-light-grey"
+                    />
+                &lt;/div>           
+            &lt;/div>
+
+            &lt;div className="flex-row-container">
+                &lt;div>
+                    &lt;AptImages data={data}/>
+                    &lt;div className="logement-info-container">
+                        &lt;div>
+                            &lt;h1 className="logement-title">{data?.apt.title}&lt;/h1>
+                            &lt;address>{data?.apt.location}&lt;/address>
+                        &lt;/div>
+
+                        &lt;div className="logement-desc-container">
+                            &lt;p className="logement-desc">{data?.apt.description}&lt;/p>
+                        &lt;/div>
+                        
+                        &lt;div>
+                            &lt;h2 className="equip-title">Équipements&lt;/h2>
+                            &lt;div className="logement-items-list-container">
+                                &lt;ul className="list-grid">
+                                    {data?.apt?.equipments.length > 0 &amp;&amp; 
+                                        data?.apt.equipments.map((equip)=> &lt;li key={equip} className="list-item">{equip}&lt;/li>)
+                                    }
+                                &lt;/ul>
+                            &lt;/div>
+                        &lt;/div>
+
+                        &lt;div className="mt-40">
+                            &lt;h3 className="category-title">Catégorie&lt;/h3>
+                            &lt;div className="logement-items-list-container">
+                                &lt;ul className="list-grid">
+                                    {data?.apt?.tags.length > 0 &amp;&amp; 
+                                      data?.apt.tags.map((tag)=> &lt;li key={tag} className="list-item">{tag}&lt;/li>)
+                                    }
+                                &lt;/ul>
+                            &lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+
+                &lt;div className="profile-info-container">
+                    &lt;div className="">
+                        &lt;div className="profile-flex-col">
+                            &lt;h3 className="profile-title">Votre hôte&lt;/h3>
+                            &lt;div className="profile-flex-row">
+                              { data &amp;&amp;  data?.apt?.host?.picture &amp;&amp; 
+                               &lt;Image 
+                                width={82}
+                                height={82}
+                                src={data?.apt.host.picture} 
+                                alt=""
+                                />}
+
+                                &lt;span>{ data?.apt?.host?.name || "User"}&lt;/span>
+
+                                &lt;div className="reviews">
+                                    &lt;svg width="15" height="17" viewBox="0 0 15 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        &lt;path d="M6.41993 0.740832C6.68503 -0.246854 8.08645 -0.246854 8.35156 0.740831L9.3198 4.34812C9.43709 4.7851 9.83316 5.08888 10.2856 5.08888H13.7696C14.6917 5.08888 15.1224 6.23081 14.43 6.83978L11.3032 9.58975C11.0176 9.84097 10.8992 10.2325 10.9978 10.5999L12.1123 14.7517C12.3689 15.7077 11.2293 16.4156 10.486 15.7619L8.04616 13.616C7.66852 13.2839 7.10297 13.2839 6.72533 13.616L4.28546 15.7619C3.5422 16.4156 2.40263 15.7077 2.65923 14.7517L3.77364 10.5999C3.87225 10.2325 3.75388 9.84097 3.46824 9.58975L0.341498 6.83978C-0.350916 6.23081 0.0798023 5.08888 1.00191 5.08888H4.48588C4.93832 5.08888 5.3344 4.7851 5.45169 4.34812L6.41993 0.740832Z" fill="#99331A"/>
+                                    &lt;/svg>
+                                    &lt;span>{(data &amp;&amp; data?.apt?.rating_avg )?? 0}&lt;/span>
+                                &lt;/div>
+                               
+                            &lt;/div>
+                             &lt;div className="profile-btns">
+                                &lt;Button label={"Contacter l’hôte"} type={"btn-main-red"}/> 
+                                &lt;LinkButton href={"/messagerie"} label={"Envoyer un message"} type={"btn-main-red"}/> 
+                            &lt;/div>
+                        &lt;/div>
+                    &lt;/div>               
+                &lt;/div>
+            &lt;/div>
+        &lt;/main>
+    )
+}
+
+
+
+
+
+
+export default Logement</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-AuthActions.html">AuthActions</a></li><li><a href="module-Components.html">Components</a></li><li><a href="module-Contexts.html">Contexts</a></li><li><a href="module-FavoritesAction.html">FavoritesAction</a></li><li><a href="module-Pages.html">Pages</a></li><li><a href="module-PropertyActions.html">PropertyActions</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Loading">Loading</a></li><li><a href="global.html#RootLayout">RootLayout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Mon Mar 02 2026 00:44:26 GMT+0000 (Ora del meridiano di Greenwich)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

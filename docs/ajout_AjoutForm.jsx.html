@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: ajout/AjoutForm.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: ajout/AjoutForm.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+import { categoriesList, equipmentsList } from "@/app/utils";
+
+
+
+/**
+ *
+ * Component for adding a new property listing.
+ * @name AjoutForm
+ * @memberof module:Components
+ * @function
+ * @description
+ * A comprehensive form that allows users to register a new apartment.
+ * * Key sections include:
+ * - **Basic Information**: Title, description, and location details.
+ * - **Media Upload**: Inputs for a cover image and additional property photos.
+ * - **Host Details**: Information about the person hosting the property.
+ * - **Amenities**: A dynamic list of equipment (WiFi, Parking, etc.) rendered from {@link equipmentsList}.
+ * - **Categorization**: Selection of predefined categories from {@link categoriesList} and an option to add custom tags.
+ * @returns {JSX.Element} The rendered property creation form.
+ */
+
+export function AjoutForm(){
+    return (
+        &lt;div >
+            &lt;div className="ajout-form-flex-container mt-40">
+                &lt;div className="white-container white-container-py-80">
+                    &lt;div className="flex-col-input-container">
+                        &lt;label htmlFor="title">Titre de la propriété&lt;/label>
+                        &lt;input type="text" placeholder="Ex : Appartement cosy au coeur de paris" name="title" id="title" />
+                    &lt;/div>
+
+                    &lt;div className="flex-col-input-container">
+                        &lt;label htmlFor="desc">Description&lt;/label>
+                        &lt;textarea placeholder="Décrivez votre propriété en détail..." name="desc" id="desc"/>
+                    &lt;/div>
+
+                    &lt;div className="flex-col-input-container">
+                        &lt;label htmlFor="zipcode">Code postal&lt;/label>
+                        &lt;input type="text"  name="zipcode" id="zipcode" />
+                    &lt;/div>
+
+                    &lt;div className="flex-col-input-container">
+                        &lt;label htmlFor="localisation">Localisation&lt;/label>
+                        &lt;input type="text"  name="localisation" id="localisation" />
+                    &lt;/div>
+                &lt;/div>
+
+                &lt;div className="right-container">
+                    &lt;div className="white-container white-container-py-48 white-container-half">
+                        &lt;div className="flex-col-input-container">
+                            &lt;label htmlFor="coverImage">Image de couverture&lt;/label>
+                            &lt;div className="flex-input-container">
+                             &lt;div className="file-text-container">&lt;/div>
+                                &lt;div className="file-input-btn">
+                                    &lt;input type="file" name="coverImage" id="coverImage" accept="image/jpg,image/png,image/webp" />
+                                    &lt;span>
+                                        &lt;svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            &lt;path d="M6.35938 0C6.67866 1.39566e-08 6.9375 0.258835 6.9375 0.578125V5.78125H12.1406C12.4599 5.78125 12.7188 6.04009 12.7188 6.35938C12.7188 6.67866 12.4599 6.9375 12.1406 6.9375H6.9375V12.1406C6.9375 12.4599 6.67866 12.7188 6.35938 12.7188C6.04009 12.7188 5.78125 12.4599 5.78125 12.1406V6.9375H0.578125C0.258835 6.9375 0 6.67866 0 6.35938C0 6.04009 0.258835 5.78125 0.578125 5.78125H5.78125V0.578125C5.78125 0.258835 6.04009 -1.39566e-08 6.35938 0Z" fill="white"/>
+                                        &lt;/svg>
+                                    &lt;/span>
+                                &lt;/div>
+                            &lt;/div>
+                        &lt;/div>
+
+                        &lt;div className="flex-col-input-container">
+                            &lt;label htmlFor="aptImage">Image du logement&lt;/label>
+                            &lt;div className="flex-input-container">
+                               &lt;div className="file-text-container">&lt;/div>
+                                &lt;div className="file-input-btn">
+                                    &lt;input type="file" name="aptImage" id="aptImage" accept="image/jpg, image/png, image/webp" />
+                                    &lt;span>
+                                        &lt;svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            &lt;path d="M6.35938 0C6.67866 1.39566e-08 6.9375 0.258835 6.9375 0.578125V5.78125H12.1406C12.4599 5.78125 12.7188 6.04009 12.7188 6.35938C12.7188 6.67866 12.4599 6.9375 12.1406 6.9375H6.9375V12.1406C6.9375 12.4599 6.67866 12.7188 6.35938 12.7188C6.04009 12.7188 5.78125 12.4599 5.78125 12.1406V6.9375H0.578125C0.258835 6.9375 0 6.67866 0 6.35938C0 6.04009 0.258835 5.78125 0.578125 5.78125H5.78125V0.578125C5.78125 0.258835 6.04009 -1.39566e-08 6.35938 0Z" fill="white"/>
+                                        &lt;/svg>
+                                    &lt;/span>
+                                &lt;/div>
+                                
+                            &lt;/div>
+                            &lt;p>+Ajouter une image&lt;/p>
+                        &lt;/div>
+
+                    &lt;/div>
+
+                    &lt;div className="white-container white-container-py-48 white-container-half">
+                        &lt;div className="flex-col-input-container">
+                            &lt;label htmlFor="hoteName">Nom de l’hôte&lt;/label>
+                            &lt;input type="text" className="input-text-withBtn"  name="hoteName" id="hoteName" />
+                        &lt;/div>
+                       
+                        &lt;div className="flex-col-input-container">
+                            &lt;label htmlFor="profileImage">Photo de profil&lt;/label>
+                            &lt;div className="flex-input-container">
+                                &lt;div className="file-text-container">&lt;/div>
+                                &lt;div className="file-input-btn">
+                                    &lt;input type="file" name="profileImage" id="profileImage" accept="image/jpg, image/png, image/webp" />
+                                    &lt;span>
+                                        &lt;svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            &lt;path d="M6.35938 0C6.67866 1.39566e-08 6.9375 0.258835 6.9375 0.578125V5.78125H12.1406C12.4599 5.78125 12.7188 6.04009 12.7188 6.35938C12.7188 6.67866 12.4599 6.9375 12.1406 6.9375H6.9375V12.1406C6.9375 12.4599 6.67866 12.7188 6.35938 12.7188C6.04009 12.7188 5.78125 12.4599 5.78125 12.1406V6.9375H0.578125C0.258835 6.9375 0 6.67866 0 6.35938C0 6.04009 0.258835 5.78125 0.578125 5.78125H5.78125V0.578125C5.78125 0.258835 6.04009 -1.39566e-08 6.35938 0Z" fill="white"/>
+                                        &lt;/svg>
+                                    &lt;/span>
+                                &lt;/div>
+                            &lt;/div>
+                            &lt;p>+Ajouter une image&lt;/p>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+
+
+
+
+            &lt;div className="ajout-form-flex-container mt-40">
+                &lt;div className="white-container white-container-py-80">
+                    &lt;label htmlFor="equipments">Équipements&lt;/label>
+                    &lt;div className="grid-2-col-200" style={{display:"grid",gridColumn:"200px 200px"}}>
+                        {equipmentsList.map((item) => (
+                        &lt;div key={item.id} className="checkbox-container" >
+                        &lt;input
+                            type="checkbox"
+                            id={item.id}
+                            name={item.id}
+                        />
+                        &lt;label htmlFor={item.id}>
+                            {item.label}
+                        &lt;/label>
+                        &lt;/div>
+                        ))}
+                    &lt;/div>
+                &lt;/div>
+
+                &lt;div>
+                    &lt;div className="white-container white-container-py-80 white-container-h-444 ">
+                        &lt;div className="flex-col-input-container">
+                            &lt;label htmlFor="categories">Catégories&lt;/label>
+                            &lt;div className="categories-container">
+                                {categoriesList.map((c)=> (
+                                    &lt;div key={c.id} className="category-Btn">
+                                        &lt;input type="checkbox" name={"categories[]"} id={c.id} />
+                                        &lt;label htmlFor={c.id}>{c.label}&lt;/label>
+                                    &lt;/div>
+                                ))}
+                            &lt;/div>
+                        &lt;/div>
+
+                        &lt;div className="flex-col-input-container">
+                            &lt;label htmlFor="tag">Ajouter une catégorie personnalisée&lt;/label>
+                            &lt;div className="flex-input-container">
+                                &lt;input id="tag" name="tag" className="input-text-container"/>
+                                &lt;div className="file-input-btn">
+                                    &lt;button className="plusBtn">+&lt;/button>
+                                &lt;/div>
+                            &lt;/div>
+                            &lt;p>+Ajouter un tag&lt;/p>
+                        &lt;/div>
+
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+
+        &lt;/div>
+    )
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-AuthActions.html">AuthActions</a></li><li><a href="module-Components.html">Components</a></li><li><a href="module-Contexts.html">Contexts</a></li><li><a href="module-FavoritesAction.html">FavoritesAction</a></li><li><a href="module-Pages.html">Pages</a></li><li><a href="module-PropertyActions.html">PropertyActions</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Loading">Loading</a></li><li><a href="global.html#RootLayout">RootLayout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Mon Mar 02 2026 00:44:26 GMT+0000 (Ora del meridiano di Greenwich)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

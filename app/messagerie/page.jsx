@@ -9,7 +9,28 @@ export const metadata = {
   title: "Messagerie",
 };
 
-export default async function Messagerie(){
+
+/**
+ * Messaging Page Component.
+ * @component Messagerie
+ * @memberof module:Pages
+ * @description
+ * <section style="padding: 10px; border-left: 3px solid #FF6060;">
+ * <h3>Private Messaging Interface (Server Component)</h3>
+ * <p>A secure server-side component that manages the user's private conversations. It provides a full-featured interface for viewing message history and responding to inquiries.</p>
+ * <p><strong>Key Features:</strong></p>
+ * <ul>
+ * <li><b>Security:</b> Verifies session integrity via token and user cookies. If unauthorized, it triggers a contextual Alert and renders the {@link Login} component.</li>
+ * <li><b>Master-Detail Layout:</b> Features a sidebar for conversation previews and a primary area for the active message thread.</li>
+ * <li><b>Communication Tools:</b> Integrates a message history viewer and a reply form with a styled textarea for sending updates.</li>
+ * <li><b>Status Tracking:</b> Displays read/unread indicators and short snippets of the most recent activity for each contact.</li>
+ * </ul>
+ * <p><strong>Technical Note:</strong> This component utilizes asynchronous data fetching to synchronize message status and thread history directly on the server.</p>
+ * </section>
+ * @async
+ * @returns {JSX.Element} The rendered messaging interface or login redirect.
+ */
+async function Messagerie(){
     const token = (await cookies()).get("token")?.value
     const user = (await cookies())?.get("user")?.value
 
@@ -118,7 +139,7 @@ export default async function Messagerie(){
                             </div>
                         </li>
 
-                                                <li>
+                        <li>
                             <Image className="conversation-user-image" src={fakeImage} alt="Image du profile de "/>
                             <div className="conversation-message-flex-col-container">
                                 <div className="conversation-message-info">
@@ -165,3 +186,7 @@ export default async function Messagerie(){
         </main>
     )
 }
+
+
+
+export default  Messagerie

@@ -3,6 +3,28 @@ import Link from "next/link";
 import { FavoriteBtn } from "./FavoriteBtn";
 
 
+/**
+ * Apartment Card Component.
+ * @function 
+ * @name Apartment
+ * @memberof module:Components
+ * @description
+ * Renders a property preview card with SEO microdata (Schema.org).
+ * It displays essential property information and provides a link to the detailed view.
+ * * * Features:
+ * - **SEO Ready**: Uses `itemScope` and `itemType="https://schema.org/Accommodation"` for rich snippets.
+ * - **Lazy Loading**: Images are optimized via Next.js and lazy-loaded by default.
+ * - **Interactivity**: Includes a {@link FavoriteBtn} to toggle the favorite status.
+ * @param {Object} props - Component props.
+ * @param {string|number} props.id - Unique identifier of the apartment.
+ * @param {string} props.title - The name or headline of the property.
+ * @param {string} props.cover - URL path for the thumbnail image.
+ * @param {number|string} props.price - Nightly rate (displayed in EUR).
+ * @param {string} props.slug - URL-friendly string used for navigation.
+ * @param {string} props.location - City or neighborhood name.
+ * @returns {JSX.Element} A structured article representing a property listing.
+ */
+
 export function Apartment(
     {
         id,

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: a-propos/page.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: a-propos/page.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import Image from "next/image";
+import { Heading } from "../components/Heading/Heading";
+import { Hero } from "../components/Hero/Hero";
+import { Paragraph } from "../components/Paragraph/Paragraph";
+import aboutMissionImage from "@/app/assets/images/about-mission.webp"
+
+
+export const metadata = {
+  title: "À propos",
+};
+
+/**
+ * About Page Component.
+ * @component About
+ * @memberof module:Pages
+ * @description
+ * &lt;section style="padding: 10px; border-left: 3px solid #FF6060;">
+ * &lt;h3>About Page (Server Component)&lt;/h3>
+ * &lt;p>Renders the company information and mission statement. This page focuses on brand values and reliability through interactive content.&lt;/p>
+ * &lt;p>&lt;strong>Key Sections:&lt;/strong>&lt;/p>
+ * &lt;ul>
+ * &lt;li>&lt;b>Hero Banner:&lt;/b> Displays an atmospheric landscape image consistent with the brand identity.&lt;/li>
+ * &lt;/ul>
+ * &lt;p>&lt;strong>Technical Note:&lt;/strong> Data for the values section is typically static but organized to ensure high readability and SEO performance.&lt;/p>
+ * &lt;/section>
+ * @returns {JSX.Element} The rendered About page.
+ */
+function About(){
+
+    const jsonSchema = {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "Kasa",
+        "description": "Plateforme de location d'hébergements en France.",
+      }
+    };
+
+    return(
+            &lt;main>
+                &lt;script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonSchema) }}
+                />
+                &lt;section className="page-section">
+                    &lt;Heading 
+                        text={"À propos"} 
+                        styles={"mt-40"}
+                    />
+        
+                    &lt;Paragraph 
+                        text={"Chez Kasa, nous croyons que chaque voyage mérite un lieu unique où se sentir bien."}
+                        styles={"mt-8 text-center"}
+                    />
+
+                    &lt;Paragraph 
+                        text={"Depuis notre création, nous mettons en relation des voyageurs en quête d’authenticité avec des hôtes passionnés qui aiment partager leur région et leurs bonnes adresses."}
+                        styles={"mt-30 text-center sec-paragraph"}
+                    />
+
+                  &lt;Hero isHomePage={false}/>
+                &lt;/section>
+
+                &lt;section className="about-mission-section">
+                    &lt;div className="about-mission-flex-container">
+                        &lt;div>
+                            &lt;h2>Notre mission est simple :&lt;/h2>
+                            &lt;ol>
+                                &lt;li>Offrir une plateforme fiable et simple d’utilisation&lt;/li>
+                                &lt;li>Proposer des hébergements variés et de qualité&lt;/li>
+                                &lt;li>Favoriser des échanges humains et chaleureux entre hôtes et voyageurs&lt;/li>
+                            &lt;/ol>
+                            &lt;p className="">Que vous cherchiez un appartement cosy en centre-ville, une maison en bord de mer ou un chalet à la montagne, Kasa vous accompagne pour que chaque séjour devienne un souvenir inoubliable.&lt;/p>
+                        &lt;/div>
+                        
+                        &lt;div className="about-mission-img-container">
+                            &lt;Image 
+                                src={aboutMissionImage}
+                                alt="Maison très elegante avec jardin - Kasa"
+                                className="about-mission-img"
+                            />
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/section>
+                
+            &lt;/main>
+        
+    )
+}
+
+export default About</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-AuthActions.html">AuthActions</a></li><li><a href="module-Components.html">Components</a></li><li><a href="module-Contexts.html">Contexts</a></li><li><a href="module-FavoritesAction.html">FavoritesAction</a></li><li><a href="module-Pages.html">Pages</a></li><li><a href="module-PropertyActions.html">PropertyActions</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Loading">Loading</a></li><li><a href="global.html#RootLayout">RootLayout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Mon Mar 02 2026 00:44:26 GMT+0000 (Ora del meridiano di Greenwich)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

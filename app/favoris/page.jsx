@@ -8,8 +8,27 @@ export const metadata = {
   title: "Favoris",
 };
 
-
-export default async function Favoris(){
+/**
+ * Favorites Page Component.
+ * @component Favoris
+ * @memberof module:Pages
+ * @description
+ * <section style="padding: 10px; border-left: 3px solid #FF6060;">
+ * <h3>User Favorites Page (Server Component)</h3>
+ * <p>A protected route that displays a curated list of properties the user has marked as favorites. It uses server-side logic to ensure data privacy and session security.</p>
+ * <p><strong>Data and Security Flow:</strong></p>
+ * <ul>
+ * <li><b>Session Check:</b> Inspects cookies to verify if a valid user session exists before rendering.</li>
+ * <li><b>Unauthenticated Handling:</b> Redirects unauthorized users to the {@link Login} page with a contextual alert message.</li>
+ * <li><b>Data Fetching:</b> Retrieves the list of favorite property IDs from the API and fetches the corresponding property details.</li>
+ * <li><b>UI Rendering:</b> Passes the data to the {@link FavoritesList} component for display.</li>
+ * </ul>
+ * <p><strong>Technical Note:</strong> This component is asynchronous to allow for direct server-side data fetching without a client-side loading state.</p>
+ * </section>
+ * @async
+ * @returns {JSX.Element} The rendered Favorites page or Login redirect view.
+ */
+ async function Favoris(){
     const token = (await cookies()).get("token")?.value
     const user = (await cookies())?.get("user")?.value
 
@@ -56,3 +75,6 @@ export default async function Favoris(){
         </main>
     )
 }
+
+
+export default Favoris

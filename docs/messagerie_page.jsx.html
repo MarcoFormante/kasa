@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: messagerie/page.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: messagerie/page.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import Image from "next/image";
+import { LinkButton } from "../components/Button/LinkButton";
+import fakeImage from "../assets/images/about-mission.webp"
+import { Alert } from "../components/Alert/Alert";
+import Login from "../login/page";
+import { cookies } from "next/headers";
+
+export const metadata = {
+  title: "Messagerie",
+};
+
+
+/**
+ * Messaging Page Component.
+ * @component Messagerie
+ * @memberof module:Pages
+ * @description
+ * &lt;section style="padding: 10px; border-left: 3px solid #FF6060;">
+ * &lt;h3>Private Messaging Interface (Server Component)&lt;/h3>
+ * &lt;p>A secure server-side component that manages the user's private conversations. It provides a full-featured interface for viewing message history and responding to inquiries.&lt;/p>
+ * &lt;p>&lt;strong>Key Features:&lt;/strong>&lt;/p>
+ * &lt;ul>
+ * &lt;li>&lt;b>Security:&lt;/b> Verifies session integrity via token and user cookies. If unauthorized, it triggers a contextual Alert and renders the {@link Login} component.&lt;/li>
+ * &lt;li>&lt;b>Master-Detail Layout:&lt;/b> Features a sidebar for conversation previews and a primary area for the active message thread.&lt;/li>
+ * &lt;li>&lt;b>Communication Tools:&lt;/b> Integrates a message history viewer and a reply form with a styled textarea for sending updates.&lt;/li>
+ * &lt;li>&lt;b>Status Tracking:&lt;/b> Displays read/unread indicators and short snippets of the most recent activity for each contact.&lt;/li>
+ * &lt;/ul>
+ * &lt;p>&lt;strong>Technical Note:&lt;/strong> This component utilizes asynchronous data fetching to synchronize message status and thread history directly on the server.&lt;/p>
+ * &lt;/section>
+ * @async
+ * @returns {JSX.Element} The rendered messaging interface or login redirect.
+ */
+async function Messagerie(){
+    const token = (await cookies()).get("token")?.value
+    const user = (await cookies())?.get("user")?.value
+
+    if (!token || !user) {
+        return (
+            &lt;div>
+                &lt;Alert color="red" text={"Connectez vous pour acceder à la messagerie"}/>
+                &lt;Login redirectPath={"/messagerie"}/>            
+            &lt;/div>
+        ) 
+    }
+   
+    return (
+        &lt;main className="messagerie-page">
+            &lt;div className="messagerie-page-left-container">
+                &lt;div className="retour-btn-container retour-btn-container-w-93">
+                    &lt;LinkButton
+                        isBackBtn={true}
+                        href={"/"} 
+                        label={"Retour"}
+                        type="btn-light-grey"
+                    />
+                &lt;/div>
+
+                &lt;section className="messages-section">
+                    &lt;h1>Messages&lt;/h1>
+                    &lt;div>
+                        &lt;ul className="message-list">
+                            &lt;li className="message-item">
+                                &lt;button>
+                                    &lt;div className="message-item-container message-item-container-selected">
+                                        &lt;div className="message-item-left-container">
+                                            &lt;Image className="message-user-image" src={fakeImage} width={44.5} height={45.05} alt=""/>
+                                            &lt;div className="message-info-right-container">
+                                                &lt;div className="message-info-mid-container">
+                                                    &lt;span className="user-name">{"Utilisateur"}&lt;/span>
+                                                    &lt;p className="user-message-short">{"Bonjour, votre appartement est-il dispo"}&lt;/p>
+                                                &lt;/div>
+                                                &lt;div className="message-time-info-container">
+                                                    &lt;span className="sent-time">{"11:04 am"}&lt;/span>
+                                                    &lt;span className={`message-checked message-checked-false`}>&lt;/span>
+                                                &lt;/div>               
+                                            &lt;/div>
+                                        &lt;/div>
+                                    &lt;/div>
+                                &lt;/button>
+                            &lt;/li>
+
+                            &lt;li className="message-item">
+                                &lt;button>
+                                    &lt;div className="message-item-container">
+                                        &lt;div className="message-item-left-container">
+                                            &lt;Image src={fakeImage} width={44.5} height={45.05} alt=""/>
+                                            &lt;div className="message-info-right-container">
+                                                &lt;div className="message-info-mid-container">
+                                                    &lt;span className="user-name">{"Utilisateur"}&lt;/span>
+                                                    &lt;p className="user-message-short">{"Bonjour, votre appartement est-il dispo"}&lt;/p>
+                                                &lt;/div>
+                                                &lt;div className="message-time-info-container">
+                                                    &lt;span className="sent-time">{"11:04 am"}&lt;/span>
+                                                    &lt;span className={`message-checked message-checked-false`}>&lt;/span>
+                                                &lt;/div>               
+                                            &lt;/div>
+                                        &lt;/div>
+                                    &lt;/div>
+                                &lt;/button>
+                            &lt;/li>
+
+                            &lt;li className="message-item">
+                                &lt;button>
+                                    &lt;div className="message-item-container">
+                                        &lt;div className="message-item-left-container">
+                                            &lt;Image src={fakeImage} width={44.5} height={45.05} alt=""/>
+                                            &lt;div className="message-info-right-container">
+                                                &lt;div className="message-info-mid-container">
+                                                    &lt;span className="user-name">{"Utilisateur"}&lt;/span>
+                                                    &lt;p className="user-message-short">{"Bonjour, votre appartement est-il dispo"}&lt;/p>
+                                                &lt;/div>
+                                                &lt;div className="message-time-info-container">
+                                                    &lt;span className="sent-time">{"11:04 am"}&lt;/span>
+                                                    &lt;span className={`message-checked message-checked-false`}>&lt;/span>
+                                                &lt;/div>               
+                                            &lt;/div>
+                                        &lt;/div>
+                                    &lt;/div>
+                                &lt;/button>
+                            &lt;/li>
+                        &lt;/ul>
+                    &lt;/div>
+                &lt;/section>
+            &lt;/div>
+            &lt;div className="w-full">
+                &lt;section className="conversation-section">
+                    &lt;ul className="conversation-messages-list">
+                        &lt;li>
+                            &lt;Image className="conversation-user-image" src={fakeImage} alt="Image du profile de "/>
+                            &lt;div className="conversation-message-flex-col-container">
+                                &lt;div className="conversation-message-info">
+                                    {"Utilisateur"} &lt;span className="circle-space">&lt;/span> {"11:04pm"}
+                                &lt;/div>
+                                &lt;div>
+                                    &lt;div className="message-white-container">
+                                        &lt;p>Bonjour, votre appartement est-il disponible pour le week-end du 12 au 14 octobre ?&lt;/p>
+                                    &lt;/div>
+                                &lt;/div>
+                            &lt;/div>
+                        &lt;/li>
+
+                        &lt;li>
+                            &lt;Image className="conversation-user-image" src={fakeImage} alt="Image du profile de "/>
+                            &lt;div className="conversation-message-flex-col-container">
+                                &lt;div className="conversation-message-info">
+                                    {"Utilisateur"} &lt;span className="circle-space">&lt;/span> {"11:04pm"}
+                                &lt;/div>
+                                &lt;div>
+                                    &lt;div className="message-white-container">
+                                        &lt;p>Bonjour, votre appartement est-il disponible pour le week-end du 12 au 14 octobre ?&lt;/p>
+                                    &lt;/div>
+                                &lt;/div>
+                            &lt;/div>
+                        &lt;/li>
+
+
+                        &lt;li className="user-message-row-reverse">
+                            &lt;Image className="conversation-user-image" src={fakeImage} alt="Image du profile de "/>
+                            &lt;div className="conversation-message-flex-col-container">
+                                &lt;div className="conversation-message-info">
+                                    {"Utilisateur"} &lt;span className="circle-space">&lt;/span> {"11:04pm"}
+                                &lt;/div>
+                                &lt;div>
+                                    &lt;div className="message-white-container">
+                                        &lt;p>Bonjour, votre appartement est-il disponible pour le week-end du 12 au 14 octobreasdasd adssadsad asdsadsadsad zsdsadsa ?&lt;/p>
+                                    &lt;/div>
+                                &lt;/div>
+                            &lt;/div>
+                        &lt;/li>
+
+                    &lt;/ul>        
+                &lt;/section>
+
+                &lt;section className="conversation-form">
+                    &lt;form>
+                        &lt;label className="out-of-screen" htmlFor="message">Envoyer un message&lt;/label>
+                        &lt;textarea name="message" id="message" placeholder="Envoyer un message">&lt;/textarea>
+                        &lt;button disabled className="pointer" aria-label="Envoyer le message" type="submit">
+                            &lt;svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                &lt;path d="M3.26841 7.63636L3.26841 1.24139L5.19316 3.16613C5.2267 3.20087 5.26683 3.22857 5.31119 3.24763C5.35556 3.26669 5.40328 3.27672 5.45156 3.27714C5.49984 3.27756 5.54773 3.26835 5.59242 3.25007C5.63711 3.23179 5.67771 3.20479 5.71185 3.17064C5.74599 3.1365 5.773 3.0959 5.79128 3.05121C5.80956 3.00652 5.81877 2.95863 5.81835 2.91035C5.81793 2.86207 5.80789 2.81435 5.78884 2.76998C5.76978 2.72562 5.74208 2.68549 5.70734 2.65195L3.16187 0.106469C3.09367 0.0382969 3.0012 0 2.90477 0C2.80835 0 2.71587 0.0382969 2.64768 0.106469L0.102199 2.65195C0.0359588 2.72053 -0.000693798 2.81239 0.000134468 2.90773C0.000963211 3.00308 0.039207 3.09428 0.106629 3.16171C0.174051 3.22913 0.265256 3.26737 0.360601 3.2682C0.455946 3.26903 0.547803 3.23237 0.616386 3.16613L2.54113 1.24139L2.54113 7.63636C2.54113 7.7328 2.57944 7.8253 2.64764 7.89349C2.71584 7.96169 2.80833 8 2.90477 8C3.00122 8 3.09371 7.96169 3.1619 7.89349C3.2301 7.8253 3.26841 7.7328 3.26841 7.63636Z" fill="white"/>
+                            &lt;/svg>
+                        &lt;/button>
+                    &lt;/form>
+                &lt;/section>
+            &lt;/div>
+        &lt;/main>
+    )
+}
+
+
+
+export default  Messagerie</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-AuthActions.html">AuthActions</a></li><li><a href="module-Components.html">Components</a></li><li><a href="module-Contexts.html">Contexts</a></li><li><a href="module-FavoritesAction.html">FavoritesAction</a></li><li><a href="module-Pages.html">Pages</a></li><li><a href="module-PropertyActions.html">PropertyActions</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Loading">Loading</a></li><li><a href="global.html#RootLayout">RootLayout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Mon Mar 02 2026 00:44:26 GMT+0000 (Ora del meridiano di Greenwich)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -14,7 +14,31 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default async function Logement({searchParams}){
+
+
+/**
+ * Property Detail Page Component.
+ * @component Logement
+ * @memberof module:Pages
+ * @description
+ * <section style="padding: 10px; border-left: 3px solid #FF6060;">
+ * <h3>Single Property View (Server Component)</h3>
+ * <p>A dynamic server-side component responsible for fetching and rendering the comprehensive details of a specific property listing based on its unique identifier.</p>
+ * <p><strong>Key Operations:</strong></p>
+ * <ul>
+ * <li><b>Dynamic Fetching:</b> Retrieves property data on the server using the ID provided in the search parameters.</li>
+ * <li><b>Error Handling:</b> Automatically triggers the {@link NotFound} page if the requested property ID does not exist in the database.</li>
+ * <li><b>SEO Optimization:</b> Generates and injects JSON-LD Structured Data to enhance search engine visibility for the accommodation.</li>
+ * <li><b>UI Composition:</b> Orchestrates complex child components including image galleries, host profiles, rating systems, and collapsible amenity lists.</li>
+ * </ul>
+ * <p><strong>Technical Note:</strong> By fetching data on the server, this page ensures that the full content is available for search engine indexers while reducing client-side JavaScript execution.</p>
+ * </section>
+ * @param {Object} props - Component props.
+ * @param {Promise<Object>} props.searchParams - Query parameters containing the property ID.
+ * @returns {JSX.Element} The rendered property detail page.
+ */
+ 
+async function Logement({searchParams}){
     
     const {id} = await searchParams
     
@@ -141,3 +165,4 @@ export default async function Logement({searchParams}){
 
 
 
+export default Logement

@@ -1,4 +1,23 @@
 'use client'
+
+/**
+ * Specialized arrow button used primarily for Carousel navigation.
+ * @function 
+ * @name ArrowButton
+ * @memberof module:Components
+ * @description
+ * Specialized arrow button used primarily for Carousel navigation.
+ * It is designed to be flexible, allowing different positioning styles (left/right) 
+ * and custom accessibility labels.
+ * * * Features:
+ * - **Accessibility**: Requires an `aria` prop to ensure screen readers describe the button's action.
+ * - **Styling**: Uses the `style` prop to append CSS classes for specific positioning or rotations.
+ * @param {Object} props - Component props.
+ * @param {string} props.aria - The accessibility label (e.g., "Previous slide", "Next slide").
+ * @param {function} props.onClick - The click event handler to trigger slide change.
+ * @param {string} props.style - Additional CSS class names (e.g., "carousel-arrow-left").
+ * @returns {JSX.Element} A button element containing a navigation SVG icon.
+ */
 export function ArrowButton({aria,onClick,style}){
     return (
         <button aria-label={aria}  onClick={onClick} className={"carousel-arrow " + style}>

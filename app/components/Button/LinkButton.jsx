@@ -1,9 +1,29 @@
 import Link from "next/link"
 
+
+/**
+ * A navigation button component that wraps the Next.js Link.
+ * @function
+ * @component LinkButton
+ * @name LinkButton
+ * @memberof module:Components
+ * @description
+ * Used for navigating between routes. It supports a custom "Back" arrow icon
+ * * * Features:
+ * - **SPA Navigation**: Uses Next.js `Link` for client-side transitions.
+ * - **Back Variant**: Includes an optional SVG arrow for "Go Back" actions.
+ * - **Flexible Styling**: Supports different color themes via the `type` prop.
+ * @param {Object} props - Component props.
+ * @param {string} props.label - The text to display on the link.
+ * @param {string} props.href - The destination URL or route path.
+ * @param {string} [props.styles] - Additional CSS classes for the outer container.
+ * @param {string} [props.type="btn-main-red"] - CSS class for the visual theme (e.g., 'btn-main-red', 'btn-outline').
+ * @param {boolean} [props.isBackBtn] - If true, renders a back arrow icon before the label.
+ * @returns {JSX.Element} A container div holding a styled Next.js Link.
+ */
 export function LinkButton({label,href,styles,type = "btn-main-red",isBackBtn}){
     return (
         <div className={`btn-container ${styles}`}>
-            
             <Link className={"btn " + type} href={href}>
             {isBackBtn && 
                 <span className="back-arrow">

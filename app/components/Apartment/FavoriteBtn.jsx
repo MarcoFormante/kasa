@@ -6,6 +6,28 @@ import { useContext} from "react";
 import { useAlert } from "@/app/contexts/AlertContext";
 
 
+
+/**
+ * Interactive button component to toggle an apartment's favorite status.
+ * @function 
+ * @memberof module:Components
+ * @name FavoriteBtn
+ * @description
+ * This component manages the logic for adding or removing a property from the user's favorites.
+ * It interacts with:
+ * 1. **Context**: Updates {@link FavoritesAptsContext} for immediate UI synchronization.
+ * 2. **Alerts**: Uses {@link useAlert} to provide visual feedback (success or error messages).
+ * 3. **Server Actions**: Calls {@link add} or {@link remove} to persist changes in the database.
+ * @param {Object} props - Component props.
+ * @param {Object} props.apt - The apartment data object.
+ * @param {string|number} props.apt.id - Unique identifier for the apartment.
+ * @param {string} props.apt.title - Title of the apartment.
+ * @param {string} props.apt.cover - Image URL for the apartment.
+ * @param {number|string} props.apt.price - Price per night.
+ * @param {string} props.apt.slug - Navigation slug.
+ * @param {string} props.apt.location - Location label.
+ * @returns {JSX.Element} A button with a heart icon that changes state based on favorite status.
+ */
 export function FavoriteBtn({apt}){
     const {favoriteApts,setFavoriteApts} = useContext(FavoritesAptsContext)
     const {setAlert} = useAlert()

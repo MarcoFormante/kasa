@@ -4,6 +4,24 @@ import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 import { ArrowButton } from "./ArrowButton";
 
+
+/** An infinite-loop Image Carousel component.
+ * @function
+ * @name Carousel
+ * @memberof module:Components
+ * @description
+ * An infinite-loop Image Carousel component.
+ * * Key features:
+ * - **Infinite Loop**: Clones the first and last slides to allow continuous scrolling without a visual "jump".
+ * - **Keyboard Support**: Automatically listens for the "Escape" key to trigger the close callback.
+ * - **Responsive Transition**: Uses CSS transforms and a state-controlled transition class for smooth movement.
+ * - **Conditional UI**: Only renders navigation arrows if there is more than one image.
+ * * 
+ * @param {Object} props - Component props.
+ * @param {string[]} props.images - An array of image URLs to display.
+ * @param {function} props.closeCarousel - Callback function to close the carousel overlay.
+ * @returns {JSX.Element} The rendered carousel component.
+ */
 export function Carousel({images,closeCarousel}){
 
     const slides = images.length > 1 ? [images[images.length - 1], ...images, images[0]] : images;

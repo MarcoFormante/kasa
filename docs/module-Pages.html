@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Module: Pages</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Module: Pages</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".About"><span class="type-signature">(static) </span>About<span class="signature">()</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <section style="padding: 10px; border-left: 3px solid #FF6060;"><h3>About Page (Server Component)</h3><p>Renders the company information and mission statement. This page focuses on brand values and reliability through interactive content.</p><p><strong>Key Sections:</strong></p><ul><li><b>Hero Banner:</b> Displays an atmospheric landscape image consistent with the brand identity.</li></ul><p><strong>Technical Note:</strong> Data for the values section is typically static but organized to ensure high readability and SEO performance.</p></section>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="a-propos_page.jsx.html">a-propos/page.jsx</a>, <a href="a-propos_page.jsx.html#line28">line 28</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The rendered About page.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".Ajout"><span class="type-signature">(async, static) </span>Ajout<span class="signature">()</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <section style="padding: 10px; border-left: 3px solid #FF6060;"><h3>Property Addition Page (Server Component)</h3><p>A restricted access page used for submitting new property listings to the database. It handles pre-render authentication checks to protect the form.</p><p><strong>Authentication Flow:</strong></p><ul><li><b>Token Verification:</b> Checks for a valid JWT or session token on the server side.</li><li><b>Conditional Rendering:</b> Displays the property form if authenticated; otherwise, renders the Login component.</li><li><b>Redirection Logic:</b> Includes a redirect state to return the user to this page immediately after a successful login.</li></ul><p><strong>Technical Note:</strong> Form submission is handled via Server Actions to ensure data integrity and security.</p></section>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="ajout_page.jsx.html">ajout/page.jsx</a>, <a href="ajout_page.jsx.html#line31">line 31</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The rendered Ajout page or Login redirect.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".Favoris"><span class="type-signature">(async, static) </span>Favoris<span class="signature">()</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <section style="padding: 10px; border-left: 3px solid #FF6060;"><h3>User Favorites Page (Server Component)</h3><p>A protected route that displays a curated list of properties the user has marked as favorites. It uses server-side logic to ensure data privacy and session security.</p><p><strong>Data and Security Flow:</strong></p><ul><li><b>Session Check:</b> Inspects cookies to verify if a valid user session exists before rendering.</li><li><b>Unauthenticated Handling:</b> Redirects unauthorized users to the Login page with a contextual alert message.</li><li><b>Data Fetching:</b> Retrieves the list of favorite property IDs from the API and fetches the corresponding property details.</li><li><b>UI Rendering:</b> Passes the data to the FavoritesList component for display.</li></ul><p><strong>Technical Note:</strong> This component is asynchronous to allow for direct server-side data fetching without a client-side loading state.</p></section>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="favoris_page.jsx.html">favoris/page.jsx</a>, <a href="favoris_page.jsx.html#line31">line 31</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The rendered Favorites page or Login redirect view.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".Home"><span class="type-signature">(static) </span>Home<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;JSX.Element>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <section style="padding: 10px; border-left: 3px solid #FF6060;"><h3>Home Page (Server Component)</h3><p>The main entry point of the Kasa application. This component is rendered on the server to ensure optimal performance and SEO.</p><p><strong>Page Structure:</strong></p><ul><li><b>SEO Layer:</b> Injects Structured Data (JSON-LD) for Accommodation and ItemList schemas.</li><li><b>Hero Section:</b> Displays the main brand heading and atmospheric background.</li><li><b>Apartment Feed:</b> An async list of properties fetched directly on the server.</li><li><b>Instructional Section:</b> Cards explaining the booking process.</li></ul><p><strong>Technical Note:</strong> The apartment list is wrapped in a Suspense boundary to provide a smooth loading state while the server fetches data.</p></section>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="page.jsx.html">page.jsx</a>, <a href="page.jsx.html#line36">line 36</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The rendered Home page structure.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;JSX.Element></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".Inscription"><span class="type-signature">(static) </span>Inscription<span class="signature">()</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <section style="padding: 10px; border-left: 3px solid #FF6060;"><h3>User Registration Page</h3><p>The entry point for new users to create an account on the Kasa platform. This page focuses on a smooth onboarding experience through a simplified interface.</p><p><strong>Component Structure:</strong></p><ul><li><b>Introductory Content:</b> Displays a welcoming header and a brief description of the platform's benefits.</li><li><b>Input Management:</b> Integrates the RegisterForm component to handle user data collection and validation.</li><li><b>Account Redirection:</b> Provides a direct navigation link to the Login page for existing users.</li></ul><p><strong>Technical Note:</strong> This page is designed to be lightweight, delegating complex form logic and validation to specialized client-side child components.</p></section>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="inscription_page.jsx.html">inscription/page.jsx</a>, <a href="inscription_page.jsx.html#line31">line 31</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The rendered registration page.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".Logement"><span class="type-signature">(async, static) </span>Logement<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <section style="padding: 10px; border-left: 3px solid #FF6060;"><h3>Single Property View (Server Component)</h3><p>A dynamic server-side component responsible for fetching and rendering the comprehensive details of a specific property listing based on its unique identifier.</p><p><strong>Key Operations:</strong></p><ul><li><b>Dynamic Fetching:</b> Retrieves property data on the server using the ID provided in the search parameters.</li><li><b>Error Handling:</b> Automatically triggers the NotFound page if the requested property ID does not exist in the database.</li><li><b>SEO Optimization:</b> Generates and injects JSON-LD Structured Data to enhance search engine visibility for the accommodation.</li><li><b>UI Composition:</b> Orchestrates complex child components including image galleries, host profiles, rating systems, and collapsible amenity lists.</li></ul><p><strong>Technical Note:</strong> By fetching data on the server, this page ensures that the full content is available for search engine indexers while reducing client-side JavaScript execution.</p></section>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Component props.
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>searchParams</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Promise.&lt;Object></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Query parameters containing the property ID.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logement_%5Bslug%5D_page.jsx.html">logement/[slug]/page.jsx</a>, <a href="logement_%5Bslug%5D_page.jsx.html#line41">line 41</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The rendered property detail page.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".Login"><span class="type-signature">(static) </span>Login<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <section style="padding: 10px; border-left: 3px solid #FF6060;"><h3>User Authentication Page</h3><p>The gateway for existing users to access protected features. It provides a secure interface for entering credentials and manages post-login navigation flow.</p><p><strong>Key Features:</strong></p><ul><li><b>Credential Entry:</b> Integrates the LoginForm to handle user input and server-side authentication requests.</li><li><b>Dynamic Redirection:</b> Utilizes the redirectPath prop to ensure users are sent back to their intended destination (like Favorites or Add Property) after logging in.</li><li><b>Navigation Persistence:</b> Maintains the redirect context when providing links to the registration page, ensuring a seamless user journey.</li></ul><p><strong>Technical Note:</strong> This component works in tandem with the AlertHandlerContext to display feedback regarding login errors or session expiration.</p></section>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Component props.
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>redirectPath</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The URL path to redirect the user to after a successful login.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="login_page.jsx.html">login/page.jsx</a>, <a href="login_page.jsx.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The rendered login page.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".Messagerie"><span class="type-signature">(async, static) </span>Messagerie<span class="signature">()</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <section style="padding: 10px; border-left: 3px solid #FF6060;"><h3>Private Messaging Interface (Server Component)</h3><p>A secure server-side component that manages the user's private conversations. It provides a full-featured interface for viewing message history and responding to inquiries.</p><p><strong>Key Features:</strong></p><ul><li><b>Security:</b> Verifies session integrity via token and user cookies. If unauthorized, it triggers a contextual Alert and renders the Login component.</li><li><b>Master-Detail Layout:</b> Features a sidebar for conversation previews and a primary area for the active message thread.</li><li><b>Communication Tools:</b> Integrates a message history viewer and a reply form with a styled textarea for sending updates.</li><li><b>Status Tracking:</b> Displays read/unread indicators and short snippets of the most recent activity for each contact.</li></ul><p><strong>Technical Note:</strong> This component utilizes asynchronous data fetching to synchronize message status and thread history directly on the server.</p></section>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="messagerie_page.jsx.html">messagerie/page.jsx</a>, <a href="messagerie_page.jsx.html#line33">line 33</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The rendered messaging interface or login redirect.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".NotFound"><span class="type-signature">(static) </span>NotFound<span class="signature">()</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <section style="padding: 10px; border-left: 3px solid #FF6060;"><h3>Custom 404 Error Page</h3><p>This is a Client Component triggered automatically by Next.js when a route is not found or when the <code>notFound()</code> function is called manually.</p><p><strong>User Experience Flow:</strong></p><ul><li><b>Visual Feedback:</b> Displays a large 404 heading to immediately inform the user of the error.</li><li><b>Contextual Message:</b> Provides a clear explanation that the requested page does not exist.</li><li><b>Recovery Path:</b> Includes a primary link to redirect users back to the Homepage.</li></ul><p><strong>Technical Note:</strong> Acts as the global safety net for any broken links or non-existent apartment IDs.</p></section>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="not-found.jsx.html">not-found.jsx</a>, <a href="not-found.jsx.html#line23">line 23</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The rendered 404 error page with navigation recovery.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-AuthActions.html">AuthActions</a></li><li><a href="module-Components.html">Components</a></li><li><a href="module-Contexts.html">Contexts</a></li><li><a href="module-FavoritesAction.html">FavoritesAction</a></li><li><a href="module-Pages.html">Pages</a></li><li><a href="module-PropertyActions.html">PropertyActions</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Loading">Loading</a></li><li><a href="global.html#RootLayout">RootLayout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Mon Mar 02 2026 00:44:26 GMT+0000 (Ora del meridiano di Greenwich)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

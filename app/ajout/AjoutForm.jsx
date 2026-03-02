@@ -1,4 +1,24 @@
+
 import { categoriesList, equipmentsList } from "@/app/utils";
+
+
+
+/**
+ *
+ * Component for adding a new property listing.
+ * @name AjoutForm
+ * @memberof module:Components
+ * @function
+ * @description
+ * A comprehensive form that allows users to register a new apartment.
+ * * Key sections include:
+ * - **Basic Information**: Title, description, and location details.
+ * - **Media Upload**: Inputs for a cover image and additional property photos.
+ * - **Host Details**: Information about the person hosting the property.
+ * - **Amenities**: A dynamic list of equipment (WiFi, Parking, etc.) rendered from {@link equipmentsList}.
+ * - **Categorization**: Selection of predefined categories from {@link categoriesList} and an option to add custom tags.
+ * @returns {JSX.Element} The rendered property creation form.
+ */
 
 export function AjoutForm(){
     return (

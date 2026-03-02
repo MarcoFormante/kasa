@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: page.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: page.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+/**
+ * @module Pages
+ */
+import { Suspense } from "react";
+import { Heading } from "./components/Heading/Heading";
+import { Hero } from "./components/Hero/Hero";
+import { AptsList } from "./components/Homepage/AptsList";
+import { StepsCard } from "./components/Homepage/StepsCard";
+import { Paragraph } from "./components/Paragraph/Paragraph";
+import { Loading } from "./components/Loading/Loading";
+
+export const metadata = {
+  title: "Accueil",
+};
+
+/**
+ * Home Page Component.
+ * @component Home
+ * @memberof module:Pages
+ * @description
+ * &lt;section style="padding: 10px; border-left: 3px solid #FF6060;">
+ * &lt;h3>Home Page (Server Component)&lt;/h3>
+ * &lt;p>The main entry point of the Kasa application. This component is rendered on the server to ensure optimal performance and SEO.&lt;/p>
+ * &lt;p>&lt;strong>Page Structure:&lt;/strong>&lt;/p>
+ * &lt;ul>
+ * &lt;li>&lt;b>SEO Layer:&lt;/b> Injects Structured Data (JSON-LD) for Accommodation and ItemList schemas.&lt;/li>
+ * &lt;li>&lt;b>Hero Section:&lt;/b> Displays the main brand heading and atmospheric background.&lt;/li>
+ * &lt;li>&lt;b>Apartment Feed:&lt;/b> An async list of properties fetched directly on the server.&lt;/li>
+ * &lt;li>&lt;b>Instructional Section:&lt;/b> Cards explaining the booking process.&lt;/li>
+ * &lt;/ul>
+ * &lt;p>&lt;strong>Technical Note:&lt;/strong> The apartment list is wrapped in a Suspense boundary to provide a smooth loading state while the server fetches data.&lt;/p>
+ * &lt;/section>
+ * @returns {Promise&lt;JSX.Element>} The rendered Home page structure.
+ */
+  function Home() {
+
+  const jsonSchema = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Liste d'hébergements Kasa",
+      "description": "Découvrez nos appartements partout en France",
+  };
+
+  return (
+      &lt;main>
+        &lt;script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonSchema) }}
+        />
+        &lt;section className="page-section">
+           &lt;Heading 
+              text={"Chez vous, partout et ailleurs"} 
+              styles={"mt-40"}
+            />
+
+          &lt;Paragraph 
+            text={"Avec Kasa, vivez des séjours uniques dans des hébergements chaleureux, sélectionnés avec soin par nos hôtes."}
+            styles={"mt-8 text-center"}
+          />
+          
+          &lt;Hero isHomePage={true}/>
+        &lt;/section>
+
+        &lt;section className="apts-list page-section" aria-label="Liste d'appartements disponibles">
+          &lt;Suspense fallback={&lt;Loading/>}>
+            &lt;AptsList/>
+          &lt;/Suspense>
+        &lt;/section>
+
+        &lt;section className="page-section steps-section section-white">
+            &lt;h2 className="text-center semibold black">Comment ça marche ?&lt;/h2>
+            &lt;Paragraph
+            styles={"mt-16 text-center w-65x steps-paragraph"}
+            text={`Que vous partiez pour un week-end improvisé, des vacances en famille ou un voyage professionnel, Kasa vous aide à trouver un lieu qui vous ressemble.`}
+            />
+
+          &lt;div className="steps-list-container">
+              &lt;StepsCard 
+                title={"Recherchez"}
+                desc={"Entrez votre destination, vos dates et laissez Kasa faire le reste"}
+              />
+              &lt;StepsCard 
+                title={"Réservez"}
+                desc={"Profitez d’une plateforme sécurisée et de profils d’hôtes vérifiés."}
+              />
+              &lt;StepsCard 
+                title={"Vivez l’expérience"}
+                desc={"Installez-vous, profitez de votre séjour, et sentez-vous chez vous, partout."}
+              />
+          &lt;/div>
+        &lt;/section>
+        
+      &lt;/main>
+  );
+}
+
+export default Home</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-AuthActions.html">AuthActions</a></li><li><a href="module-Components.html">Components</a></li><li><a href="module-Contexts.html">Contexts</a></li><li><a href="module-FavoritesAction.html">FavoritesAction</a></li><li><a href="module-Pages.html">Pages</a></li><li><a href="module-PropertyActions.html">PropertyActions</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Loading">Loading</a></li><li><a href="global.html#RootLayout">RootLayout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Mon Mar 02 2026 00:44:26 GMT+0000 (Ora del meridiano di Greenwich)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "source": {
+    "include": ["app"], 
+    "includePattern": ".+\\.js(x)?$",
+    "excludePattern": "(^|\\/|\\\\)(node_modules|\\.next|docs|public)"
+  },
+  "opts": {
+    "recurse": true,
+    "destination": "./docs",
+    "encoding": "utf8"
+  }
+}
