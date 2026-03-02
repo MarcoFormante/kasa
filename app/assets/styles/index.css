@@ -402,7 +402,7 @@ ul {
   justify-content: left;
   gap: 24px;
 }
-@media screen and (max-width: 1112px) {
+@media screen and (max-width: 1200px) {
   .apts-list {
     justify-content: center;
   }
@@ -556,12 +556,17 @@ ul {
   position: fixed;
   background-color: rgba(0, 0, 0, 0.815);
   left: 0%;
-  top: 0;
+  top: 0%;
   width: 100vw;
   height: 100vh;
   margin: auto;
   z-index: 200;
   display: flex;
+  transform: translateY(-110%);
+  transition: all 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.carousel-container-open {
+  transform: translateY(0%);
 }
 
 .carousel-center-container {

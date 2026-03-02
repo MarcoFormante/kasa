@@ -19,10 +19,9 @@ import { ArrowButton } from "./ArrowButton";
  * * 
  * @param {Object} props - Component props.
  * @param {string[]} props.images - An array of image URLs to display.
- * @param {function} props.closeCarousel - Callback function to close the carousel overlay.
  * @returns {JSX.Element} The rendered carousel component.
  */
-export function Carousel({images,closeCarousel}){
+export function Carousel({images,showCarousel,setShowCarousel}){
 
     const slides = images.length > 1 ? [images[images.length - 1], ...images, images[0]] : images;
     const [currentIndex, setCurrentIndex] = useState(images.length > 1 ? 1 : 0);
@@ -62,25 +61,26 @@ export function Carousel({images,closeCarousel}){
 
 
 
+
   useEffect(()=>{
     window.addEventListener("keydown",(e)=>{
         if (e.key === "Escape" ) {
-            closeCarousel()
+            setShowCarousel(false)
         }
     })
 
     return ()=> window.removeEventListener("keydown",(e)=>{
         if (e.key === "Escape" ) {
-            closeCarousel()
+            setShowCarousel(false)
         }
     })
-  },[closeCarousel])
+  },[])
 
   
 
     return (
-        <div className="carousel-container" >
-            <button aria-label="Fermer le carousel" className="carousel-exit pointer" onClick={closeCarousel}>X</button>
+        <div className={`carousel-container ${showCarousel && "carousel-container-open"}`} >
+            <button aria-label="Fermer le carousel" className="carousel-exit pointer" onClick={()=>setShowCarousel(false)}>X</button>
             <div className="carousel-center-container">
                 <div 
                     className={`carousel-images ${isTransitioning ? "carousel-images-transitioning" : ""}`}

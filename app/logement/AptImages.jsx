@@ -11,7 +11,7 @@ export function AptImages({data}){
     
     return(
         <>
-            {showCarousel && <Carousel images={data.apt.pictures} closeCarousel={()=>setShowCarousel(false)}/>}
+          <Carousel showCarousel={showCarousel} setShowCarousel={setShowCarousel} images={ data.apt.pictures} />
             <div className="carousel" onClick={()=>setShowCarousel(true)}>
                     {data?.apt.pictures[0] && 
                         <Image

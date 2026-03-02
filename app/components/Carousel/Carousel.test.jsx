@@ -102,6 +102,7 @@ describe('Carousel Tests', () => {
         await waitFor(()=>{
             const carouselContainer = container.querySelector(".carousel-container")
             expect(carouselContainer).toBeInTheDocument()
+            expect(carouselContainer).toHaveClass("carousel-container-open")
         })
 
         const nextBtn = screen.queryByRole('button', { name: /Slide suivante/i })
@@ -117,8 +118,9 @@ describe('Carousel Tests', () => {
         const {container} = render(<AptImages data={images}/>)
         const carousel = container.querySelector(".carousel")
         await userEvent.click(carousel)
+         const carouselContainer = container.querySelector(".carousel-container")
         await waitFor(()=>{
-            const carouselContainer = container.querySelector(".carousel-container")
+           
             expect(carouselContainer).toBeInTheDocument()
         })
 
@@ -128,8 +130,9 @@ describe('Carousel Tests', () => {
         await userEvent.click(closeBtn)
 
         await waitFor(()=>{
-            const carouselContainer = container.querySelector(".carousel-container")
-            expect(carouselContainer).toBeNull()
+            expect(carouselContainer).toHaveClass("carousel-container")
+            expect(carouselContainer).not.toHaveClass("carousel-container-open")
         })
+        
     })
 })
