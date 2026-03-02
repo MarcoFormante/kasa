@@ -37,7 +37,7 @@ async function Messagerie(){
     if (!token || !user) {
         return (
             <div>
-                <Alert color="red" text={"Connectez vous pour acceder à la messagerie"}/>
+                <Alert color="red" text={"Connectez-vous pour accéder à la messagerie"}/>
                 <Login redirectPath={"/messagerie"}/>            
             </div>
         ) 

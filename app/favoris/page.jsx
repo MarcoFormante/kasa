@@ -35,7 +35,7 @@ export const metadata = {
     if (!token || !user) {
         return (
             <div>
-                <Alert color="red" text={"Connectez vous pour acceder aux favoris"}/>
+                <Alert color="red" text={"Connectez-vous pour accéder aux favoris"}/>
                 <Login redirectPath={"/favoris"}/>            
             </div>
         ) 

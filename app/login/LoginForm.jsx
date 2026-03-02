@@ -24,7 +24,7 @@ export function LoginForm({redirectPath = "/"}){
         console.log(response);
         
         if (response.error === 'invalid credentials' ) {
-            setAlert({color:"red",text:"Email ou mot de passe invalides"})
+            setAlert({color:"red",text:"Email ou mot de passe incorrect"})
             return
         }
         

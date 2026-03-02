@@ -34,7 +34,7 @@ export const metadata = {
     if (!token) {
         return (
             <div>
-                <Alert color="red" text={"Connectez vous pour ajouter un logement"}/>
+                <Alert color="red" text={"Connectez-vous pour ajouter un logement."}/>
                 <Login redirectPath={"/ajout"}/>            
             </div>
         ) 

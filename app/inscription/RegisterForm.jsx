@@ -17,15 +17,15 @@ export function RegisterForm(){
         if (data?.status === 201) {
             localStorage.clear()
             localStorage.setItem("user",JSON.stringify(data.user))
-            setAlert({color:"green",text:"Utilisater enregistré et connecté"})
+            setAlert({color:"green",text:"Utilisateur enregistré et connecté"})
             redirect(localStorage.getItem("redirectPath") ?? "/")
         }else{
             let message = data?.error ?? ""
             
             if (message.startsWith("password")) {
-                message = "Le mot de passe doit avoir au moins 6 caracters"
+                message = "Le mot de passe doit avoir au moins 6 caractères"
             }else if(data.status === 409){
-                 message = "L'email existe deja"
+                 message = "Cette adresse email est déjà utilisée."
             }
             setAlert({color:"red",text:message})
         }

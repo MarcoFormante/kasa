@@ -57,7 +57,7 @@ export function FavoriteBtn({apt}){
             return 
         }else{
             setFavoriteApts(favoriteApts.filter((apart)=> apart.id !== apt.id))
-            setAlert({color:"green",text:"Logement supprimé depuis la liste des favoris"})
+            setAlert({color:"green",text:"Logement supprimé de la liste des favoris."})
         }
     }
 
