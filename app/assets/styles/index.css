@@ -818,19 +818,49 @@ ul {
   padding-top: 40px;
   padding-inline: 136px;
 }
+@media screen and (max-width: 1450px) {
+  .ajout-page {
+    padding-inline: 80px;
+  }
+}
+@media screen and (max-width: 1350px) {
+  .ajout-page {
+    padding: 38px 16px;
+  }
+}
 .ajout-page .flex-row-between-center {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+@media screen and (max-width: 1024px) {
+  .ajout-page .flex-row-between-center {
+    padding-inline: 80px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ajout-page .flex-row-between-center {
+    padding-inline: 16px;
+  }
+}
 .ajout-page h1 {
   font-size: 24px;
   font-weight: 500;
   color: #000000;
+  font-size: clamp(18px, 2vw, 24px);
 }
 .ajout-page .ajout-form-flex-container {
   display: flex;
   justify-content: space-between;
+}
+@media screen and (max-width: 1024px) {
+  .ajout-page .ajout-form-flex-container {
+    margin-top: 16px;
+    flex-direction: column;
+    max-width: -moz-fit-content;
+    max-width: fit-content;
+    margin-inline: auto;
+  }
 }
 .ajout-page .white-container {
   background-color: #FFFFFF;
@@ -849,11 +879,34 @@ ul {
 .ajout-page .white-container-h-444 {
   height: 444px;
 }
+@media screen and (max-width: 1205px) {
+  .ajout-page .white-container {
+    width: 480px;
+    padding-inline: 30px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ajout-page .white-container {
+    padding-inline: 16px;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding-block: 16px;
+    height: -moz-fit-content;
+    height: fit-content;
+    margin-top: 16px;
+    width: 100%;
+  }
+}
 .ajout-page .flex-col-input-container {
   display: flex;
   flex-direction: column;
   gap: 5px;
   width: 416px;
+}
+@media screen and (max-width: 480px) {
+  .ajout-page .flex-col-input-container {
+    width: 80vw;
+  }
 }
 .ajout-page .flex-col-input-container label {
   font-weight: 500;
@@ -892,6 +945,11 @@ ul {
   flex-direction: column;
   gap: 16px;
 }
+@media screen and (max-width: 768px) {
+  .ajout-page .right-container {
+    margin-top: 16px;
+  }
+}
 .ajout-page .grid-2-col-200 {
   display: grid;
   width: 416px;
@@ -905,6 +963,7 @@ ul {
   display: flex;
   gap: 10px;
   cursor: pointer;
+  font-size: 12px;
 }
 .ajout-page .grid-2-col-200 .checkbox-container label, .ajout-page .grid-2-col-200 .checkbox-container input {
   cursor: pointer;
