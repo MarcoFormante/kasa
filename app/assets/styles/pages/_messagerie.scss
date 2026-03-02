@@ -176,6 +176,13 @@
     .conversation-form{
         padding: 30px 21px;
         position: relative;
+        background-color: $white;
+
+        @media screen and (max-width: 1024px) {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+            }
         
         form,textarea{
             width: 100%;
@@ -185,6 +192,12 @@
             border: 1px solid $light_grey;
             height: 95px;
             padding: 16px;
+            border-radius: 10px;
+
+            @media screen and (max-width: 768px) {
+                height: 44px;
+                padding-right: 44px;
+            }
         }
 
         button{
@@ -199,3 +212,47 @@
     }
 
 }
+
+@media screen and (min-width:1024px) {
+    .retour-btn-container-right{
+        display: none;
+    }
+}
+
+
+@media screen and (max-width:1024px) {
+
+    .messagerie-page{
+        width: 100%;
+        display: block;
+        height: 80vh;
+
+        .message-list,.messages-section{
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+
+    .messagerie-page-showMessages{
+        max-width: 100%;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        position:relative;
+        display: block;
+
+        .messagerie-page-left-container{
+            display: none;
+        }
+
+        .conversation-section{
+            padding: 8px;
+        }
+
+        .retour-btn-container{
+            margin-left: 8px;
+            margin-bottom: 16px;
+        }
+    }
+}
+

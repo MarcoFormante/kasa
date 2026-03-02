@@ -4,6 +4,7 @@ import fakeImage from "../assets/images/about-mission.webp"
 import { Alert } from "../components/Alert/Alert";
 import Login from "../login/page";
 import { cookies } from "next/headers";
+import { MessageButton } from "./MessageButton";
 
 export const metadata = {
   title: "Messagerie",
@@ -30,7 +31,7 @@ export const metadata = {
  * @async
  * @returns {JSX.Element} The rendered messaging interface or login redirect.
  */
-async function Messagerie(){
+async function Messagerie({searchParams}){
     const token = (await cookies()).get("token")?.value
     const user = (await cookies())?.get("user")?.value
 
@@ -42,9 +43,11 @@ async function Messagerie(){
             </div>
         ) 
     }
+
+    const {id} = await searchParams
    
     return (
-        <main className="messagerie-page">
+        <main className={`messagerie-page ${id ? "messagerie-page-showMessages" : ""}`}>
             <div className="messagerie-page-left-container">
                 <div className="retour-btn-container retour-btn-container-w-93">
                     <LinkButton
@@ -60,128 +63,150 @@ async function Messagerie(){
                     <div>
                         <ul className="message-list">
                             <li className="message-item">
-                                <button>
-                                    <div className="message-item-container message-item-container-selected">
-                                        <div className="message-item-left-container">
-                                            <Image className="message-user-image" src={fakeImage} width={44.5} height={45.05} alt=""/>
-                                            <div className="message-info-right-container">
-                                                <div className="message-info-mid-container">
-                                                    <span className="user-name">{"Utilisateur"}</span>
-                                                    <p className="user-message-short">{"Bonjour, votre appartement est-il dispo"}</p>
-                                                </div>
-                                                <div className="message-time-info-container">
-                                                    <span className="sent-time">{"11:04 am"}</span>
-                                                    <span className={`message-checked message-checked-false`}></span>
-                                                </div>               
-                                            </div>
-                                        </div>
-                                    </div>
-                                </button>
+                                <MessageButton 
+                                    selected={true}
+                                    fakeImage={fakeImage} 
+                                    text={"Bonjour, votre logement est-il disponible pour ces dates ?"} 
+                                    sentTime={"09:15 am"} 
+                                    userName={"Jean Dupont"}
+                                    id={"523ds64"}
+                                    paramId={id}
+                                /> 
                             </li>
 
                             <li className="message-item">
-                                <button>
-                                    <div className="message-item-container">
-                                        <div className="message-item-left-container">
-                                            <Image src={fakeImage} width={44.5} height={45.05} alt=""/>
-                                            <div className="message-info-right-container">
-                                                <div className="message-info-mid-container">
-                                                    <span className="user-name">{"Utilisateur"}</span>
-                                                    <p className="user-message-short">{"Bonjour, votre appartement est-il dispo"}</p>
-                                                </div>
-                                                <div className="message-time-info-container">
-                                                    <span className="sent-time">{"11:04 am"}</span>
-                                                    <span className={`message-checked message-checked-false`}></span>
-                                                </div>               
-                                            </div>
-                                        </div>
-                                    </div>
-                                </button>
+                            <MessageButton 
+                                    fakeImage={fakeImage} 
+                                    text={"Est-ce que le Wi-Fi est assez rapide pour le télétravail ?"} 
+                                    sentTime={"10:30 am"} 
+                                    userName={"Marie Claire"}
+                                    id={"523641"}
+                                    paramId={id}
+
+                                />                             
                             </li>
 
                             <li className="message-item">
-                                <button>
-                                    <div className="message-item-container">
-                                        <div className="message-item-left-container">
-                                            <Image src={fakeImage} width={44.5} height={45.05} alt=""/>
-                                            <div className="message-info-right-container">
-                                                <div className="message-info-mid-container">
-                                                    <span className="user-name">{"Utilisateur"}</span>
-                                                    <p className="user-message-short">{"Bonjour, votre appartement est-il dispo"}</p>
-                                                </div>
-                                                <div className="message-time-info-container">
-                                                    <span className="sent-time">{"11:04 am"}</span>
-                                                    <span className={`message-checked message-checked-false`}></span>
-                                                </div>               
-                                            </div>
-                                        </div>
-                                    </div>
-                                </button>
+                                <MessageButton 
+                                    fakeImage={fakeImage} 
+                                    text={"Merci pour votre réponse ! Je vais réserver tout de suite."} 
+                                    sentTime={"04:20 pm"} 
+                                    userName={"Sophie Bernard"}
+                                    id={"52464"}
+                                    paramId={id}
+                                />                            
                             </li>
+
+                            <li className="message-item">
+                                <MessageButton 
+                                    fakeImage={fakeImage} 
+                                    text={"Bonjour, votre logement est-il disponible pour ces dates ?"} 
+                                    sentTime={"09:15 am"} 
+                                    userName={"Jean Dupont"}
+                                    id={"52374"}
+                                    paramId={id}
+                                /> 
+                            </li>
+
+                            <li className="message-item">
+                            <MessageButton 
+                                    fakeImage={fakeImage} 
+                                    text={"Est-ce que le Wi-Fi est assez rapide pour le télétravail ?"} 
+                                    sentTime={"10:30 am"} 
+                                    userName={"Marie Claire"}
+                                    id={"52367"}
+                                    paramId={id}
+                                />                             
+                            </li>
+
+                            <li className="message-item">
+                                <MessageButton 
+                                    fakeImage={fakeImage} 
+                                    text={"Merci pour votre réponse ! Je vais réserver tout de suite."} 
+                                    sentTime={"04:20 pm"} 
+                                    userName={"Sophie Bernard"}
+                                    id={"52368"}
+                                    paramId={id}
+                                />                            
+                            </li>
+
                         </ul>
                     </div>
                 </section>
             </div>
-            <div className="w-full">
-                <section className="conversation-section">
-                    <ul className="conversation-messages-list">
-                        <li>
-                            <Image className="conversation-user-image" src={fakeImage} alt="Image du profile de "/>
-                            <div className="conversation-message-flex-col-container">
-                                <div className="conversation-message-info">
-                                    {"Utilisateur"} <span className="circle-space"></span> {"11:04pm"}
-                                </div>
-                                <div>
-                                    <div className="message-white-container">
-                                        <p>Bonjour, votre appartement est-il disponible pour le week-end du 12 au 14 octobre ?</p>
+
+            {id && 
+                <div className="retour-btn-container retour-btn-container-right retour-btn-container-w-93 ">
+                    <LinkButton
+                        isBackBtn={true}
+                        href={"/messagerie"} 
+                        label={"Retour"}
+                        type="btn-light-grey"
+                    />
+                </div>
+            }
+            <div className="w-full bg-light-orange">
+              {  id && <>
+                    <section className="conversation-section">
+                        <ul className="conversation-messages-list mt-40">
+                            <li>
+                                <Image className="conversation-user-image" src={fakeImage} alt="Image du profile de "/>
+                                <div className="conversation-message-flex-col-container">
+                                    <div className="conversation-message-info">
+                                        {"Utilisateur"} <span className="circle-space"></span> {"11:04pm"}
+                                    </div>
+                                    <div>
+                                        <div className="message-white-container">
+                                            <p>Bonjour, votre appartement est-il disponible pour le week-end du 12 au 14 octobre ?</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
 
-                        <li>
-                            <Image className="conversation-user-image" src={fakeImage} alt="Image du profile de "/>
-                            <div className="conversation-message-flex-col-container">
-                                <div className="conversation-message-info">
-                                    {"Utilisateur"} <span className="circle-space"></span> {"11:04pm"}
-                                </div>
-                                <div>
-                                    <div className="message-white-container">
-                                        <p>Bonjour, votre appartement est-il disponible pour le week-end du 12 au 14 octobre ?</p>
+                            <li>
+                                <Image className="conversation-user-image" src={fakeImage} alt="Image du profile de "/>
+                                <div className="conversation-message-flex-col-container">
+                                    <div className="conversation-message-info">
+                                        {"Utilisateur"} <span className="circle-space"></span> {"11:04pm"}
+                                    </div>
+                                    <div>
+                                        <div className="message-white-container">
+                                            <p>Bonjour, votre appartement est-il disponible pour le week-end du 12 au 14 octobre ?</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
 
 
-                        <li className="user-message-row-reverse">
-                            <Image className="conversation-user-image" src={fakeImage} alt="Image du profile de "/>
-                            <div className="conversation-message-flex-col-container">
-                                <div className="conversation-message-info">
-                                    {"Utilisateur"} <span className="circle-space"></span> {"11:04pm"}
-                                </div>
-                                <div>
-                                    <div className="message-white-container">
-                                        <p>Bonjour, votre appartement est-il disponible pour le week-end du 12 au 14 octobreasdasd adssadsad asdsadsadsad zsdsadsa ?</p>
+                            <li className="user-message-row-reverse">
+                                <Image className="conversation-user-image" src={fakeImage} alt="Image du profile de "/>
+                                <div className="conversation-message-flex-col-container">
+                                    <div className="conversation-message-info">
+                                        {"Utilisateur"} <span className="circle-space"></span> {"11:04pm"}
+                                    </div>
+                                    <div>
+                                        <div className="message-white-container">
+                                            <p>Bonjour, votre appartement est-il disponible pour le week-end du 12 au 14 octobreasdasd adssadsad asdsadsadsad zsdsadsa ?</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
 
-                    </ul>        
-                </section>
+                        </ul>        
+                    </section>
 
-                <section className="conversation-form">
-                    <form>
-                        <label className="out-of-screen" htmlFor="message">Envoyer un message</label>
-                        <textarea name="message" id="message" placeholder="Envoyer un message"></textarea>
-                        <button disabled className="pointer" aria-label="Envoyer le message" type="submit">
-                            <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3.26841 7.63636L3.26841 1.24139L5.19316 3.16613C5.2267 3.20087 5.26683 3.22857 5.31119 3.24763C5.35556 3.26669 5.40328 3.27672 5.45156 3.27714C5.49984 3.27756 5.54773 3.26835 5.59242 3.25007C5.63711 3.23179 5.67771 3.20479 5.71185 3.17064C5.74599 3.1365 5.773 3.0959 5.79128 3.05121C5.80956 3.00652 5.81877 2.95863 5.81835 2.91035C5.81793 2.86207 5.80789 2.81435 5.78884 2.76998C5.76978 2.72562 5.74208 2.68549 5.70734 2.65195L3.16187 0.106469C3.09367 0.0382969 3.0012 0 2.90477 0C2.80835 0 2.71587 0.0382969 2.64768 0.106469L0.102199 2.65195C0.0359588 2.72053 -0.000693798 2.81239 0.000134468 2.90773C0.000963211 3.00308 0.039207 3.09428 0.106629 3.16171C0.174051 3.22913 0.265256 3.26737 0.360601 3.2682C0.455946 3.26903 0.547803 3.23237 0.616386 3.16613L2.54113 1.24139L2.54113 7.63636C2.54113 7.7328 2.57944 7.8253 2.64764 7.89349C2.71584 7.96169 2.80833 8 2.90477 8C3.00122 8 3.09371 7.96169 3.1619 7.89349C3.2301 7.8253 3.26841 7.7328 3.26841 7.63636Z" fill="white"/>
-                            </svg>
-                        </button>
-                    </form>
-                </section>
+                    <section className="conversation-form">
+                        <form>
+                            <label className="out-of-screen" htmlFor="message">Envoyer un message</label>
+                            <textarea name="message" id="message" placeholder="Envoyer un message"></textarea>
+                            <button disabled className="pointer" aria-label="Envoyer le message" type="submit">
+                                <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.26841 7.63636L3.26841 1.24139L5.19316 3.16613C5.2267 3.20087 5.26683 3.22857 5.31119 3.24763C5.35556 3.26669 5.40328 3.27672 5.45156 3.27714C5.49984 3.27756 5.54773 3.26835 5.59242 3.25007C5.63711 3.23179 5.67771 3.20479 5.71185 3.17064C5.74599 3.1365 5.773 3.0959 5.79128 3.05121C5.80956 3.00652 5.81877 2.95863 5.81835 2.91035C5.81793 2.86207 5.80789 2.81435 5.78884 2.76998C5.76978 2.72562 5.74208 2.68549 5.70734 2.65195L3.16187 0.106469C3.09367 0.0382969 3.0012 0 2.90477 0C2.80835 0 2.71587 0.0382969 2.64768 0.106469L0.102199 2.65195C0.0359588 2.72053 -0.000693798 2.81239 0.000134468 2.90773C0.000963211 3.00308 0.039207 3.09428 0.106629 3.16171C0.174051 3.22913 0.265256 3.26737 0.360601 3.2682C0.455946 3.26903 0.547803 3.23237 0.616386 3.16613L2.54113 1.24139L2.54113 7.63636C2.54113 7.7328 2.57944 7.8253 2.64764 7.89349C2.71584 7.96169 2.80833 8 2.90477 8C3.00122 8 3.09371 7.96169 3.1619 7.89349C3.2301 7.8253 3.26841 7.7328 3.26841 7.63636Z" fill="white"/>
+                                </svg>
+                            </button>
+                        </form>
+                    </section>
+                </>}
             </div>
         </main>
     )

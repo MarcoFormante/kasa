@@ -53,6 +53,10 @@ ul {
   color: #565656;
 }
 
+.bg-light-orange {
+  background-color: #FFFBF9;
+}
+
 .text-center {
   text-align: center;
 }
@@ -1340,6 +1344,14 @@ ul {
 .messagerie-page .conversation-form {
   padding: 30px 21px;
   position: relative;
+  background-color: #FFFFFF;
+}
+@media screen and (max-width: 1024px) {
+  .messagerie-page .conversation-form {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
 }
 .messagerie-page .conversation-form form, .messagerie-page .conversation-form textarea {
   width: 100%;
@@ -1348,6 +1360,13 @@ ul {
   border: 1px solid #F5F5F5;
   height: 95px;
   padding: 16px;
+  border-radius: 10px;
+}
+@media screen and (max-width: 768px) {
+  .messagerie-page .conversation-form textarea {
+    height: 44px;
+    padding-right: 44px;
+  }
 }
 .messagerie-page .conversation-form button {
   width: 32px;
@@ -1357,4 +1376,39 @@ ul {
   right: 40px;
   bottom: 40px;
   border-radius: 5px;
+}
+
+@media screen and (min-width: 1024px) {
+  .retour-btn-container-right {
+    display: none;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .messagerie-page {
+    width: 100%;
+    display: block;
+    height: 80vh;
+  }
+  .messagerie-page .message-list, .messagerie-page .messages-section {
+    width: 100%;
+    max-width: 100%;
+  }
+  .messagerie-page-showMessages {
+    max-width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    display: block;
+  }
+  .messagerie-page-showMessages .messagerie-page-left-container {
+    display: none;
+  }
+  .messagerie-page-showMessages .conversation-section {
+    padding: 8px;
+  }
+  .messagerie-page-showMessages .retour-btn-container {
+    margin-left: 8px;
+    margin-bottom: 16px;
+  }
 }/*# sourceMappingURL=index.css.map */
