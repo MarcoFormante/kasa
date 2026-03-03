@@ -76,6 +76,15 @@ export function Carousel({images,showCarousel,setShowCarousel}){
     })
   },[])
 
+
+  useEffect(()=>{
+    if (showCarousel) {
+        document.body.style.overflow = 'hidden'
+    }else{
+        document.body.style.overflow = 'visible'
+    }
+  },[showCarousel])
+
   
 
     return (

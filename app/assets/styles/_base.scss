@@ -6,15 +6,21 @@
 
 html{
     background-color: $light_orange;
+    height: 100%;
 }
 
 body{
     max-width: 1440px;
+    display: flex;
+    flex-direction: column;
     margin: auto;
+    min-height: 100vh;
 }
 
 
 main{
+    flex: 1 0 auto;
+    min-height: calc(100vh - 70px );
     @media screen and (max-width:1150px){
        padding-inline: 16px;
     }
@@ -40,4 +46,9 @@ button{
 
 ul{
     list-style: none;
+}
+
+
+button, input, textarea,select {
+    font-family: inherit;
 }

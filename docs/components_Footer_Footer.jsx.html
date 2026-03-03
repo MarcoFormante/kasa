@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/Heading/Heading.jsx</title>
+    <title>JSDoc: Source: components/Footer/Footer.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/Heading/Heading.jsx</h1>
+    <h1 class="page-title">Source: components/Footer/Footer.jsx</h1>
 
     
 
@@ -27,19 +27,23 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @module Components
- */
-
-/**
- * Heading component for titles.
- * @param {Object} props - Component props.
- * @param {string} props.text - The text to display.
- * @param {string} [props.styles=""] - Additional CSS classes.
+ * @memberof module:Components
+ * @function
+ * @name Footer
+ * @description
+ * A basic structural component that displays the company branding and copyright information at the bottom of every page.&lt;/p>
  * @returns {JSX.Element}
  */
-export function Heading({text,styles=""}){
+export function Footer(){
     return (
-        &lt;h1 className={"heading-h1 " + styles}>{text}&lt;/h1>
+        &lt;footer className="footer">
+            &lt;div>
+                 &lt;div className="footer-logo">&lt;/div>
+            &lt;/div>
+            &lt;div>
+                © 2025 Kasa. All rights reserved
+            &lt;/div>
+        &lt;/footer>
     )
 }</code></pre>
         </article>

@@ -7,7 +7,6 @@
     top: 0;
     background-color: $white;
     z-index: 10;
-    height: 93vh;
     display: flex;
 
 
@@ -194,10 +193,11 @@
 
         @media screen and (max-width: 1024px) {
                 position: fixed;
-                bottom: 0;
+                bottom: 70px;
                 width: 100%;
-            }
-        
+        }
+
+            
         form,textarea{
             width: 100%;
         }
@@ -253,6 +253,7 @@
     .messagerie-page-showMessages{
         max-width: 100%;
         padding: 0;
+        height: 80vh;
         display: flex;
         flex-direction: column;
         position:relative;

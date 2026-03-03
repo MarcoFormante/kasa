@@ -6,13 +6,21 @@
 
 html {
   background-color: #FFFBF9;
+  height: 100%;
 }
 
 body {
   max-width: 1440px;
+  display: flex;
+  flex-direction: column;
   margin: auto;
+  min-height: 100vh;
 }
 
+main {
+  flex: 1 0 auto;
+  min-height: calc(100vh - 70px);
+}
 @media screen and (max-width: 1150px) {
   main {
     padding-inline: 16px;
@@ -39,6 +47,10 @@ button {
 
 ul {
   list-style: none;
+}
+
+button, input, textarea, select {
+  font-family: inherit;
 }
 
 .main-red {
@@ -590,6 +602,12 @@ ul {
      object-position: center;
   width: 100%;
 }
+@media screen and (max-width: 768px) {
+  .carousel-images img {
+    -o-object-fit: scale-down;
+       object-fit: scale-down;
+  }
+}
 .carousel-images-transitioning {
   transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
@@ -1042,7 +1060,7 @@ ul {
     margin-top: 10px;
   }
 }
-.logement-page img {
+.logement-page .carousel img {
   border-radius: 10px;
   -o-object-fit: cover;
      object-fit: cover;
@@ -1358,7 +1376,6 @@ ul {
   top: 0;
   background-color: #FFFFFF;
   z-index: 10;
-  height: 93vh;
   display: flex;
 }
 .messagerie-page + footer {
@@ -1510,7 +1527,7 @@ ul {
 @media screen and (max-width: 1024px) {
   .messagerie-page .conversation-form {
     position: fixed;
-    bottom: 0;
+    bottom: 70px;
     width: 100%;
   }
 }
@@ -1560,6 +1577,7 @@ ul {
   .messagerie-page-showMessages {
     max-width: 100%;
     padding: 0;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     position: relative;
