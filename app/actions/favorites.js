@@ -8,6 +8,7 @@
  */
 "use server"
 import { cookies } from "next/headers";
+import { sql } from "@vercel/postgres";
 const API_URL = process.env.API_URL 
 
 /**
