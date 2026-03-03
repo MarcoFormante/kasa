@@ -3,6 +3,7 @@ import "./assets/styles/index.css"
 import { Header } from "./components/Header/Header";
 import { FavoritesContext } from "./contexts/FavoritesContext";
 import { AlertHandlerContext } from "./contexts/AlertContext";
+import { Footer } from "./components/Footer/Footer";
 
 
 const inter = Inter({
@@ -46,6 +47,7 @@ function RootLayout({ children }) {
         <AlertHandlerContext>
           <Header/>
             {children}
+          <Footer/>
         </AlertHandlerContext>
       </FavoritesContext>
       </body>

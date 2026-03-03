@@ -38,7 +38,7 @@ function About(){
     };
 
     return(
-            <main>
+            <main className={"about-page"}>
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonSchema) }}

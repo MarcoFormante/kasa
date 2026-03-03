@@ -1,11 +1,22 @@
+.about-page{
+
+    & + footer{
+        @media screen and (max-width:1024px) {
+            margin-top:250px;            
+        }
+
+    }
+}
+
+
 .about-mission{
+    padding-bottom: 70px;
 
     &-section{
         max-width: 1115px;
         margin: auto;
         position: relative;
 
-        
 
         h2{
             color: $main_red;
@@ -100,4 +111,6 @@
     @media screen  and (max-width:768px){
         width: 100%;
     }
+
+   
 }

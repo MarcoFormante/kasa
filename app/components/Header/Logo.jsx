@@ -1,5 +1,5 @@
 export function Logo(){
     return (
-       <div className="header-logo"></div>
+       <div aria-label={"Accueil"} className="header-logo"></div>
     )
 }
