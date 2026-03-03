@@ -11,7 +11,7 @@ export function AptImages({data}){
     
     return(
         <>
-          <Carousel showCarousel={showCarousel} setShowCarousel={setShowCarousel} images={data.apt.pictures} />
+         {data?.apt?.pictures &&  <Carousel showCarousel={showCarousel} setShowCarousel={setShowCarousel} images={data.apt.pictures} />}
             <div 
                 inert={showCarousel ? "" : null}
                 className="carousel" 
@@ -23,24 +23,24 @@ export function AptImages({data}){
                 onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") setShowCarousel(true)}}
               >
-                    {data?.apt.pictures[0] && 
+                    { data?.apt?.pictures && data?.apt?.pictures[0] && 
                         <Image
                         className="big-pic"
-                        src={data?.apt.pictures[0]}
+                        src={data?.apt?.pictures[0]}
                         alt={data?.apt.title}
                         width={358}
                         height={421}
                         />
                     }
 
-                   { data?.apt.pictures.length > 1 && 
+                   { data?.apt?.pictures?.length > 1 && 
                    <div className="little-pics-container">
-                       { data?.apt.pictures.map((photo,i)=> (
+                       { data?.apt?.pictures.map((photo,i)=> (
                         i >= 1 && i < 5 &&
                         <Image 
                         key={photo}
                         src={photo}
-                        alt={data?.apt.title}
+                        alt={data?.apt?.title}
                             width={146}
                             height={176}
                             loading="eager"

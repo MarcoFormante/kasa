@@ -1,7 +1,7 @@
 
 'use client'
 import Image from "next/image"
-import { useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import { ArrowButton } from "./ArrowButton";
 
 

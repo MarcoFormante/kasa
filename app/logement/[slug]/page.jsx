@@ -43,30 +43,30 @@ async function Logement({searchParams}){
     const {id} = await searchParams
     
     const data = await getSingleApartment(id)
-    
-    if (data.apt.error === "Property not found") {
-        notFound()
+
+    if (!data || !data.success || !data.apt) {
+        notFound();
     }
 
     const jsonSchema = {
         "@context": "https://schema.org",
         "@type": "Accommodation",
-        "name": data.apt.title,
-        "description": data.apt.description,
-        "image": data.apt.pictures,
+        "name": data.apt?.title,
+        "description": data.apt?.description,
+        "image": data.apt?.pictures,
         "address": {
             "@type": "PostalAddress",
-            "addressLocality": data.apt.location
+            "addressLocality": data.apt?.location
         },
-        "amenityFeature": data.apt.equipments.map(eq => ({
+        "amenityFeature": data?.apt?.equipments?.map(eq => ({
             "@type": "LocationFeatureSpecification",
             "name": eq,
             "value": true
         })),
         "aggregateRating": {
             "@type": "AggregateRating",
-            "ratingValue": data.apt.rating_avg || 0,
-            "reviewCount": data.apt.reviews_count || 1 
+            "ratingValue": data.apt?.rating_avg || 0,
+            "reviewCount": data.apt?.reviews_count || 1 
         }
     };
 
@@ -93,20 +93,20 @@ async function Logement({searchParams}){
                     <AptImages data={data}/>
                     <div className="logement-info-container">
                         <div>
-                            <h1 className="logement-title">{data?.apt.title}</h1>
-                            <address>{data?.apt.location}</address>
+                            <h1 className="logement-title">{data?.apt?.title}</h1>
+                            <address>{data?.apt?.location}</address>
                         </div>
 
                         <div className="logement-desc-container">
-                            <p className="logement-desc">{data?.apt.description}</p>
+                            <p className="logement-desc">{data?.apt?.description}</p>
                         </div>
                         
                         <div>
                             <h2 className="equip-title">Équipements</h2>
                             <div className="logement-items-list-container">
                                 <ul className="list-grid">
-                                    {data?.apt?.equipments.length > 0 && 
-                                        data?.apt.equipments.map((equip)=> <li key={equip} className="list-item">{equip}</li>)
+                                    {data?.apt?.equipments?.length > 0 && 
+                                        data?.apt?.equipments?.map((equip)=> <li key={equip} className="list-item">{equip}</li>)
                                     }
                                 </ul>
                             </div>
@@ -116,8 +116,8 @@ async function Logement({searchParams}){
                             <h3 className="category-title">Catégorie</h3>
                             <div className="logement-items-list-container">
                                 <ul className="list-grid">
-                                    {data?.apt?.tags.length > 0 && 
-                                      data?.apt.tags.map((tag)=> <li key={tag} className="list-item">{tag}</li>)
+                                    {data?.apt?.tags?.length > 0 && 
+                                      data?.apt?.tags?.map((tag)=> <li key={tag} className="list-item">{tag}</li>)
                                     }
                                 </ul>
                             </div>
@@ -134,7 +134,7 @@ async function Logement({searchParams}){
                                <Image 
                                 width={82}
                                 height={82}
-                                src={data?.apt.host.picture} 
+                                src={data?.apt?.host.picture} 
                                 alt=""
                                 />}
 
