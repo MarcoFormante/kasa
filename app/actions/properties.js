@@ -29,22 +29,22 @@ const API_URL = process.env.API_URL
  */
 export async function getApartments(){
    try {
-    if (process.env.NODE_ENV === "production") {
+    
         const { rows } = await sql`SELECT * FROM properties`;
         return {
             success:true,
             apts:rows
         }
-    }
-    const response = await fetch(`${API_URL}/api/properties`);
-    const data = await response.json()
+    // const response = await fetch(`${API_URL}/api/properties`);
+    // const data = await response.json()
     
-    return {
-        success:true,
-        apts:data
-    }
+    // return {
+    //     success:true,
+    //     apts:data
+    // }
 
    } catch (error) {
+    
         return {
             success:false,
             error
