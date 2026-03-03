@@ -101,3 +101,23 @@ Le projet a été réalisé en suivant le backlog officiel :
 [Lien vers le Backlog Notion](https://www.notion.so/openclassrooms/Product-Backlog-et-sp-cifications-techniques-pour-le-site-de-Kasa-25d484f1fa6180c7924beb3ae178fa58)
 
 > **Note :** J'ai effectué uniquement le **Sprint 1 (obligatoire)** pour ce projet.
+
+
+### Accès au Projet
+
+Pour tester les fonctionnalités d'authentification et les favoris, vous pouvez utiliser les identifiants suivants :
+
+* **Email** : `jean.dupont@gmail.com`
+* **Mot de passe** : `exemple2026`
+
+
+### Démo en ligne
+
+Vous pouvez consulter la version publique du site ici : 
+[https://kasa-gamma-ten.vercel.app/](https://kasa-gamma-ten.vercel.app/)
+
+*Note : Sur la version en ligne, vous pouvez accéder uniquement aux pages ne nécessitant pas d'authentification.*
+
+### Accès au Projet Complet
+
+Pour tester l'intégralité des fonctionnalités (connexion, gestion des favoris, etc.), vous devez cloner le dépôt GitHub et lancer le projet localement.
