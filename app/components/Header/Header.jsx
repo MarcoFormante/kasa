@@ -76,7 +76,7 @@ export function Header(){
     return (
         <header className={menuIsOpen ? "vh-full" : ""}>
             <nav id="main-navigation" className={`header-nav ${menuIsOpen ? "active" : ""}`}>
-                <div className="header-nav-links-container header-nav-links-container-first" aria-hidden={isMobile ? !menuIsOpen : false}>
+                <div className="header-nav-links-container header-nav-links-container-first" inert={isMobile && !menuIsOpen ? "" : null}>
                     <Link onClick={closeMenu} href={"/"} className={`${pathname === "/" ? "active" : ""}`}>Accueil</Link>
                     <Link onClick={closeMenu} href={"/a-propos"} className={`${pathname === "/a-propos" ? "active" : ""}`}>À propos</Link>                
                 </div>
