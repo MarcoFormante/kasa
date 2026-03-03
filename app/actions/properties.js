@@ -7,6 +7,7 @@
  * </section>
  */
 'use server'
+import { sql } from '@vercel/postgres';
 const API_URL = process.env.API_URL 
 
 
@@ -28,6 +29,13 @@ const API_URL = process.env.API_URL
  */
 export async function getApartments(){
    try {
+    if (process.env.NODE_ENV === "production") {
+        const { rows } = await sql`SELECT * FROM properties`;
+        return {
+            success:true,
+            apts:rows
+        }
+    }
     const response = await fetch(`${API_URL}/api/properties`);
     const data = await response.json()
     
