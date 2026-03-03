@@ -120,24 +120,6 @@
     }
 
 
-    .conversation-messages-list{
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-
-        li{
-            display: flex;
-            gap: 6px;
-        }
-
-        .user-message-row-reverse{
-            flex-direction: row-reverse;
-
-            .conversation-message-flex-col-container{
-                    align-items: flex-end;
-            }
-        }
-    }
 
     .message-user-image{
         width: 44.5px;
@@ -222,6 +204,34 @@
             right: 40px;
             bottom: 40px;
             border-radius: 5px;
+        }
+    }
+
+    
+    .conversation-messages-list{
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        li{
+            display: flex;
+            gap: 6px;
+        }
+
+        .user-message-row-reverse{
+            flex-direction: row-reverse;
+        
+            .conversation-message-flex-col-container{
+                    align-items: flex-end;
+            }
+
+            .message-white-container{
+                background-color: $dark_orange;
+
+                p{
+                    color: $white;
+                }
+            }
         }
     }
 

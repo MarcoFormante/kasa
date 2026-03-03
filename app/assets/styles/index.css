@@ -1464,21 +1464,6 @@ button, input, textarea, select {
   padding: 40px 42px;
   height: calc(100% - 137px);
 }
-.messagerie-page .conversation-messages-list {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-.messagerie-page .conversation-messages-list li {
-  display: flex;
-  gap: 6px;
-}
-.messagerie-page .conversation-messages-list .user-message-row-reverse {
-  flex-direction: row-reverse;
-}
-.messagerie-page .conversation-messages-list .user-message-row-reverse .conversation-message-flex-col-container {
-  align-items: flex-end;
-}
 .messagerie-page .message-user-image {
   width: 44.5px;
   height: 45.05px;
@@ -1554,6 +1539,27 @@ button, input, textarea, select {
   right: 40px;
   bottom: 40px;
   border-radius: 5px;
+}
+.messagerie-page .conversation-messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.messagerie-page .conversation-messages-list li {
+  display: flex;
+  gap: 6px;
+}
+.messagerie-page .conversation-messages-list .user-message-row-reverse {
+  flex-direction: row-reverse;
+}
+.messagerie-page .conversation-messages-list .user-message-row-reverse .conversation-message-flex-col-container {
+  align-items: flex-end;
+}
+.messagerie-page .conversation-messages-list .user-message-row-reverse .message-white-container {
+  background-color: #842C16;
+}
+.messagerie-page .conversation-messages-list .user-message-row-reverse .message-white-container p {
+  color: #FFFFFF;
 }
 
 @media screen and (min-width: 1024px) {
