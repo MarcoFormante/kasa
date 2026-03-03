@@ -80,10 +80,10 @@ export function Header(){
                     <Link onClick={closeMenu} href={"/"} className={`${pathname === "/" ? "active" : ""}`}>Accueil</Link>
                     <Link onClick={closeMenu} href={"/a-propos"} className={`${pathname === "/a-propos" ? "active" : ""}`}>À propos</Link>                
                 </div>
-                <Link onClick={closeMenu} aria-label="Page d'accueil" href={"/"} className="header-logo-link no-border" aria-hidden={isMobile ? !menuIsOpen : false}>
+                <Link onClick={closeMenu} aria-label="Page d'accueil" href={"/"} className="header-logo-link no-border" inert={isMobile && !menuIsOpen ? "" : null}>
                     <Logo/>
                 </Link>
-                <div className="header-nav-links-container header-nav-links-container-last" aria-hidden={isMobile ? !menuIsOpen : false}>
+                <div className="header-nav-links-container header-nav-links-container-last" inert={isMobile && !menuIsOpen ? "" : null}>
                     <Link onClick={closeMenu} href={"/ajout"} className={`main-red ${pathname === "/ajout" ? "active" : ""}`}>{!menuIsOpen ? "+" : ""}Ajouter un logement</Link>
                     <div className="header-nav-links-icons-container">
                         <Link onClick={closeMenu} href={"/favoris"} aria-label="Favoris" className={`no-border hover__fill-red ${pathname === "/favoris" ? "active" : ""}`}>
