@@ -25,8 +25,8 @@ export function RegisterForm(){
         }else{
             let message = data?.error ?? ""
             
-            if (message.startsWith("password")) {
-                message = "Le mot de passe doit avoir au moins 6 caractères"
+            if (data.status === 400) {
+                message = data?.error
             }else if(data.status === 409){
                  message = "Cette adresse email est déjà utilisée."
             }

@@ -146,16 +146,24 @@ export async function getFavorites(){
     if (!token || !user) {
         return
     }
-    const userId = JSON.parse(user).id
+    try {
+        const userId = JSON.parse(user).id
    
-    const response = await fetch(`${API_URL}/api/users/${userId}/favorites`,{
-        headers:{
-            "authorization":"Bearer " + token
+        const response = await fetch(`${API_URL}/api/users/${userId}/favorites`,{
+            headers:{
+                "authorization":"Bearer " + token
+            }
+        })
+        const data = await response.json()
+
+        return {
+            favorites:data
         }
-    })
-    const data = await response.json()
-    return {
-        favorites:data
+    
+    } catch (error) {
+        return{
+            error
+        }
     }
     
 }

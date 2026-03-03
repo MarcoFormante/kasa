@@ -34,10 +34,41 @@ const API_URL = process.env.API_URL
 export async function register(formData){
     
     const data = {
-        name:formData.get("name") + " " + formData.get("surname"),
-        email:formData.get("email"),
-        password:formData.get("password")
+        name:formData.get("name").trim() + " " + formData.get("surname").trim(),
+        email:formData.get("email").trim(),
+        password:formData.get("password").trim()
     }
+
+    let errors = []
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(data.email)) {
+        erreurs.push("Veuillez entrer une adresse email valide.");
+    }
+    
+    if (!data.name) {
+        errors.push("Le prénom est obligatoire");
+    }
+
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+    if (!passwordRegex.test(data.password)) {
+        errors.push("Le mot de passe doit contenir : " +
+        "au moins 8 caractères, " +
+        "une lettre majuscule " +
+        "et au moins un chiffre.");
+    }
+
+    if (errors.length > 0) {
+        return {
+            success:false,
+            status:400,
+            error: errors.join("\n")
+            
+        }
+    }
+    
     
 try {
      const response = await fetch(`${API_URL}/auth/register`,{
@@ -74,7 +105,9 @@ try {
     }
 
     } catch (error) {
-        return {error}
+        return {
+            error
+        }
     }
 }
 
