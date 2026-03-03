@@ -4,9 +4,11 @@ import { register } from "../actions/auth";
 import { Button } from "../components/Button/Button";
 import Link from "next/link";
 import { useAlert } from "../contexts/AlertContext";
+import { useFavorites } from "../contexts/FavoritesContext";
 
 export function RegisterForm(){
     const {setAlert} = useAlert()
+    const {setFavoriteApts} = useFavorites()
 
     const onSubmit = async (e)=>{
         setAlert(null)
@@ -17,6 +19,7 @@ export function RegisterForm(){
         if (data?.status === 201) {
             localStorage.clear()
             localStorage.setItem("user",JSON.stringify(data.user))
+            setFavoriteApts([])
             setAlert({color:"green",text:"Utilisateur enregistré et connecté"})
             redirect(localStorage.getItem("redirectPath") ?? "/")
         }else{

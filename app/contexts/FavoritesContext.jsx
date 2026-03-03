@@ -1,5 +1,5 @@
 'use client'
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { getFavorites } from "../actions/favorites";
 
 
@@ -54,3 +54,4 @@ export function FavoritesContext({children}){
     )
 }
 
+export const useFavorites = () => useContext(FavoritesAptsContext)
