@@ -21,7 +21,6 @@ export function LoginForm({redirectPath = "/"}){
         e.preventDefault()
         const formData = new FormData(e.target)
         const response = await doLogin(formData)
-        console.log(response);
         
         if (response.error === 'invalid credentials' ) {
             setAlert({color:"red",text:"Email ou mot de passe incorrect"})

@@ -3,10 +3,12 @@ export function MenuMobile({menuIsOpen,onClick}) {
     <button
       className={`menu-container ${menuIsOpen ? "active" : ""}`}
       aria-label={
-        menuIsOpen
+        !menuIsOpen
           ? "Ouvrir le menu de navigation"
           : "Fermer le menu de navigation"
       }
+      aria-expanded={menuIsOpen}
+      aria-haspopup="true"
       onClick={onClick}
     >
       <div>

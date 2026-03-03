@@ -681,6 +681,9 @@ header.vh-full {
   font-weight: 700;
   z-index: 300;
 }
+.carousel-exit:focus {
+  outline: 2px solid #FFFFFF;
+}
 
 .footer {
   height: 69.36px;

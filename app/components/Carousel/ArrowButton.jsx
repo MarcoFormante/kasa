@@ -18,9 +18,10 @@
  * @param {string} props.style - Additional CSS class names (e.g., "carousel-arrow-left").
  * @returns {JSX.Element} A button element containing a navigation SVG icon.
  */
-export function ArrowButton({aria,onClick,style}){
+export function ArrowButton({aria,onClick,style,showCarousel}){
     return (
-        <button aria-label={aria}  onClick={onClick} className={"carousel-arrow " + style}>
+                    
+        <button  aria-label={aria} tabIndex={showCarousel ? "0" : "-1"}  onClick={onClick} className={"carousel-arrow " + style}>
             <svg width="64px" height="64px" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
                 <g id="SVGRepo_bgCarrier" strokeWidth="0"/>
                 <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"/>

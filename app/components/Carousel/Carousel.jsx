@@ -22,24 +22,26 @@ import { ArrowButton } from "./ArrowButton";
  * @returns {JSX.Element} The rendered carousel component.
  */
 export function Carousel({images,showCarousel,setShowCarousel}){
-
     const slides = images.length > 1 ? [images[images.length - 1], ...images, images[0]] : images;
     const [currentIndex, setCurrentIndex] = useState(images.length > 1 ? 1 : 0);
     const [isTransitioning, setIsTransitioning] = useState(true);
     const timeoutRef = useRef(null);
+    const closeBtnRef = useRef(null)
 
 
-    const nextSlide = () => {
+    const nextSlide = useCallback(() => {
         if (currentIndex >= slides.length - 1) return;
         setIsTransitioning(true);
         setCurrentIndex((prev) => prev + 1);
-    };
+    }, [currentIndex, slides.length]); 
 
-    const prevSlide = () => {
+
+    const prevSlide = useCallback(() => {
         if (currentIndex <= 0) return;
         setIsTransitioning(true);
         setCurrentIndex((prev) => prev - 1);
-    };
+    }, [currentIndex])
+
 
 
     useEffect(() => {
@@ -62,19 +64,26 @@ export function Carousel({images,showCarousel,setShowCarousel}){
 
 
 
-  useEffect(()=>{
-    window.addEventListener("keydown",(e)=>{
-        if (e.key === "Escape" ) {
-            setShowCarousel(false)
+ useEffect(() => {
+    if (!showCarousel) return;
+   const handleKeyDown = (e) => {
+        switch (e.key) {
+            case "Escape":
+                setShowCarousel(false);
+                break;
+            case "ArrowRight": 
+                nextSlide();
+                break;
+            case "ArrowLeft": 
+                prevSlide();
+                break;
+            default:
+                break;
         }
-    })
-
-    return ()=> window.removeEventListener("keydown",(e)=>{
-        if (e.key === "Escape" ) {
-            setShowCarousel(false)
-        }
-    })
-  },[])
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+}, [showCarousel,nextSlide, prevSlide, setShowCarousel]);
 
 
   useEffect(()=>{
@@ -83,14 +92,41 @@ export function Carousel({images,showCarousel,setShowCarousel}){
     }else{
         document.body.style.overflow = 'visible'
     }
+
+    return () => {
+        document.body.style.overflow = 'visible';
+    };
   },[showCarousel])
 
+
+
+  useEffect(() => {
+    if (showCarousel && closeBtnRef.current) {
+        closeBtnRef.current.focus();
+    }
+}, [showCarousel]);
   
 
     return (
-        <div className={`carousel-container ${showCarousel && "carousel-container-open"}`} >
-            <button aria-label="Fermer le carousel" className="carousel-exit pointer" onClick={()=>setShowCarousel(false)}>X</button>
-            <div className="carousel-center-container">
+        <div 
+            className={`carousel-container ${showCarousel && "carousel-container-open"}`}
+            id="carousel-container" 
+            role="dialog"
+            aria-modal="true"
+            aria-hidden={!showCarousel}
+            >
+
+            <button  
+                tabIndex={showCarousel ? "0" : "-1" }
+                aria-label="Fermer le carousel" 
+                className="carousel-exit pointer" 
+                onClick={()=>setShowCarousel(false)}
+                ref={closeBtnRef}
+            >
+                X
+            </button>
+
+          { showCarousel &&  <div className="carousel-center-container">
                 <div 
                     className={`carousel-images ${isTransitioning ? "carousel-images-transitioning" : ""}`}
                     style={{transform: `translateX(-${currentIndex * 100}%)` }}
@@ -100,7 +136,7 @@ export function Carousel({images,showCarousel,setShowCarousel}){
                             <Image
                                 key={"carousel-" + img + index}
                                 src={img}
-                                alt={"Slide-" + index}
+                                alt={`Vue ${index} de l'appartement`}
                                 width={1400}
                                 height={800}
                             />
@@ -108,11 +144,11 @@ export function Carousel({images,showCarousel,setShowCarousel}){
                         })
                     } 
                 </div>
-            </div>
+            </div>}
             { slides.length > 1 && 
             <>
-                <ArrowButton aria={"Slide precedente"} onClick={prevSlide} style={"carousel-arrow-left"}/>
-                <ArrowButton aria={"Slide suivante"} onClick={nextSlide} style={"carousel-arrow-right"}/>
+                <ArrowButton showCarousel={showCarousel} aria={"Slide precedente"} onClick={prevSlide} style={"carousel-arrow-left"}/>
+                <ArrowButton showCarousel={showCarousel} aria={"Slide suivante"} onClick={nextSlide} style={"carousel-arrow-right"}/>
             </>
             }
         </div>

@@ -11,8 +11,18 @@ export function AptImages({data}){
     
     return(
         <>
-          <Carousel showCarousel={showCarousel} setShowCarousel={setShowCarousel} images={ data.apt.pictures} />
-            <div className="carousel" onClick={()=>setShowCarousel(true)}>
+          <Carousel showCarousel={showCarousel} setShowCarousel={setShowCarousel} images={data.apt.pictures} />
+            <div 
+                inert={showCarousel ? "" : null}
+                className="carousel" 
+                tabIndex="0" 
+                aria-label="Afficher la galerie photo"
+                aria-expanded={showCarousel}
+                aria-controls="carousel-container" 
+                onClick={()=>setShowCarousel(true)}
+                onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") setShowCarousel(true)}}
+              >
                     {data?.apt.pictures[0] && 
                         <Image
                         className="big-pic"

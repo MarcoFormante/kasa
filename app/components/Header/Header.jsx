@@ -32,19 +32,25 @@ import { MenuMobile } from "./MenuMobile";
 export function Header(){
     const pathname = usePathname()
     const [menuIsOpen,setMenuIsOpen] = useState(false)
+    const [isMobile, setIsMobile] = useState(false);
+    
 
-    useEffect(()=>{
-        window.addEventListener("resize",(e)=>{
-            if (window.innerWidth > 1024) {
-                setMenuIsOpen(false)
+   useEffect(() => {
+        const handleResize = () => {
+            const width = window.innerWidth;
+            setIsMobile(width <= 1024);
+         
+            if (width > 1024) {
+                setMenuIsOpen(false);
             }
-        })
-        return ()=> window.removeEventListener("resize",()=>{
-            if (window.innerWidth > 1024) {
-                setMenuIsOpen(false)
-            }
-        })
-    },[menuIsOpen])
+        };
+
+        handleResize();
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
 
     const closeMenu = ()=>{
         setMenuIsOpen(false)
@@ -52,25 +58,32 @@ export function Header(){
 
 
     useEffect(()=>{
-        if (menuIsOpen) {
-            document.body.style.overflow = "hidden"
-        }else{
-            document.body.style.overflow = "visible"
-        }
-
+        document.body.style.overflow = menuIsOpen ? "hidden" : "visible";
     },[menuIsOpen])
+
+
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 1024)
+        }
+        checkMobile(); 
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
 
     return (
         <header className={menuIsOpen ? "vh-full" : ""}>
-            <nav className={`header-nav ${menuIsOpen ? "active" : ""}`}>
-                <div className="header-nav-links-container header-nav-links-container-first">
+            <nav id="main-navigation" className={`header-nav ${menuIsOpen ? "active" : ""}`}>
+                <div className="header-nav-links-container header-nav-links-container-first" aria-hidden={isMobile ? !menuIsOpen : false}>
                     <Link onClick={closeMenu} href={"/"} className={`${pathname === "/" ? "active" : ""}`}>Accueil</Link>
                     <Link onClick={closeMenu} href={"/a-propos"} className={`${pathname === "/a-propos" ? "active" : ""}`}>À propos</Link>                
                 </div>
-                <Link onClick={closeMenu} aria-label="Page d'accueil" href={"/"} className="header-logo-link no-border">
+                <Link onClick={closeMenu} aria-label="Page d'accueil" href={"/"} className="header-logo-link no-border" aria-hidden={isMobile ? !menuIsOpen : false}>
                     <Logo/>
                 </Link>
-                <div className="header-nav-links-container header-nav-links-container-last">
+                <div className="header-nav-links-container header-nav-links-container-last" aria-hidden={isMobile ? !menuIsOpen : false}>
                     <Link onClick={closeMenu} href={"/ajout"} className={`main-red ${pathname === "/ajout" ? "active" : ""}`}>{!menuIsOpen ? "+" : ""}Ajouter un logement</Link>
                     <div className="header-nav-links-icons-container">
                         <Link onClick={closeMenu} href={"/favoris"} aria-label="Favoris" className={`no-border hover__fill-red ${pathname === "/favoris" ? "active" : ""}`}>

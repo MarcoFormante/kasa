@@ -81,4 +81,8 @@
     border-radius: 50%;
     font-weight: 700;
     z-index: 300;
+
+    &:focus{
+        outline: 2px solid $white;
+    }
 }
