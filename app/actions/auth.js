@@ -54,14 +54,14 @@ try {
         
         const tokenCookie =  (await cookies()).set("token",registerData.token,{
             httpOnly:true,
-            secure:false,
+            secure:process.env.NODE_ENV === "production",
             sameSite:"lax",
             maxAge:3600
         })
 
         const userCookie =  (await cookies()).set("user",JSON.stringify(registerData.user),{
             httpOnly:true,
-            secure:false,
+            secure:process.env.NODE_ENV === "production",
             sameSite:"lax",
             maxAge:3600
         })
@@ -115,14 +115,14 @@ export async function doLogin(formData){
         const data = await response.json()
             const tokenCookie =  (await cookies()).set("token",data.token,{
             httpOnly:true,
-            secure:false,
+            secure:process.env.NODE_ENV === "production",
             sameSite:"lax",
             maxAge:3600
         })
 
         const userCookie =  (await cookies()).set("user",JSON.stringify(data.user),{
             httpOnly:true,
-            secure:false,
+            secure:process.env.NODE_ENV === "production",
             sameSite:"lax",
             maxAge:3600
         })
