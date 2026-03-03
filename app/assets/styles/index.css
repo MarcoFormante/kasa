@@ -124,6 +124,11 @@ button, input, textarea, select {
   padding: 20px;
 }
 
+header.vh-full {
+  height: 100vh;
+  background-color: #FFFFFF;
+}
+
 .header-nav {
   display: flex;
   justify-content: center;
@@ -168,14 +173,14 @@ button, input, textarea, select {
   border-radius: 50px;
 }
 .header-nav a.active {
-  border-bottom: 1px solid #0D0D0D;
+  color: #99331A;
+  font-weight: 700;
 }
 .header-nav a {
   transition: all 0.3s ease;
-  border-bottom: 1px solid transparent;
 }
-.header-nav a:not(.no-border):hover {
-  border-bottom: 1px solid #0D0D0D;
+.header-nav a:hover {
+  color: #99331A;
 }
 .header-nav a.header-logo-link:hover {
   background: rgb(255, 237, 226);
@@ -258,13 +263,14 @@ button, input, textarea, select {
 @media screen and (max-width: 1024px) {
   .header-nav.active {
     position: fixed;
-    height: 100vh;
+    height: 600px;
     top: 0;
     flex-direction: column;
     justify-content: center;
     gap: 15px;
     transition: height 0.2s ease;
     z-index: 10;
+    align-items: flex-start;
   }
   .header-nav.active .menu-container, .header-nav.active .header-logo {
     position: absolute;
@@ -280,18 +286,31 @@ button, input, textarea, select {
   .header-nav.active .header-nav-links-container {
     display: flex;
     flex-direction: column;
-    font-size: 18px;
+    font-size: 24px;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .header-nav.active .header-nav-links-container a {
+    width: 100%;
   }
   .header-nav.active .header-nav-links-container a:hover {
-    border-bottom: 1px solid #0D0D0D;
+    color: #99331A;
   }
   .header-nav.active .header-nav-links-icons-container {
     display: flex;
     flex-direction: column;
     gap: 28px;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .header-nav.active .header-nav-links-icons-container a {
+    width: 100%;
   }
   .header-nav.active .header-nav-links-icons-container svg {
-    transform: scale(1.2);
+    display: none;
+  }
+  .header-nav.active .header-nav-links-icons-container a:first-child {
+    order: 2;
   }
   .header-nav.active .header-nav-links-icons-container a:first-child::before {
     content: "Favoris";
@@ -301,6 +320,28 @@ button, input, textarea, select {
   }
   .header-nav.active .separator {
     display: none;
+  }
+  .header-nav.active a:not(a[href="/"]) {
+    border-top: 1px solid #F5F5F5;
+    padding-top: 28px;
+  }
+  .header-nav.active .header-nav-links-container-last {
+    font-size: 24px;
+  }
+  .header-nav.active .header-nav-links-container-last a[href="/ajout"] {
+    order: 3;
+    background-color: #99331A;
+    color: #FFFFFF;
+    font-weight: 500;
+    border-radius: 10px;
+    width: 200px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    margin-top: 20px;
+    padding: 0;
   }
 }
 

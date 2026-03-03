@@ -1,3 +1,10 @@
+header.vh-full{
+    height:100vh;
+    background-color: $white;
+}
+
+
+
 .header-nav{
     display: flex;
     justify-content: center;
@@ -47,17 +54,18 @@
         
 
         a.active{
-            border-bottom: 1px solid $black;
+            color: $main-red;
+            font-weight: 700;
         }
 
         a{
             transition: all 0.3s ease;
-            border-bottom: 1px solid transparent;
         }
 
-        a:not(.no-border):hover{
-            border-bottom: 1px solid $black;
+        a:hover{
+            color: $main_red;
         }
+
 
         a.header-logo-link:hover{
             background: rgb(255, 237, 226);
@@ -159,13 +167,14 @@
     &.active{
         @media screen and (max-width:1024px) {
             position: fixed;
-            height: 100vh;
+            height: 600px;
             top: 0;
             flex-direction: column;
             justify-content: center;
             gap: 15px;
             transition:  height 0.2s ease;
             z-index: 10;
+            align-items: flex-start;
 
             .menu-container,.header-logo{
                 position: absolute;
@@ -185,10 +194,16 @@
             .header-nav-links-container{
                 display: flex;
                 flex-direction: column;
-                font-size: 18px;
+                font-size: 24px;
+                align-items: flex-start;
+                width: 100%;
+
+                a{
+                    width: 100%;
+                }
 
                 a:hover{
-                    border-bottom: 1px solid $black;
+                    color: $main_red;
                 }
             }
 
@@ -196,12 +211,19 @@
                 display: flex;
                 flex-direction: column;
                 gap: 28px;
+                align-items: flex-start;
+                width: 100%;
+
+                a{
+                    width: 100%;
+                }
 
                 svg{
-                    transform: scale(1.2);
+                    display: none;
                 }
                 
                 & a:first-child{
+                    order: 2;
                     &::before{
                         content: "Favoris";
                     }
@@ -216,6 +238,33 @@
 
             .separator{
                 display: none;
+            }
+
+            a:not(a[href="/"]){
+                border-top: 1px solid $light_grey;
+                padding-top: 28px;
+            }
+
+
+            .header-nav-links-container-last{
+
+                font-size: 24px;
+
+                a[href="/ajout"]{
+                    order: 3;
+                    background-color: $main_red;
+                    color: $white;
+                    font-weight: 500;
+                    border-radius: 10px;
+                    width: 200px;
+                    height: 36px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 14px;
+                    margin-top: 20px;
+                    padding: 0;
+                }
             }
         }
      }

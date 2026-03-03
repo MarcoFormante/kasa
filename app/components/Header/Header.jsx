@@ -50,8 +50,18 @@ export function Header(){
         setMenuIsOpen(false)
     }
 
+
+    useEffect(()=>{
+        if (menuIsOpen) {
+            document.body.style.overflow = "hidden"
+        }else{
+            document.body.style.overflow = "visible"
+        }
+
+    },[menuIsOpen])
+
     return (
-        <header>
+        <header className={menuIsOpen ? "vh-full" : ""}>
             <nav className={`header-nav ${menuIsOpen ? "active" : ""}`}>
                 <div className="header-nav-links-container header-nav-links-container-first">
                     <Link onClick={closeMenu} href={"/"} className={`${pathname === "/" ? "active" : ""}`}>Accueil</Link>
@@ -61,7 +71,7 @@ export function Header(){
                     <Logo/>
                 </Link>
                 <div className="header-nav-links-container header-nav-links-container-last">
-                    <Link onClick={closeMenu} href={"/ajout"} className={`main-red ${pathname === "/ajout" ? "active" : ""}`}>+Ajouter un logement</Link>
+                    <Link onClick={closeMenu} href={"/ajout"} className={`main-red ${pathname === "/ajout" ? "active" : ""}`}>{!menuIsOpen ? "+" : ""}Ajouter un logement</Link>
                     <div className="header-nav-links-icons-container">
                         <Link onClick={closeMenu} href={"/favoris"} aria-label="Favoris" className={`no-border hover__fill-red ${pathname === "/favoris" ? "active" : ""}`}>
                             <FavoritesIcon/>
