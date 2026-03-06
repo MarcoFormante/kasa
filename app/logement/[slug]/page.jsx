@@ -6,8 +6,8 @@ import { notFound } from "next/navigation";
 import { AptImages } from "../AptImages";
 
 
-export async function generateMetadata({ searchParams }) {
-  const {slug} = await searchParams;
+export async function generateMetadata({ params }) {
+  const {slug} = await params;
   
   return {
     title: `Logement: ${slug}`, 
@@ -40,9 +40,9 @@ export async function generateMetadata({ searchParams }) {
  
 async function Logement({searchParams}){
     
-    const {slug} = await searchParams
+    const {id} = await searchParams
     
-    const data = await getSingleApartment(slug)
+    const data = await getSingleApartment(id)
 
     if (!data || !data.success || !data.apt) {
         notFound();
