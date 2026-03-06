@@ -6,11 +6,11 @@ import { notFound } from "next/navigation";
 import { AptImages } from "../AptImages";
 
 
-export async function generateMetadata({ params }) {
-  const param = await params;
+export async function generateMetadata({ searchParams }) {
+  const {slug} = await searchParams;
   
   return {
-    title: `Logement: ${param.slug}`, 
+    title: `Logement: ${slug}`, 
   };
 }
 
@@ -40,9 +40,9 @@ export async function generateMetadata({ params }) {
  
 async function Logement({searchParams}){
     
-    const {id} = await searchParams
+    const {slug} = await searchParams
     
-    const data = await getSingleApartment(id)
+    const data = await getSingleApartment(slug)
 
     if (!data || !data.success || !data.apt) {
         notFound();
