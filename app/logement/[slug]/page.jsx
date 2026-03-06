@@ -42,7 +42,7 @@ async function Logement({searchParams}){
     
     const {slug} = await searchParams
     
-    const data = await getSingleApartment(id)
+    const data = await getSingleApartment(slug)
 
     if (!data || !data.success || !data.apt) {
         notFound();
