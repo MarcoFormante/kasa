@@ -40,7 +40,7 @@ export async function generateMetadata({ params }) {
  
 async function Logement({searchParams}){
     
-    const {id} = await searchParams
+    const {slug} = await searchParams
     
     const data = await getSingleApartment(id)
 
